@@ -57,10 +57,11 @@ Planned, not yet started. Target delivery aligns with challenge deadline (Aug 26
 * **002_frontend_001**: Frontend Setup - Next.js, TypeScript, Tailwind CSS, essential dependencies ✅
 * **002_frontend_002**: Assistant-UI Chat Integration - Functional chat interface with responsive design ✅
 * **002_frontend_003**: Static Conversations - Rich content system with interactive chat flows ✅
+* **002_frontend_004**: Real Content Integration - Markdown-driven content with intelligent conversation system ✅
 
 ### Units In Progress
 
-* **01\_main**: Project Plan and Dev Log — status: Updated with Unit 2.3 completion
+* **01\_main**: Project Plan and Dev Log — status: Updated with Unit 2.4 completion and enhancements
 
 ## Planned Units
 

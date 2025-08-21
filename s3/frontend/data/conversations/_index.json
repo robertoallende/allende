@@ -1,0 +1,51 @@
+{
+  "conversations": [
+    {
+      "id": "about",
+      "title": "About Roberto",
+      "subtitle": "Personal background and professional journey",
+      "description": "Learn about my experience, skills, and background in software engineering",
+      "order": 1,
+      "category": "personal",
+      "icon": "user"
+    },
+    {
+      "id": "projects",
+      "title": "Projects",
+      "subtitle": "Explore what I've built",
+      "description": "Discover my latest projects, technical work, and open source contributions",
+      "order": 2,
+      "category": "technical",
+      "icon": "code"
+    },
+    {
+      "id": "blog",
+      "title": "Blog",
+      "subtitle": "Technical insights and thoughts",
+      "description": "Read my thoughts on software development, cloud architecture, and AI integration",
+      "order": 3,
+      "category": "content",
+      "icon": "book"
+    },
+    {
+      "id": "poetry",
+      "title": "Truth Is Like Poetry",
+      "subtitle": "Creative writing and verses",
+      "description": "Explore my creative side through technical poetry and digital reflections",
+      "order": 4,
+      "category": "creative",
+      "icon": "feather"
+    },
+    {
+      "id": "contact",
+      "title": "Contact",
+      "subtitle": "Get in touch",
+      "description": "Find out how to reach me for collaborations, opportunities, or just to say hello",
+      "order": 5,
+      "category": "professional",
+      "icon": "mail"
+    }
+  ],
+  "generated_at": "2025-08-21T11:27:34.186Z",
+  "total_conversations": 5
+}

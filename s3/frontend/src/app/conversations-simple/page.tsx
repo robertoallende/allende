@@ -17,21 +17,22 @@ function ConversationChat() {
   useEffect(() => {
     async function loadData() {
       try {
-        // Load about data for now
+        // Load about data by default, but this could be dynamic based on URL params
         const aboutModule = await import("@/data/conversations/about.json")
         const aboutData = aboutModule.default as ConversationData
         setConversationData(aboutData)
         
-        // Start with a welcome message
+        // Start with a welcome message that includes all available topics
         const welcomeMessage: ConversationMessage = {
           id: "welcome",
           role: "assistant",
-          content: "# Welcome! 👋\n\nI'm Roberto Allende. Feel free to ask me about my background, projects, or anything else you'd like to know!\n\nYou can also try these topics:",
+          content: "# Welcome! 👋\n\nI'm Roberto Allende. I have rich content about various topics. Try asking me about:\n\n- **About**: My background and experience\n- **Projects**: What I've built and worked on\n- **Blog**: Technical insights and articles\n- **Poetry**: Creative writing and technical verses\n- **Contact**: How to get in touch\n\nWhat would you like to know about?",
           metadata: {
             follow_ups: [
               "Tell me about yourself",
               "Show me your projects", 
               "What do you write about?",
+              "Share some of your poetry",
               "How can I contact you?"
             ]
           }
@@ -64,26 +65,30 @@ function ConversationChat() {
     let responseMessage: ConversationMessage | null = null
     const userInput = input.toLowerCase()
 
-    // Look for matching conversation flows
-    for (const conversation of conversationData.conversations) {
-      for (let i = 0; i < conversation.messages.length; i++) {
-        const msg = conversation.messages[i]
-        if (msg.role === "user") {
-          const userContent = msg.content.toLowerCase()
-          if (userInput.includes("about") && userContent.includes("about") ||
-              userInput.includes("yourself") && userContent.includes("yourself") ||
-              userInput.includes("experience") && userContent.includes("experience") ||
-              userInput.includes("technologies") && userContent.includes("technologies") ||
-              userInput.includes("tech") && userContent.includes("tech")) {
-            const assistantMsg = conversation.messages[i + 1]
-            if (assistantMsg?.role === "assistant") {
-              responseMessage = assistantMsg
-              break
-            }
-          }
-        }
+    // Determine which conversation to load based on user input
+    let targetConversation = "about" // default
+    if (userInput.includes("project") || userInput.includes("built") || userInput.includes("work")) {
+      targetConversation = "projects"
+    } else if (userInput.includes("blog") || userInput.includes("write") || userInput.includes("article")) {
+      targetConversation = "blog"
+    } else if (userInput.includes("poetry") || userInput.includes("poem") || userInput.includes("creative")) {
+      targetConversation = "poetry"
+    } else if (userInput.includes("contact") || userInput.includes("reach") || userInput.includes("email")) {
+      targetConversation = "contact"
+    }
+
+    // Load the appropriate conversation if it's different from current
+    try {
+      const conversationModule = await import(`@/data/conversations/${targetConversation}.json`)
+      const conversationData = conversationModule.default as ConversationData
+      
+      // Get the main assistant message from the conversation
+      const mainConversation = conversationData.conversations[0]
+      if (mainConversation && mainConversation.messages.length > 1) {
+        responseMessage = mainConversation.messages[1] // The assistant response
       }
-      if (responseMessage) break
+    } catch (error) {
+      console.error(`Failed to load ${targetConversation} conversation:`, error)
     }
 
     // Fallback response

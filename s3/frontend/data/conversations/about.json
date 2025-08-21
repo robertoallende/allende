@@ -1,90 +1,66 @@
 {
   "conversations": [
     {
-      "id": "about-intro",
+      "id": "about",
       "title": "About Roberto",
-      "description": "Personal background and professional journey",
-      "category": "about",
+      "description": "Learn about my experience, skills, and background in software engineering",
+      "category": "personal",
       "messages": [
         {
-          "id": "about-1",
+          "id": "about-welcome",
           "role": "user",
-          "content": "Tell me about yourself"
+          "content": "Tell me about about roberto"
         },
         {
-          "id": "about-2",
+          "id": "about-intro",
           "role": "assistant",
-          "content": "# Hi there! 👋\n\nI'm **Roberto Allende**, a software engineer passionate about building innovative solutions with modern technologies.\n\n## Quick Overview\n- 🚀 **Focus**: Full-stack development with cloud architecture\n- 💡 **Interests**: AI/ML, serverless computing, developer tools\n- 🎯 **Current**: Building with AWS services and exploring AI-powered applications\n- 📍 **Location**: San Francisco Bay Area\n\nI love creating efficient, scalable solutions and sharing knowledge with the developer community. What would you like to know more about?",
+          "content": "# Hi there! 👋\n\nI'm **Roberto Allende**, a software engineer passionate about building innovative solutions with modern technologies.\n\n## Quick Overview\n- 🚀 **Focus**: Full-stack development with cloud architecture\n- 💡 **Interests**: AI/ML, serverless computing, and developer tools\n- 🎯 **Current**: Building with AWS services and exploring AI-powered applications\n- 📍 **Location**: San Francisco Bay Area\n- 🌍 **Remote**: Open to global collaboration\n\n## Professional Journey\nI'm a **Senior Software Engineer** specializing in:\n- **Cloud Architecture**: AWS-native solutions and serverless patterns\n- **AI Integration**: Building intelligent applications with modern AI APIs\n- **Developer Experience**: Creating tools that developers actually want to use\n\nWhat would you like to know more about?",
           "metadata": {
             "typing_delay": 2000,
             "follow_ups": [
-              "What's your professional experience?",
-              "What technologies do you work with?",
-              "Tell me about your background"
-            ]
-          }
-        },
-        {
-          "id": "about-3",
-          "role": "user",
-          "content": "What's your professional experience?"
-        },
-        {
-          "id": "about-4",
-          "role": "assistant",
-          "content": "# Professional Journey 🚀\n\n## Current Focus\n**Senior Software Engineer** specializing in:\n- **Cloud Architecture**: AWS-native solutions and serverless patterns\n- **AI Integration**: Building intelligent applications with modern AI APIs\n- **Developer Experience**: Creating tools that developers actually want to use\n\n## Experience Highlights\n\n### 🏗️ **Architecture & Infrastructure**\n- Designed and implemented **serverless architectures** serving millions of requests\n- Built **CI/CD pipelines** that reduced deployment time by 80%\n- Created **Infrastructure as Code** solutions with AWS CDK and Terraform\n\n### 🤖 **AI & Machine Learning**\n- Integrated **OpenAI API** and **AWS Bedrock** into production applications\n- Built **RAG systems** for document processing and knowledge retrieval\n- Developed **AI-powered tools** for workflow automation\n\n### 👥 **Team Leadership**\n- Led cross-functional teams of 5-8 engineers\n- Mentored junior developers and established coding standards\n- Drove technical decision-making for product architecture\n\nI'm always excited to tackle complex technical challenges and build solutions that make a real impact!",
-          "metadata": {
-            "typing_delay": 3000,
-            "follow_ups": [
               "What technologies do you specialize in?",
-              "Tell me about a challenging project",
-              "What's your development philosophy?"
-            ]
-          }
-        },
-        {
-          "id": "about-5",
-          "role": "user",
-          "content": "What technologies do you specialize in?"
-        },
-        {
-          "id": "about-6",
-          "role": "assistant",
-          "content": "# Tech Stack & Expertise 🛠️\n\n## **Languages**\n```typescript\n// Primary languages I work with daily\nconst languages = {\n  frontend: ['TypeScript', 'JavaScript', 'HTML/CSS'],\n  backend: ['Python', 'Node.js', 'Go'],\n  scripting: ['Bash', 'Python'],\n  data: ['SQL', 'GraphQL']\n}\n```\n\n## **Frontend Development**\n- **React Ecosystem**: Next.js, React 19, Zustand, TanStack Query\n- **Styling**: Tailwind CSS, CSS-in-JS, Responsive Design\n- **Build Tools**: Vite, Turbopack, Webpack\n- **Testing**: Vitest, Playwright, React Testing Library\n\n## **Backend & Cloud**\n- **AWS Services**: Lambda, API Gateway, DynamoDB, S3, CloudFront, Bedrock\n- **Serverless**: AWS CDK, Serverless Framework, Infrastructure as Code\n- **APIs**: REST, GraphQL, WebSockets, Server-Sent Events\n- **Databases**: PostgreSQL, DynamoDB, Redis\n\n## **AI & Machine Learning**\n- **AI APIs**: OpenAI GPT-4, AWS Bedrock, Anthropic Claude\n- **Frameworks**: LangChain, LlamaIndex, Hugging Face\n- **Vector Databases**: Pinecone, Weaviate, ChromaDB\n- **RAG Systems**: Document processing, semantic search\n\n## **DevOps & Tools**\n- **CI/CD**: GitHub Actions, AWS CodePipeline\n- **Monitoring**: CloudWatch, Datadog, Sentry\n- **Version Control**: Git, GitHub, GitLab\n- **Containers**: Docker, AWS ECS, Lambda containers\n\nI'm always learning new technologies and staying current with the rapidly evolving tech landscape!",
-          "metadata": {
-            "typing_delay": 2500,
-            "follow_ups": [
-              "Show me some of your projects",
-              "What's your favorite tech to work with?",
-              "How do you stay current with technology?"
+              "Tell me about your professional experience",
+              "Show me your projects"
             ],
-            "code_blocks": [
+            "links": [
               {
-                "language": "typescript",
-                "code": "const languages = {\n  frontend: ['TypeScript', 'JavaScript', 'HTML/CSS'],\n  backend: ['Python', 'Node.js', 'Go'],\n  scripting: ['Bash', 'Python'],\n  data: ['SQL', 'GraphQL']\n}",
-                "filename": "tech-stack.ts"
+                "text": "LinkedIn Profile",
+                "url": "https://linkedin.com/in/robertoallende",
+                "type": "external"
+              },
+              {
+                "text": "GitHub Profile",
+                "url": "https://github.com/robertoallende",
+                "type": "github"
               }
             ]
           }
         }
       ],
       "suggested_follow_ups": [
-        "Show me your projects",
-        "What do you write about in your blog?",
-        "How can I get in touch with you?"
+        "What technologies do you specialize in?",
+        "Tell me about your professional experience",
+        "Show me your projects"
       ],
-      "related_topics": ["projects", "blog", "contact"]
+      "related_topics": [],
+      "full_content": "\n# Hi there! 👋\n\nI'm **Roberto Allende**, a software engineer passionate about building innovative solutions with modern technologies. Welcome to my personal website!\n\n## Quick Overview\n\n- 🚀 **Focus**: Full-stack development with cloud architecture\n- 💡 **Interests**: AI/ML, serverless computing, and developer tools\n- 🎯 **Current**: Building with AWS services and exploring AI-powered applications\n- 📍 **Location**: San Francisco Bay Area\n- 🌍 **Remote**: Open to global collaboration\n\n## Professional Journey\n\n### Current Focus\nI'm a **Senior Software Engineer** specializing in:\n- **Cloud Architecture**: AWS-native solutions and serverless patterns\n- **AI Integration**: Building intelligent applications with modern AI APIs\n- **Developer Experience**: Creating tools that developers actually want to use\n\n### Experience Highlights\n\n#### 🏗️ **Architecture & Infrastructure**\n- Designed and implemented **serverless architectures** serving millions of requests\n- Built **CI/CD pipelines** that reduced deployment time by 80%\n- Created **Infrastructure as Code** solutions with AWS CDK and Terraform\n- Led migration of monolithic applications to microservices architecture\n\n#### 🤖 **AI & Machine Learning**\n- Integrated **OpenAI API** and **AWS Bedrock** into production applications\n- Built **RAG systems** for document processing and knowledge retrieval\n- Developed **AI-powered tools** for workflow automation\n- Created **intelligent chatbots** and conversational interfaces\n\n#### 👥 **Team Leadership**\n- Led cross-functional teams of 5-8 engineers\n- Mentored junior developers and established coding standards\n- Drove technical decision-making for product architecture\n- Facilitated knowledge sharing and best practices adoption\n\n## Technical Expertise\n\n### **Languages & Frameworks**\n```typescript\nconst myStack = {\n  languages: ['TypeScript', 'JavaScript', 'Python', 'Go'],\n  frontend: ['React', 'Next.js', 'Tailwind CSS', 'Vue.js'],\n  backend: ['Node.js', 'Express', 'FastAPI', 'GraphQL'],\n  databases: ['PostgreSQL', 'DynamoDB', 'Redis', 'MongoDB'],\n  cloud: ['AWS', 'Serverless Framework', 'Docker', 'Kubernetes']\n}\n```\n\n### **Specializations**\n- **Frontend Development**: React ecosystem, modern CSS, responsive design\n- **Backend Systems**: API design, microservices, event-driven architecture\n- **Cloud Computing**: AWS services, serverless computing, infrastructure automation\n- **AI/ML Integration**: LLM APIs, vector databases, RAG systems\n- **DevOps**: CI/CD, monitoring, performance optimization\n\n## What Drives Me\n\nI'm passionate about:\n\n- **Problem Solving**: Finding elegant solutions to complex technical challenges\n- **Innovation**: Exploring cutting-edge technologies and their practical applications\n- **Collaboration**: Working with diverse teams to build impactful products\n- **Learning**: Continuously expanding my knowledge and sharing insights with others\n- **Quality**: Writing clean, maintainable code that stands the test of time\n\n## Personal Interests\n\nWhen I'm not coding, you'll find me:\n- 📚 Reading about emerging technologies and industry trends\n- ✍️ Writing technical blog posts and creative content\n- 🎵 Exploring music production and audio engineering\n- 🌲 Hiking and enjoying the outdoors in the Bay Area\n- 🎮 Playing strategy games and puzzle games\n\n## Philosophy\n\nI believe in:\n- **Continuous Learning**: Technology evolves rapidly, and so should we\n- **User-Centric Design**: Technology should serve people, not the other way around\n- **Open Collaboration**: The best solutions come from diverse perspectives\n- **Sustainable Development**: Building for the long term, not just the next sprint\n- **Knowledge Sharing**: Lifting others up through mentorship and documentation\n\n## Fun Facts\n\n- 🎯 I've contributed to **15+ open source projects**\n- 📝 I've written **50+ technical articles** read by thousands of developers\n- 🏆 I've led teams that delivered **10+ successful product launches**\n- 🌟 I'm a **certified AWS Solutions Architect**\n- 🎨 I enjoy creating **digital art** and **generative graphics** in my spare time\n\n---\n\nI'm always excited to connect with fellow developers, discuss interesting projects, or explore new opportunities. Feel free to reach out through any of the channels in my contact section!\n\n*\"The best way to predict the future is to build it.\"* - This quote drives my approach to technology and innovation.\n",
+      "sections": {
+        "intro": "# Hi there! 👋\n\nI'm **Roberto Allende**, a software engineer passionate about building innovative solutions with modern technologies. Welcome to my personal website!",
+        "quick_overview": "## Quick Overview\n\n- 🚀 **Focus**: Full-stack development with cloud architecture\n- 💡 **Interests**: AI/ML, serverless computing, and developer tools\n- 🎯 **Current**: Building with AWS services and exploring AI-powered applications\n- 📍 **Location**: San Francisco Bay Area\n- 🌍 **Remote**: Open to global collaboration",
+        "professional_journey": "## Professional Journey\n\n### Current Focus\nI'm a **Senior Software Engineer** specializing in:\n- **Cloud Architecture**: AWS-native solutions and serverless patterns\n- **AI Integration**: Building intelligent applications with modern AI APIs\n- **Developer Experience**: Creating tools that developers actually want to use\n\n### Experience Highlights\n\n#### 🏗️ **Architecture & Infrastructure**\n- Designed and implemented **serverless architectures** serving millions of requests\n- Built **CI/CD pipelines** that reduced deployment time by 80%\n- Created **Infrastructure as Code** solutions with AWS CDK and Terraform\n- Led migration of monolithic applications to microservices architecture\n\n#### 🤖 **AI & Machine Learning**\n- Integrated **OpenAI API** and **AWS Bedrock** into production applications\n- Built **RAG systems** for document processing and knowledge retrieval\n- Developed **AI-powered tools** for workflow automation\n- Created **intelligent chatbots** and conversational interfaces\n\n#### 👥 **Team Leadership**\n- Led cross-functional teams of 5-8 engineers\n- Mentored junior developers and established coding standards\n- Drove technical decision-making for product architecture\n- Facilitated knowledge sharing and best practices adoption",
+        "technical_expertise": "## Technical Expertise\n\n### **Languages & Frameworks**\n```typescript\nconst myStack = {\n  languages: ['TypeScript', 'JavaScript', 'Python', 'Go'],\n  frontend: ['React', 'Next.js', 'Tailwind CSS', 'Vue.js'],\n  backend: ['Node.js', 'Express', 'FastAPI', 'GraphQL'],\n  databases: ['PostgreSQL', 'DynamoDB', 'Redis', 'MongoDB'],\n  cloud: ['AWS', 'Serverless Framework', 'Docker', 'Kubernetes']\n}\n```\n\n### **Specializations**\n- **Frontend Development**: React ecosystem, modern CSS, responsive design\n- **Backend Systems**: API design, microservices, event-driven architecture\n- **Cloud Computing**: AWS services, serverless computing, infrastructure automation\n- **AI/ML Integration**: LLM APIs, vector databases, RAG systems\n- **DevOps**: CI/CD, monitoring, performance optimization",
+        "what_drives_me": "## What Drives Me\n\nI'm passionate about:\n\n- **Problem Solving**: Finding elegant solutions to complex technical challenges\n- **Innovation**: Exploring cutting-edge technologies and their practical applications\n- **Collaboration**: Working with diverse teams to build impactful products\n- **Learning**: Continuously expanding my knowledge and sharing insights with others\n- **Quality**: Writing clean, maintainable code that stands the test of time",
+        "personal_interests": "## Personal Interests\n\nWhen I'm not coding, you'll find me:\n- 📚 Reading about emerging technologies and industry trends\n- ✍️ Writing technical blog posts and creative content\n- 🎵 Exploring music production and audio engineering\n- 🌲 Hiking and enjoying the outdoors in the Bay Area\n- 🎮 Playing strategy games and puzzle games",
+        "philosophy": "## Philosophy\n\nI believe in:\n- **Continuous Learning**: Technology evolves rapidly, and so should we\n- **User-Centric Design**: Technology should serve people, not the other way around\n- **Open Collaboration**: The best solutions come from diverse perspectives\n- **Sustainable Development**: Building for the long term, not just the next sprint\n- **Knowledge Sharing**: Lifting others up through mentorship and documentation",
+        "fun_facts": "## Fun Facts\n\n- 🎯 I've contributed to **15+ open source projects**\n- 📝 I've written **50+ technical articles** read by thousands of developers\n- 🏆 I've led teams that delivered **10+ successful product launches**\n- 🌟 I'm a **certified AWS Solutions Architect**\n- 🎨 I enjoy creating **digital art** and **generative graphics** in my spare time\n\n---\n\nI'm always excited to connect with fellow developers, discuss interesting projects, or explore new opportunities. Feel free to reach out through any of the channels in my contact section!\n\n*\"The best way to predict the future is to build it.\"* - This quote drives my approach to technology and innovation."
+      }
     }
   ],
   "quick_responses": {
-    "experience": "I'm a senior software engineer with expertise in full-stack development, cloud architecture, and AI integration.",
-    "location": "I'm based in the San Francisco Bay Area and work with teams globally.",
-    "availability": "I'm currently open to consulting opportunities and interesting projects.",
-    "skills": "My main areas are TypeScript/React, AWS cloud services, and AI/ML integration."
+    "about": "I'm a software engineer focused on cloud architecture and AI integration."
   },
   "fallback_responses": [
-    "That's a great question! I'd love to tell you more about that. What specifically interests you?",
-    "I'm always happy to discuss technology and development. What would you like to know?",
-    "Feel free to ask me about my experience, projects, or anything else you're curious about!"
+    "I'd be happy to tell you more about about roberto!",
+    "What specific aspect of about roberto interests you?"
   ]
 }
