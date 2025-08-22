@@ -2,24 +2,38 @@
 flowchart LR
     U00["00: MMDD Principles"]
     U01["01_main: Project Plan"]
-    U002_001["002_frontend_001: Frontend Setup"]
-    U002_002["002_frontend_002: Chat UI"]
-    U002_003["002_frontend_003: Cached Conversations"]
-    U002_004["002_frontend_004: Real Content"]
-    U03["03_repository: Bootstrap Repo"]
-    U04["04_api-chat: Chat Lambda"]
-    U05["05_api-contact: Contact Lambda"]
-    U06["06_human-gate: Bot Check"]
-    U07["07_infra: Infrastructure"]
-    U08["08_ci-cd: CI/CD Pipeline"]
-    U09["09_article: AWS Article"]
-    U10["10_polish: Polish & Performance"]
+    
+    %% Frontend Development Branch
+    U002_001["002_frontend_001:<br/>Frontend Setup"]
+    U002_002["002_frontend_002:<br/>Chat UI Foundation"]
+    U002_003["002_frontend_003:<br/>Topic Conversations"]
+    U002_004["002_frontend_004:<br/>Smooth Streaming"]
+    U002_005["002_frontend_005:<br/>Left Panel Personalization"]
+    U002_006["002_frontend_006:<br/>Clean Interface"]
+    
+    %% Backend Development Branch
+    U03["03_repository:<br/>Bootstrap Repo"]
+    U04["04_api-chat:<br/>Chat Lambda"]
+    U05["05_api-contact:<br/>Contact Lambda"]
+    U06["06_human-gate:<br/>Bot Check"]
+    
+    %% Infrastructure Branch
+    U07["07_infra:<br/>Infrastructure"]
+    U08["08_ci-cd:<br/>CI/CD Pipeline"]
+    
+    %% Final Polish Branch
+    U09["09_article:<br/>AWS Article"]
+    U10["10_polish:<br/>Polish & Performance"]
 
+    %% Dependencies
     U00 --> U01
     U01 --> U002_001
     U002_001 --> U002_002
     U002_002 --> U002_003
     U002_003 --> U002_004
+    U002_004 --> U002_005
+    U002_005 --> U002_006
+    
     U01 --> U03
     U03 --> U04
     U03 --> U05
@@ -28,14 +42,17 @@ flowchart LR
     U05 --> U07
     U06 --> U07
     U07 --> U08
-    U002_004 --> U08
+    
+    U002_006 --> U08
     U08 --> U09
     U08 --> U10
 
-    classDef completed fill:#90EE90,stroke:#333,stroke-width:2px
-    classDef inProgress fill:#FFD700,stroke:#333,stroke-width:2px
-    classDef planned fill:#87CEEB,stroke:#333,stroke-width:2px
+    %% Color Classifications
+    classDef completed fill:#90EE90,stroke:#2E7D32,stroke-width:3px,color:#000
+    classDef inProgress fill:#FFD700,stroke:#F57F17,stroke-width:3px,color:#000
+    classDef planned fill:#87CEEB,stroke:#1976D2,stroke-width:2px,color:#000
+    classDef blocked fill:#FFB6C1,stroke:#D32F2F,stroke-width:2px,color:#000
 
-    class U00,U002_001,U002_002,U002_003 completed
-    class U01 inProgress
-    class U002_004,U03,U04,U05,U06,U07,U08,U09,U10 planned
+    %% Apply Classifications
+    class U00,U01,U002_001,U002_002,U002_003,U002_004,U002_005,U002_006 completed
+    class U03,U04,U05,U06,U07,U08,U09,U10 planned
