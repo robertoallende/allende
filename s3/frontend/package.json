@@ -13,6 +13,9 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@assistant-ui/react": "^0.10.43",
+    "@assistant-ui/react-markdown": "^0.10.9",
+    "@assistant-ui/styles": "^0.1.18",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-popover": "^1.1.15",
     "@radix-ui/react-slot": "^1.2.3",
