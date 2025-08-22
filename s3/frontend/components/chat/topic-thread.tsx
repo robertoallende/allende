@@ -2,48 +2,9 @@
 
 import { useEffect } from "react";
 import { ThreadPrimitive, ComposerPrimitive, useAssistantRuntime } from "@assistant-ui/react";
-import { useTheme } from "@/components/theme-provider";
 import { useTopicContext } from "./multi-thread-runtime";
 import { EnhancedUserMessage, EnhancedAssistantMessage } from "./enhanced-message";
 import { SmoothText } from "./smooth-text";
-
-function ThreadHeader({ activeTopic }: { activeTopic: string }) {
-  const { theme, setTheme, themes } = useTheme();
-
-  const topicTitles: Record<string, string> = {
-    about: "About Roberto",
-    blog: "Blog Posts", 
-    projects: "Projects",
-    contact: "Contact",
-    social: "Social Media",
-  };
-
-  return (
-    <div className="border-b border-border p-4 flex justify-between items-center bg-background/95 backdrop-blur">
-      <div>
-        <h1 className="text-xl font-bold">{topicTitles[activeTopic] || "Roberto Allende"}</h1>
-        <p className="text-sm text-muted-foreground">
-          {activeTopic === "about" && "Personal background & experience"}
-          {activeTopic === "blog" && "Technical insights & thoughts"}
-          {activeTopic === "projects" && "Portfolio & showcases"}
-          {activeTopic === "contact" && "Get in touch"}
-          {activeTopic === "social" && "Online presence & platforms"}
-        </p>
-      </div>
-      <select
-        value={theme}
-        onChange={(e) => setTheme(e.target.value as "default" | "dark" | "claude")}
-        className="px-3 py-1 border border-border rounded bg-background text-foreground text-sm"
-      >
-        {themes.map((t) => (
-          <option key={t.id} value={t.id}>
-            {t.name}
-          </option>
-        ))}
-      </select>
-    </div>
-  );
-}
 
 // Component to show the initial message for each topic
 function TopicInitialMessage({ activeTopic }: { activeTopic: string }) {
@@ -91,8 +52,7 @@ export function TopicThread() {
 
   return (
     <div className="flex flex-col h-full">
-      <ThreadHeader activeTopic={activeTopic} />
-      
+      {/* No ThreadHeader - direct to content for clean interface */}
       <ThreadPrimitive.Root className="flex flex-col h-full">
         <ThreadPrimitive.Viewport className="flex-1 overflow-y-auto p-4">
           {/* Show topic-specific initial message */}

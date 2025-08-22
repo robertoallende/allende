@@ -1,6 +1,7 @@
 "use client";
 
 import { UserIcon, BookOpenIcon, CodeIcon, MailIcon, ShareIcon, PlusIcon } from "lucide-react";
+import { useTheme } from "@/components/theme-provider";
 
 interface TopicThread {
   id: string;
@@ -55,6 +56,8 @@ interface TopicSidebarProps {
 }
 
 export function TopicSidebar({ activeTopicId, onTopicSelect, onNewConversation }: TopicSidebarProps) {
+  const { theme, setTheme, themes } = useTheme();
+
   return (
     <div className="flex flex-col h-screen bg-muted/30 border-r border-border">
       {/* Header */}
@@ -104,6 +107,21 @@ export function TopicSidebar({ activeTopicId, onTopicSelect, onNewConversation }
             </button>
           );
         })}
+      </div>
+
+      {/* Theme Selector - Bottom Right */}
+      <div className="p-2 flex justify-end flex-shrink-0">
+        <select
+          value={theme}
+          onChange={(e) => setTheme(e.target.value as "default" | "dark" | "claude")}
+          className="px-2 py-1 text-xs border border-border rounded bg-background text-foreground hover:bg-muted transition-colors"
+        >
+          {themes.map((t) => (
+            <option key={t.id} value={t.id}>
+              {t.name}
+            </option>
+          ))}
+        </select>
       </div>
     </div>
   );
