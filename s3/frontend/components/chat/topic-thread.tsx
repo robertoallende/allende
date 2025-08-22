@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { ThreadPrimitive, ComposerPrimitive, useAssistantRuntime } from "@assistant-ui/react";
 import { useTopicContext } from "./multi-thread-runtime";
 import { EnhancedUserMessage, EnhancedAssistantMessage } from "./enhanced-message";
-import { SmoothText } from "./smooth-text";
+import { SimpleMarkdown } from "./simple-markdown";
 
 // Component to show the initial message for each topic
 function TopicInitialMessage({ activeTopic }: { activeTopic: string }) {
@@ -19,13 +19,13 @@ function TopicInitialMessage({ activeTopic }: { activeTopic: string }) {
   return (
     <div className="mb-4 flex justify-start">
       <div className="bg-background border border-border p-4 rounded-lg max-w-2xl">
-        <SmoothText 
+        <SimpleMarkdown 
           key={activeTopic} // Reset animation when topic changes
           smooth={true}
           className="prose prose-sm max-w-none dark:prose-invert"
         >
           {message}
-        </SmoothText>
+        </SimpleMarkdown>
       </div>
     </div>
   );

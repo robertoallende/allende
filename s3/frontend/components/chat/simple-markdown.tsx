@@ -2,13 +2,13 @@
 
 import { useState, useEffect, useRef } from "react";
 
-interface SmoothTextProps {
+interface SimpleMarkdownProps {
   children: string;
   className?: string;
   smooth?: boolean;
 }
 
-class SimpleTextAnimator {
+class MarkdownTextAnimator {
   private animationFrameId: number | null = null;
   private lastUpdateTime: number = Date.now();
   public currentText: string = "";
@@ -60,9 +60,44 @@ class SimpleTextAnimator {
   };
 }
 
-export function SmoothText({ children, className, smooth = true }: SmoothTextProps) {
+// Simple markdown parser for basic elements
+function parseMarkdown(text: string): string {
+  return text
+    // Headers
+    .replace(/^### (.*$)/gm, '<h3 class="text-base font-medium mb-2 mt-4">$1</h3>')
+    .replace(/^## (.*$)/gm, '<h2 class="text-lg font-semibold mb-3 mt-6">$1</h2>')
+    .replace(/^# (.*$)/gm, '<h1 class="text-xl font-bold mb-4 pb-2 border-b border-border">$1</h1>')
+    
+    // Bold and italic
+    .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-foreground">$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em class="italic">$1</em>')
+    
+    // Inline code
+    .replace(/`([^`]+)`/g, '<code class="bg-muted px-1.5 py-0.5 rounded text-sm font-mono">$1</code>')
+    
+    // Links
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">$1</a>')
+    
+    // Lists (simple approach)
+    .replace(/^- (.*$)/gm, '<li class="flex items-start mb-1"><span class="mr-2">•</span><span>$1</span></li>')
+    
+    // Paragraphs (split by double newlines)
+    .split('\n\n')
+    .map(paragraph => {
+      // Don't wrap headers, lists, or already wrapped content in p tags
+      if (paragraph.includes('<h') || paragraph.includes('<li') || paragraph.includes('<div')) {
+        return paragraph;
+      }
+      // Handle single line breaks within paragraphs
+      const content = paragraph.replace(/\n/g, '<br>');
+      return content.trim() ? `<p class="mb-4 leading-relaxed">${content}</p>` : '';
+    })
+    .join('\n');
+}
+
+export function SimpleMarkdown({ children, className, smooth = true }: SimpleMarkdownProps) {
   const [displayedText, setDisplayedText] = useState(smooth ? "" : children);
-  const animatorRef = useRef<SimpleTextAnimator | null>(null);
+  const animatorRef = useRef<MarkdownTextAnimator | null>(null);
 
   useEffect(() => {
     if (!smooth) {
@@ -71,7 +106,7 @@ export function SmoothText({ children, className, smooth = true }: SmoothTextPro
     }
 
     if (!animatorRef.current) {
-      animatorRef.current = new SimpleTextAnimator(setDisplayedText);
+      animatorRef.current = new MarkdownTextAnimator(setDisplayedText);
     }
 
     const animator = animatorRef.current;
@@ -93,9 +128,12 @@ export function SmoothText({ children, className, smooth = true }: SmoothTextPro
     };
   }, []);
 
+  const htmlContent = parseMarkdown(displayedText);
+
   return (
-    <div className={className} style={{ whiteSpace: 'pre-wrap' }}>
-      {displayedText}
-    </div>
+    <div 
+      className={className}
+      dangerouslySetInnerHTML={{ __html: htmlContent }}
+    />
   );
 }
