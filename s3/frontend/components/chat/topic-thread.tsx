@@ -14,8 +14,8 @@ function ThreadHeader({ activeTopic }: { activeTopic: string }) {
     about: "About Roberto",
     blog: "Blog Posts", 
     projects: "Projects",
-    poetry: "Poetry",
     contact: "Contact",
+    social: "Social Media",
   };
 
   return (
@@ -26,8 +26,8 @@ function ThreadHeader({ activeTopic }: { activeTopic: string }) {
           {activeTopic === "about" && "Personal background & experience"}
           {activeTopic === "blog" && "Technical insights & thoughts"}
           {activeTopic === "projects" && "Portfolio & showcases"}
-          {activeTopic === "poetry" && "Creative writing"}
           {activeTopic === "contact" && "Get in touch"}
+          {activeTopic === "social" && "Online presence & platforms"}
         </p>
       </div>
       <select
@@ -51,8 +51,8 @@ function TopicInitialMessage({ activeTopic }: { activeTopic: string }) {
     about: "# About Roberto\n\nHello! I'm Roberto, a passionate software engineer with a love for building innovative solutions. I specialize in **TypeScript**, **React**, and **AWS** technologies.\n\n## My Background\n- 🎓 Computer Science background\n- 💼 Full-stack development experience\n- 🚀 Passionate about modern web technologies\n- 🌟 Always learning and exploring new tech\n\nWhat would you like to know about my experience?",
     blog: "# My Blog\n\nI write about software development, technology trends, and lessons learned from building applications.\n\n## Recent Posts\n\n### 🚀 \"Building Scalable React Applications\"\nExploring patterns and practices for large-scale React apps with TypeScript and modern tooling.\n\n### ☁️ \"Serverless Architecture Patterns\"\nDeep dive into AWS Lambda, API Gateway, and building cost-effective serverless solutions.\n\n### 🎨 \"The Art of Clean Code\"\nPrinciples and practices for writing maintainable, readable code that stands the test of time.\n\nWhat would you like to read about?",
     projects: "# My Projects\n\nHere are some of the projects I've built and contributed to:\n\n## 🌐 Personal Website\n**Tech Stack**: Next.js, TypeScript, Tailwind CSS, Assistant-UI\n- Chat-based interface for engaging user experience\n- Multiple themes with CSS variables\n- Responsive design and accessibility\n\n## ☁️ Serverless API Platform\n**Tech Stack**: AWS Lambda, API Gateway, DynamoDB, TypeScript\n- High-performance REST APIs\n- Auto-scaling serverless architecture\n- Comprehensive monitoring and logging\n\nWhich project interests you most?",
-    poetry: "# Poetry & Creative Writing\n\nI enjoy expressing creativity through words, often blending technical themes with artistic expression.\n\n## Code Poetry\n\n*\"In functions pure and variables clean,*  \n*Logic flows like a mountain stream.*  \n*Each bracket placed with careful thought,*  \n*Beauty in the code I've wrought.\"*\n\n## Technical Haikus\n\n*Async functions wait*  \n*Promises resolve in time*  \n*Callbacks are past*\n\nWhat kind of creative writing interests you?",
     contact: "# Let's Connect!\n\nI'm always interested in connecting with fellow developers, potential collaborators, and anyone passionate about technology.\n\n## 📧 Professional Contact\n- **Email**: roberto@allende.ai\n- **LinkedIn**: [Roberto Allende](https://linkedin.com/in/robertoallende)\n- **GitHub**: [@robertoallende](https://github.com/robertoallende)\n\n## 💼 Collaboration Opportunities\nI'm open to:\n- Technical consulting projects\n- Open source contributions\n- Speaking at conferences or meetups\n- Mentoring and knowledge sharing\n\nHow can I help you?",
+    social: "# Social Media & Online Presence\n\nConnect with me across various platforms where I share insights, projects, and thoughts on technology.\n\n## 🌐 Professional Platforms\n- **LinkedIn**: [Roberto Allende](https://linkedin.com/in/robertoallende) - Professional updates and industry insights\n- **GitHub**: [@robertoallende](https://github.com/robertoallende) - Open source projects and code repositories\n- **Twitter/X**: [@robertoallende](https://twitter.com/robertoallende) - Tech thoughts and quick updates\n\n## 📱 Content I Share\n- Technical tutorials and tips\n- Project showcases and demos\n- Industry insights and trends\n- Behind-the-scenes development process\n\nWhere would you like to connect?",
   };
   
   const message = topicMessages[activeTopic as keyof typeof topicMessages];
@@ -78,9 +78,16 @@ export function TopicThread() {
 
   // Clear the thread when topic changes
   useEffect(() => {
-    // Create a new thread to clear the conversation
-    runtime.switchToNewThread();
+    // Only create new thread if we have an active topic
+    if (activeTopic) {
+      runtime.switchToNewThread();
+    }
   }, [activeTopic, runtime]);
+
+  // Don't render if no active topic
+  if (!activeTopic) {
+    return null;
+  }
 
   return (
     <div className="flex flex-col h-full">

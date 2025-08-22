@@ -1,6 +1,6 @@
 "use client";
 
-import { UserIcon, BookOpenIcon, CodeIcon, PenToolIcon, MailIcon, PlusIcon } from "lucide-react";
+import { UserIcon, BookOpenIcon, CodeIcon, MailIcon, ShareIcon, PlusIcon } from "lucide-react";
 
 interface TopicThread {
   id: string;
@@ -33,38 +33,42 @@ const topicThreads: TopicThread[] = [
     lastMessage: "Here are some of the projects I've built...",
   },
   {
-    id: "poetry",
-    title: "Poetry",
-    description: "Creative writing",
-    icon: PenToolIcon,
-    lastMessage: "I enjoy expressing creativity through words...",
-  },
-  {
     id: "contact",
     title: "Contact",
     description: "Get in touch",
     icon: MailIcon,
     lastMessage: "I'm always interested in connecting with fellow developers...",
   },
+  {
+    id: "social",
+    title: "Social Media",
+    description: "Online presence & platforms",
+    icon: ShareIcon,
+    lastMessage: "Connect with me across various platforms where I share insights...",
+  },
 ];
 
 interface TopicSidebarProps {
   activeTopicId?: string;
   onTopicSelect: (topicId: string) => void;
+  onNewConversation: () => void;
 }
 
-export function TopicSidebar({ activeTopicId, onTopicSelect }: TopicSidebarProps) {
+export function TopicSidebar({ activeTopicId, onTopicSelect, onNewConversation }: TopicSidebarProps) {
   return (
     <div className="flex flex-col h-screen bg-muted/30 border-r border-border">
       {/* Header */}
       <div className="p-4 border-b border-border flex-shrink-0">
-        <h2 className="font-semibold text-lg">Conversations</h2>
-        <p className="text-sm text-muted-foreground">Chat about different topics</p>
+        <h2 className="font-semibold text-lg">Roberto Allende</h2>
+        <p className="text-sm text-muted-foreground">Enthusiastic and tireless maker</p>
       </div>
 
       {/* New Conversation Button */}
       <div className="p-2 flex-shrink-0">
-        <button className="flex items-center gap-2 w-full p-3 rounded-lg hover:bg-muted transition-colors text-left border border-dashed border-border hover:border-primary/50">
+        <button 
+          onClick={onNewConversation}
+          className="flex items-center gap-2 w-full p-3 rounded-lg hover:bg-muted transition-colors text-left border border-dashed border-border hover:border-primary/50"
+        >
           <PlusIcon className="w-4 h-4 text-muted-foreground" />
           <span className="text-sm font-medium">New Conversation</span>
         </button>
