@@ -1,6 +1,6 @@
 "use client";
 
-import { UserIcon, BookOpenIcon, CodeIcon, MailIcon, ShareIcon, PlusIcon } from "lucide-react";
+import { UserIcon, BookOpenIcon, CodeIcon, PlusIcon } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 
 interface TopicThread {
@@ -12,13 +12,6 @@ interface TopicThread {
 }
 
 const topicThreads: TopicThread[] = [
-  {
-    id: "about",
-    title: "About Roberto",
-    description: "Personal background & experience",
-    icon: UserIcon,
-    lastMessage: "Hello! I'm Roberto, a passionate software engineer...",
-  },
   {
     id: "blog",
     title: "Blog Posts",
@@ -34,18 +27,11 @@ const topicThreads: TopicThread[] = [
     lastMessage: "Here are some of the projects I've built...",
   },
   {
-    id: "contact",
-    title: "Contact",
-    description: "Get in touch",
-    icon: MailIcon,
-    lastMessage: "I'm always interested in connecting with fellow developers...",
-  },
-  {
-    id: "social",
-    title: "Social Media",
-    description: "Online presence & platforms",
-    icon: ShareIcon,
-    lastMessage: "Connect with me across various platforms where I share insights...",
+    id: "about",
+    title: "About",
+    description: "Background, contact & social",
+    icon: UserIcon,
+    lastMessage: "Hello! I'm Roberto, a passionate software engineer with a love for building innovative solutions...",
   },
 ];
 

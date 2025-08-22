@@ -17,20 +17,6 @@ export const useTopicContext = () => useContext(TopicContext);
 
 // Topic-specific conversation data
 const topicConversations = {
-  about: {
-    title: "About Roberto",
-    initialMessage: "# About Roberto\n\nHello! I'm Roberto, a passionate software engineer with a love for building innovative solutions. I specialize in **TypeScript**, **React**, and **AWS** technologies.\n\n## My Background\n- 🎓 Computer Science background\n- 💼 Full-stack development experience\n- 🚀 Passionate about modern web technologies\n- 🌟 Always learning and exploring new tech\n\nWhat would you like to know about my experience?",
-    responses: [
-      "## My Experience\n\nI've worked on various projects ranging from:\n\n- **Frontend Development**: React, Next.js, TypeScript\n- **Backend Systems**: Node.js, AWS Lambda, APIs\n- **Cloud Infrastructure**: AWS, serverless architectures\n- **DevOps**: CI/CD, containerization, monitoring\n\nI believe in writing clean, maintainable code and building user-centric applications.",
-      "## Technologies I Love\n\n```typescript\nconst myStack = {\n  frontend: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],\n  backend: ['Node.js', 'Python', 'AWS Lambda'],\n  cloud: ['AWS', 'Serverless Framework'],\n  tools: ['Git', 'Docker', 'VS Code']\n};\n```\n\nI'm always excited to learn new technologies and apply them to solve real-world problems!",
-    ],
-    followUps: [
-      "What projects have you worked on?",
-      "Tell me about your technical skills",
-      "What's your development philosophy?",
-      "How can I contact you?",
-    ],
-  },
   blog: {
     title: "Blog Posts",
     initialMessage: "# My Blog\n\nI write about software development, technology trends, and lessons learned from building applications.\n\n## Recent Posts\n\n### 🚀 \"Building Scalable React Applications\"\nExploring patterns and practices for large-scale React apps with TypeScript and modern tooling.\n\n### ☁️ \"Serverless Architecture Patterns\"\nDeep dive into AWS Lambda, API Gateway, and building cost-effective serverless solutions.\n\n### 🎨 \"The Art of Clean Code\"\nPrinciples and practices for writing maintainable, readable code that stands the test of time.\n\nWhat would you like to read about?",
@@ -59,32 +45,19 @@ const topicConversations = {
       "Do you have any open source contributions?",
     ],
   },
-  contact: {
-    title: "Contact",
-    initialMessage: "# Let's Connect!\n\nI'm always interested in connecting with fellow developers, potential collaborators, and anyone passionate about technology.\n\n## 📧 Professional Contact\n- **Email**: roberto@allende.ai\n- **LinkedIn**: [Roberto Allende](https://linkedin.com/in/robertoallende)\n- **GitHub**: [@robertoallende](https://github.com/robertoallende)\n\n## 💼 Collaboration Opportunities\nI'm open to:\n- Technical consulting projects\n- Open source contributions\n- Speaking at conferences or meetups\n- Mentoring and knowledge sharing\n\nHow can I help you?",
+  about: {
+    title: "About",
+    initialMessage: "# About Roberto\n\nHello! I'm Roberto, a passionate software engineer with a love for building innovative solutions. I specialize in **TypeScript**, **React**, and **AWS** technologies.\n\n## My Background\n- 🎓 Computer Science background\n- 💼 Full-stack development experience\n- 🚀 Passionate about modern web technologies\n- 🌟 Always learning and exploring new tech\n\n## Let's Connect!\nI'm always interested in connecting with fellow developers and collaborators.\n\n**📧 Professional Contact:**\n- Email: roberto@allende.ai\n- LinkedIn: [Roberto Allende](https://linkedin.com/in/robertoallende)\n- GitHub: [@robertoallende](https://github.com/robertoallende)\n\n**🌐 Social Presence:**\n- Twitter/X: [@robertoallende](https://twitter.com/robertoallende)\n- I share technical insights, project updates, and industry thoughts\n\nHow would you like to connect?",
     responses: [
-      "## 🤝 What I'm Looking For\n\n### Project Collaborations\n- **React/TypeScript** applications\n- **AWS serverless** solutions\n- **Developer tools** and productivity apps\n- **Open source** contributions\n\n### Speaking Opportunities\n- Technical conferences\n- Developer meetups\n- Workshops and training sessions\n- Podcast appearances\n\nFeel free to reach out if you have an interesting project or opportunity!",
-      "## 📅 Availability\n\n**Current Status**: Available for new projects\n\n**Response Time**: I typically respond to emails within 24-48 hours\n\n**Time Zone**: Based in [Your Location]\n\n**Preferred Communication**: \n- Email for formal inquiries\n- LinkedIn for professional networking\n- GitHub for technical discussions\n\nLooking forward to hearing from you! 🚀",
+      "## My Technical Experience\n\nI've worked on various projects ranging from:\n\n- **Frontend Development**: React, Next.js, TypeScript\n- **Backend Systems**: Node.js, AWS Lambda, APIs\n- **Cloud Infrastructure**: AWS, serverless architectures\n- **DevOps**: CI/CD, containerization, monitoring\n\nI believe in writing clean, maintainable code and building user-centric applications.\n\n**Technologies I Love:**\n```typescript\nconst myStack = {\n  frontend: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],\n  backend: ['Node.js', 'Python', 'AWS Lambda'],\n  cloud: ['AWS', 'Serverless Framework'],\n  tools: ['Git', 'Docker', 'VS Code']\n};\n```",
+      "## Collaboration & Availability\n\n**Current Status**: Available for new projects\n\n**What I'm Looking For:**\n- **React/TypeScript** applications\n- **AWS serverless** solutions\n- **Developer tools** and productivity apps\n- **Open source** contributions\n- **Speaking opportunities** at conferences and meetups\n\n**Response Time**: I typically respond to emails within 24-48 hours\n\n**Preferred Communication:**\n- Email for formal inquiries\n- LinkedIn for professional networking\n- GitHub for technical discussions\n\nFeel free to reach out if you have an interesting project or opportunity!",
+      "## Content & Social Media Strategy\n\n**What You'll Find on My Profiles:**\n\n**LinkedIn**: Professional achievements, industry insights, project announcements\n**GitHub**: Open source contributions, code samples, technical demonstrations\n**Twitter/X**: Tech thoughts, quick updates, community engagement\n\n**Recent Content Highlights:**\n- \"Building scalable React applications with TypeScript\"\n- \"My journey with AWS serverless architecture\"\n- \"Tips for effective code reviews and collaboration\"\n\nI actively engage with the developer community through comments, shares, recommendations, and mentoring conversations. I believe in sharing knowledge and helping others grow in their technical journey.",
     ],
     followUps: [
-      "What's your email address?",
+      "Tell me about your experience",
+      "How can I contact you?",
       "Are you available for projects?",
-      "Do you do consulting work?",
-      "How can I see your work?",
-    ],
-  },
-  social: {
-    title: "Social Media",
-    initialMessage: "# Social Media & Online Presence\n\nConnect with me across various platforms where I share insights, projects, and thoughts on technology.\n\n## 🌐 Professional Platforms\n- **LinkedIn**: [Roberto Allende](https://linkedin.com/in/robertoallende) - Professional updates and industry insights\n- **GitHub**: [@robertoallende](https://github.com/robertoallende) - Open source projects and code repositories\n- **Twitter/X**: [@robertoallende](https://twitter.com/robertoallende) - Tech thoughts and quick updates\n\n## 📱 Content I Share\n- Technical tutorials and tips\n- Project showcases and demos\n- Industry insights and trends\n- Behind-the-scenes development process\n\nWhere would you like to connect?",
-    responses: [
-      "## 💡 What You'll Find on My Profiles\n\n### LinkedIn\n- **Professional achievements** and career milestones\n- **Industry insights** and thought leadership\n- **Project announcements** and case studies\n- **Networking** with fellow developers and tech leaders\n\n### GitHub\n- **Open source contributions** and personal projects\n- **Code samples** and technical demonstrations\n- **Collaboration** on interesting repositories\n- **Documentation** and development guides",
-      "## 🚀 Recent Social Media Highlights\n\n### Latest Posts\n- \"Building scalable React applications with TypeScript\"\n- \"My journey with AWS serverless architecture\"\n- \"Why I love working with Next.js and Tailwind CSS\"\n- \"Tips for effective code reviews and collaboration\"\n\n### Engagement\nI actively engage with the developer community through:\n- **Comments** on technical discussions\n- **Shares** of interesting articles and tools\n- **Recommendations** for fellow developers\n- **Mentoring** conversations and advice",
-    ],
-    followUps: [
-      "Show me your LinkedIn profile",
-      "What's your GitHub username?",
-      "Do you post on Twitter?",
-      "How often do you share content?",
+      "Where do you share content?",
     ],
   },
 };
@@ -96,7 +69,7 @@ interface MultiThreadRuntimeProviderProps {
 }
 
 export function MultiThreadRuntimeProvider({ children }: MultiThreadRuntimeProviderProps) {
-  const [activeTopic, setActiveTopic] = useState("about");
+  const [activeTopic, setActiveTopic] = useState("blog");
 
   // Enhanced chat model adapter with topic routing
   const multiTopicChatAdapter: ChatModelAdapter = {
