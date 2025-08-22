@@ -1,5 +1,5 @@
-import { AssistantThread } from "@/components/chat/assistant-thread";
+import { ChatInterface } from "@/components/chat/chat-interface";
 
 export default function Home() {
-  return <AssistantThread />;
+  return <ChatInterface />;
 }

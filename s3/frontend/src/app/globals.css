@@ -1,9 +1,6 @@
 @import "tailwindcss";
 
-/* Import assistant-ui base styles */
-@import "@assistant-ui/styles/index.css";
-
-/* Override with our theme values */
+/* Use assistant-ui's proper theme values */
 :root {
   --background: 0 0% 100%;
   --foreground: 240 10% 3.9%;
@@ -102,4 +99,104 @@ body {
   background: hsl(var(--background));
   color: hsl(var(--foreground));
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent body scroll since we handle it in components */
+}
+
+/* Ensure full height layout */
+html, body, #__next {
+  height: 100%;
+}
+
+/* Prose styling for markdown content */
+.prose {
+  color: hsl(var(--foreground));
+}
+
+.prose h1 {
+  color: hsl(var(--foreground));
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid hsl(var(--border));
+  padding-bottom: 0.5rem;
+}
+
+.prose h2 {
+  color: hsl(var(--foreground));
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose h3 {
+  color: hsl(var(--foreground));
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.prose ul, .prose ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.25rem;
+}
+
+.prose strong {
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+.prose em {
+  font-style: italic;
+}
+
+.prose code {
+  background: hsl(var(--muted));
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+}
+
+.prose pre {
+  background: hsl(var(--muted));
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.prose pre code {
+  background: none;
+  padding: 0;
+}
+
+.prose a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+}
+
+.prose a:hover {
+  opacity: 0.8;
+}
+
+/* Responsive layout adjustments */
+@media (max-width: 768px) {
+  /* On mobile, we might want to hide sidebar by default or make it overlay */
+  .chat-sidebar {
+    width: 280px;
+    min-width: 280px;
+  }
 }
