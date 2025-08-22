@@ -5,6 +5,7 @@ import { ThreadPrimitive, ComposerPrimitive, useAssistantRuntime } from "@assist
 import { useTheme } from "@/components/theme-provider";
 import { useTopicContext } from "./multi-thread-runtime";
 import { EnhancedUserMessage, EnhancedAssistantMessage } from "./enhanced-message";
+import { SmoothText } from "./smooth-text";
 
 function ThreadHeader({ activeTopic }: { activeTopic: string }) {
   const { theme, setTheme, themes } = useTheme();
@@ -59,9 +60,13 @@ function TopicInitialMessage({ activeTopic }: { activeTopic: string }) {
   return (
     <div className="mb-4 flex justify-start">
       <div className="bg-background border border-border p-4 rounded-lg max-w-2xl">
-        <div className="prose prose-sm max-w-none dark:prose-invert whitespace-pre-wrap">
+        <SmoothText 
+          key={activeTopic} // Reset animation when topic changes
+          smooth={true}
+          className="prose prose-sm max-w-none dark:prose-invert"
+        >
           {message}
-        </div>
+        </SmoothText>
       </div>
     </div>
   );

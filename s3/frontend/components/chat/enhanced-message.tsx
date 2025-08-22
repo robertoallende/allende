@@ -1,6 +1,7 @@
 "use client";
 
 import { MessagePrimitive } from "@assistant-ui/react";
+import { MarkdownTextPrimitive } from "@assistant-ui/react-markdown";
 
 export function EnhancedUserMessage() {
   return (
@@ -16,9 +17,16 @@ export function EnhancedAssistantMessage() {
   return (
     <MessagePrimitive.Root className="mb-4 flex justify-start">
       <div className="bg-background border border-border p-4 rounded-lg max-w-2xl">
-        <div className="prose prose-sm max-w-none dark:prose-invert whitespace-pre-wrap">
-          <MessagePrimitive.Content />
-        </div>
+        <MessagePrimitive.Content 
+          components={{
+            Text: () => (
+              <MarkdownTextPrimitive 
+                smooth={true}
+                className="prose prose-sm max-w-none dark:prose-invert"
+              />
+            ),
+          }}
+        />
         <FollowUpSuggestions />
       </div>
     </MessagePrimitive.Root>
