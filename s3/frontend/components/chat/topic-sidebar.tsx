@@ -39,9 +39,10 @@ interface TopicSidebarProps {
   activeTopicId?: string;
   onTopicSelect: (topicId: string) => void;
   onNewConversation: () => void;
+  isNewConversationActive?: boolean;
 }
 
-export function TopicSidebar({ activeTopicId, onTopicSelect, onNewConversation }: TopicSidebarProps) {
+export function TopicSidebar({ activeTopicId, onTopicSelect, onNewConversation, isNewConversationActive = false }: TopicSidebarProps) {
   const { theme, setTheme, themes } = useTheme();
 
   return (
@@ -56,9 +57,13 @@ export function TopicSidebar({ activeTopicId, onTopicSelect, onNewConversation }
       <div className="p-2 flex-shrink-0">
         <button 
           onClick={onNewConversation}
-          className="flex items-center gap-2 w-full p-3 rounded-lg hover:bg-muted transition-colors text-left border border-dashed border-border hover:border-primary/50"
+          className={`flex items-center gap-3 w-full p-3 rounded-lg transition-colors text-left border ${
+            isNewConversationActive
+              ? "bg-primary/10 border-primary/20 text-foreground"
+              : "border-transparent hover:bg-muted"
+          }`}
         >
-          <PlusIcon className="w-4 h-4 text-muted-foreground" />
+          <PlusIcon className={`w-4 h-4 ${isNewConversationActive ? "text-primary" : "text-muted-foreground"}`} />
           <span className="text-sm font-medium">New Conversation</span>
         </button>
       </div>

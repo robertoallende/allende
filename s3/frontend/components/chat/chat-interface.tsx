@@ -28,6 +28,7 @@ function ChatInterfaceContent() {
           activeTopicId={conversationMode === 'topic' ? activeTopic : undefined}
           onTopicSelect={handleTopicSelect}
           onNewConversation={handleNewConversation}
+          isNewConversationActive={conversationMode === 'new'}
         />
       </div>
       
