@@ -16,7 +16,7 @@ export function EnhancedUserMessage() {
 export function EnhancedAssistantMessage() {
   return (
     <MessagePrimitive.Root className="mb-4 flex justify-start">
-      <div className="bg-background border border-border p-4 rounded-lg max-w-2xl">
+      <div className="bg-background p-4 max-w-2xl">
         <MessagePrimitive.Content 
           components={{
             Text: () => (
@@ -43,7 +43,7 @@ function FollowUpSuggestions() {
   ];
 
   return (
-    <div className="mt-3 pt-3 border-t border-border">
+    <div className="mt-3 pt-3">
       <p className="text-xs text-muted-foreground mb-2">Suggestions:</p>
       <div className="flex flex-wrap gap-2">
         {suggestions.map((suggestion, index) => (

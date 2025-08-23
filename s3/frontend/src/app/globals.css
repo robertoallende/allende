@@ -47,25 +47,44 @@
 }
 
 .claude-theme {
-  --background: 39 100% 97%;
-  --foreground: 20 83% 15%;
-  --card: 39 100% 97%;
-  --card-foreground: 20 83% 15%;
-  --popover: 39 100% 97%;
-  --popover-foreground: 20 83% 15%;
-  --primary: 25 95% 53%;
-  --primary-foreground: 0 0% 98%;
-  --secondary: 33 100% 90%;
-  --secondary-foreground: 20 83% 15%;
-  --muted: 33 100% 90%;
-  --muted-foreground: 25 75% 35%;
-  --accent: 33 100% 90%;
-  --accent-foreground: 20 83% 15%;
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 33 100% 85%;
-  --input: 33 100% 85%;
-  --ring: 25 95% 53%;
+  /* Authentic Claude dark theme colors extracted from screenshots */
+  
+  /* Main backgrounds - Deep charcoal like Claude */
+  --background: 0 0% 10%;        /* #1a1a1a - Main content area */
+  --foreground: 0 0% 90%;        /* #e5e5e5 - Primary text */
+  
+  /* Card and message backgrounds */
+  --card: 0 0% 12%;              /* #1f1f1f - Message cards */
+  --card-foreground: 0 0% 90%;   /* #e5e5e5 - Text on cards */
+  
+  /* Popover backgrounds */
+  --popover: 0 0% 8%;            /* #141414 - Dropdown/popover */
+  --popover-foreground: 0 0% 90%; /* #e5e5e5 - Text in popovers */
+  
+  /* Claude's signature orange accent */
+  --primary: 25 95% 53%;         /* #d97706 - Claude orange */
+  --primary-foreground: 0 0% 98%; /* #ffffff - Text on orange */
+  
+  /* Secondary elements */
+  --secondary: 0 0% 15%;         /* #262626 - Secondary backgrounds */
+  --secondary-foreground: 0 0% 90%; /* #e5e5e5 - Text on secondary */
+  
+  /* Sidebar and muted areas - Darker than main */
+  --muted: 0 0% 9%;              /* #171717 - Sidebar background */
+  --muted-foreground: 0 0% 64%;  /* #a3a3a3 - Secondary text */
+  
+  /* Hover and accent states */
+  --accent: 220 13% 18%;         /* #374151 - Hover backgrounds */
+  --accent-foreground: 0 0% 90%; /* #e5e5e5 - Text on hover */
+  
+  /* Destructive actions */
+  --destructive: 0 62.8% 30.6%;  /* Red for destructive actions */
+  --destructive-foreground: 0 0% 98%; /* White text on red */
+  
+  /* Borders and inputs */
+  --border: 220 13% 18%;         /* #374151 - Subtle borders */
+  --input: 220 13% 23%;          /* #4b5563 - Input backgrounds */
+  --ring: 25 95% 53%;            /* #d97706 - Focus rings (Claude orange) */
 }
 
 @theme {

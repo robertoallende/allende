@@ -10,20 +10,26 @@ flowchart LR
     U002_004["002_frontend_004:<br/>Smooth Streaming"]
     U002_005["002_frontend_005:<br/>Left Panel Personalization"]
     U002_006["002_frontend_006:<br/>Clean Interface"]
+    U002_007["002_frontend_007:<br/>Unified About Topic"]
+    U002_008["002_frontend_008:<br/>Markdown Rendering"]
+    
+    %% Theming Branch
+    U03_001["03_theming_001:<br/>Claude Colors"]
     
     %% Backend Development Branch
-    U03["03_repository:<br/>Bootstrap Repo"]
-    U04["04_api-chat:<br/>Chat Lambda"]
-    U05["05_api-contact:<br/>Contact Lambda"]
-    U06["06_human-gate:<br/>Bot Check"]
+    U04["04_repository:<br/>Bootstrap Repo"]
+    U04["04_repository:<br/>Bootstrap Repo"]
+    U05["05_api-chat:<br/>Chat Lambda"]
+    U06["06_api-contact:<br/>Contact Lambda"]
+    U07["07_human-gate:<br/>Bot Check"]
     
     %% Infrastructure Branch
-    U07["07_infra:<br/>Infrastructure"]
-    U08["08_ci-cd:<br/>CI/CD Pipeline"]
+    U08["08_infra:<br/>Infrastructure"]
+    U09["09_ci-cd:<br/>CI/CD Pipeline"]
     
     %% Final Polish Branch
-    U09["09_article:<br/>AWS Article"]
-    U10["10_polish:<br/>Polish & Performance"]
+    U10["10_article:<br/>AWS Article"]
+    U11["11_polish:<br/>Polish & Performance"]
 
     %% Dependencies
     U00 --> U01
@@ -33,19 +39,22 @@ flowchart LR
     U002_003 --> U002_004
     U002_004 --> U002_005
     U002_005 --> U002_006
+    U002_006 --> U002_007
+    U002_007 --> U002_008
+    U002_008 --> U03_001
     
-    U01 --> U03
-    U03 --> U04
-    U03 --> U05
-    U03 --> U06
+    U01 --> U04
+    U04 --> U05
+    U04 --> U06
     U04 --> U07
-    U05 --> U07
-    U06 --> U07
+    U05 --> U08
+    U06 --> U08
     U07 --> U08
-    
-    U002_006 --> U08
     U08 --> U09
-    U08 --> U10
+    
+    U03_001 --> U09
+    U09 --> U10
+    U09 --> U11
 
     %% Color Classifications
     classDef completed fill:#90EE90,stroke:#2E7D32,stroke-width:3px,color:#000
@@ -53,6 +62,7 @@ flowchart LR
     classDef planned fill:#87CEEB,stroke:#1976D2,stroke-width:2px,color:#000
     classDef blocked fill:#FFB6C1,stroke:#D32F2F,stroke-width:2px,color:#000
 
-    %% Apply Classifications
-    class U00,U01,U002_001,U002_002,U002_003,U002_004,U002_005,U002_006 completed
-    class U03,U04,U05,U06,U07,U08,U09,U10 planned
+    %% Apply Classifications - Updated Status
+    class U00,U01,U002_001,U002_002,U002_004,U002_005,U002_006,U002_007,U002_008,U03_001 completed
+    class U002_003 inProgress
+    class U04,U05,U06,U07,U08,U09,U10,U11 planned

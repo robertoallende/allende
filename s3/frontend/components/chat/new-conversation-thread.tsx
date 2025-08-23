@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { ThreadPrimitive, ComposerPrimitive, useAssistantRuntime } from "@assistant-ui/react";
+import { ArrowUp } from "lucide-react";
 import { EnhancedUserMessage, EnhancedAssistantMessage } from "./enhanced-message";
 
 export function NewConversationThread() {
@@ -37,15 +38,15 @@ export function NewConversationThread() {
           />
         </ThreadPrimitive.Viewport>
         
-        <div className="border-t border-border p-4 bg-background/95 backdrop-blur">
+        <div className="p-4 bg-background/95 backdrop-blur">
           <ComposerPrimitive.Root className="flex gap-2">
             <ComposerPrimitive.Input 
-              className="flex-1 px-4 py-3 border border-input rounded-lg bg-background text-foreground focus:ring-2 focus:ring-ring focus:border-transparent resize-none"
+              className="flex-1 px-4 py-3 rounded-lg bg-background text-foreground focus:ring-2 focus:ring-ring resize-none"
               placeholder="Write Truth Is Like Poetry..."
               rows={1}
             />
-            <ComposerPrimitive.Send className="px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity font-medium">
-              Send
+            <ComposerPrimitive.Send className="px-3 py-3 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity font-medium flex items-center justify-center">
+              <ArrowUp className="w-4 h-4" />
             </ComposerPrimitive.Send>
           </ComposerPrimitive.Root>
         </div>

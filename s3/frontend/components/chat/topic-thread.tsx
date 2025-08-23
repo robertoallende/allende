@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { ThreadPrimitive, ComposerPrimitive, useAssistantRuntime } from "@assistant-ui/react";
+import { ArrowUp } from "lucide-react";
 import { useTopicContext } from "./multi-thread-runtime";
 import { EnhancedUserMessage, EnhancedAssistantMessage } from "./enhanced-message";
 import { SimpleMarkdown } from "./simple-markdown";
@@ -18,7 +19,7 @@ function TopicInitialMessage({ activeTopic }: { activeTopic: string }) {
   
   return (
     <div className="mb-4 flex justify-start">
-      <div className="bg-background border border-border p-4 rounded-lg max-w-2xl">
+      <div className="bg-background p-4 max-w-2xl">
         <SimpleMarkdown 
           key={activeTopic} // Reset animation when topic changes
           smooth={true}
@@ -64,15 +65,15 @@ export function TopicThread() {
           />
         </ThreadPrimitive.Viewport>
         
-        <div className="border-t border-border p-4 bg-background/95 backdrop-blur">
+        <div className="p-4 bg-background/95 backdrop-blur">
           <ComposerPrimitive.Root className="flex gap-2">
             <ComposerPrimitive.Input 
-              className="flex-1 px-4 py-3 border border-input rounded-lg bg-background text-foreground focus:ring-2 focus:ring-ring focus:border-transparent resize-none"
+              className="flex-1 px-4 py-3 rounded-lg bg-background text-foreground focus:ring-2 focus:ring-ring resize-none"
               placeholder={`Ask me about ${activeTopic === "about" ? "my background" : activeTopic}...`}
               rows={1}
             />
-            <ComposerPrimitive.Send className="px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity font-medium">
-              Send
+            <ComposerPrimitive.Send className="px-3 py-3 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity font-medium flex items-center justify-center">
+              <ArrowUp className="w-4 h-4" />
             </ComposerPrimitive.Send>
           </ComposerPrimitive.Root>
         </div>

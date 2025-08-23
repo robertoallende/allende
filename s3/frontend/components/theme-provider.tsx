@@ -33,7 +33,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     {
       id: "claude" as Theme,
       name: "Claude",
-      description: "Inspired by Claude's elegant design",
+      description: "Authentic Claude interface colors",
     },
   ];
 
