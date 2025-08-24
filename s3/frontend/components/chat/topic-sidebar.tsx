@@ -42,7 +42,7 @@ export function TopicSidebar({ activeTopicId, onTopicSelect, onNewConversation, 
   const config = getAppConfig();
 
   return (
-    <div className="flex flex-col h-screen bg-muted/30">
+    <div className="flex flex-col h-screen bg-background lg:bg-muted/30 border-r border-border lg:border-r-0">
       {/* Header */}
       <div className="p-4 flex-shrink-0">
         <h2 className="font-semibold text-lg">Roberto Allende</h2>

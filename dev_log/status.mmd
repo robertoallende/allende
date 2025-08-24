@@ -23,6 +23,10 @@ flowchart LR
     U04_003["04_content_003:<br/>Minimalistic Football Content Formatting"]
     U04_004["04_content_004:<br/>AWS Builder Content Integration"]
     U04_005["04_content_005:<br/>Sidebar Subtitle Fix & Legacy Cleanup"]
+    U05_006["05_content_006:<br/>Approximate Text Matching System"]
+    
+    %% Responsive Design Branch
+    U05_001["05_responsive:<br/>Mobile Responsive Sidebar Navigation"]
     
     %% Theming Branch
     U03_001["03_theming_001:<br/>Claude Colors"]
@@ -59,7 +63,9 @@ flowchart LR
     U04_002 --> U04_003
     U04_003 --> U04_004
     U04_004 --> U04_005
-    U04_005 --> U03_001
+    U04_005 --> U05_006
+    U05_006 --> U05_001
+    U05_001 --> U03_001
     U03_001 --> U002_011
     
     U01 --> U04
@@ -82,5 +88,5 @@ flowchart LR
     classDef blocked fill:#FFB6C1,stroke:#D32F2F,stroke-width:2px,color:#000
 
     %% Apply Classifications - Updated Status
-    class U00,U01,U002_001,U002_002,U002_003,U002_004,U002_005,U002_006,U002_007,U002_008,U002_009,U002_010,U002_012,U04_001,U04_002,U04_003,U04_004,U04_005,U03_001,U002_011 completed
+    class U00,U01,U002_001,U002_002,U002_003,U002_004,U002_005,U002_006,U002_007,U002_008,U002_009,U002_010,U002_012,U04_001,U04_002,U04_003,U04_004,U04_005,U05_006,U05_001,U03_001,U002_011 completed
     class U04,U05,U06,U07,U08,U09,U10,U11 planned
