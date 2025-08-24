@@ -14,12 +14,16 @@ flowchart LR
     U002_008["002_frontend_008:<br/>Markdown Rendering"]
     U002_009["002_frontend_009:<br/>New Conversation Styling"]
     U002_010["002_frontend_010:<br/>Claude Input & UI Config"]
+    U002_011["002_theming_011:<br/>Remove Lines & Theme Flash"]
+    
+    %% Content System Branch
+    U04_001["04_content_001:<br/>File-based Content System"]
+    U04_002["004_content_002:<br/>External Football Content Integration"]
     
     %% Theming Branch
     U03_001["03_theming_001:<br/>Claude Colors"]
     
     %% Backend Development Branch
-    U04["04_repository:<br/>Bootstrap Repo"]
     U04["04_repository:<br/>Bootstrap Repo"]
     U05["05_api-chat:<br/>Chat Lambda"]
     U06["06_api-contact:<br/>Contact Lambda"]
@@ -45,7 +49,10 @@ flowchart LR
     U002_007 --> U002_008
     U002_008 --> U002_009
     U002_009 --> U002_010
-    U002_010 --> U03_001
+    U002_010 --> U04_001
+    U04_001 --> U04_002
+    U04_002 --> U03_001
+    U03_001 --> U002_011
     
     U01 --> U04
     U04 --> U05
@@ -56,7 +63,7 @@ flowchart LR
     U07 --> U08
     U08 --> U09
     
-    U03_001 --> U09
+    U002_011 --> U09
     U09 --> U10
     U09 --> U11
 
@@ -67,5 +74,5 @@ flowchart LR
     classDef blocked fill:#FFB6C1,stroke:#D32F2F,stroke-width:2px,color:#000
 
     %% Apply Classifications - Updated Status
-    class U00,U01,U002_001,U002_002,U002_003,U002_004,U002_005,U002_006,U002_007,U002_008,U002_009,U002_010 completed
-    class U03_001,U04,U05,U06,U07,U08,U09,U10,U11 planned
+    class U00,U01,U002_001,U002_002,U002_003,U002_004,U002_005,U002_006,U002_007,U002_008,U002_009,U002_010,U04_001,U04_002,U03_001,U002_011 completed
+    class U04,U05,U06,U07,U08,U09,U10,U11 planned

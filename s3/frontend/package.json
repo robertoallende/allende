@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "node scripts/generate-content.js && next build --turbopack",
-    "generate-content": "node scripts/generate-content.js",
+    "build": "node scripts/fetch-football-content.js && node scripts/generate-content.js && next build --turbopack",
+    "generate-content": "node scripts/fetch-football-content.js && node scripts/generate-content.js",
+    "fetch-football": "node scripts/fetch-football-content.js",
     "start": "next start",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
