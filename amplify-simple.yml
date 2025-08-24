@@ -16,7 +16,7 @@ frontend:
         # Build from frontend directory
         - cd s3/frontend
         - pnpm run actualBuild
-        - echo "Build completed - SSG mode should be detected"
+        - echo "Build completed - SSG mode should be detected with console env var"
   artifacts:
     # Deploy from frontend out directory
     baseDirectory: s3/frontend/out
