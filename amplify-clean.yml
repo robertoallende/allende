@@ -21,7 +21,7 @@ frontend:
         - mkdir -p build
         - cp -r s3/frontend/out/* build/
         - ls -la build/
-        - echo "Static files moved outside Next.js context - deployment ready"
+        - echo "Static files moved outside Next.js context"
   artifacts:
     # Deploy from root build directory (no Next.js detection)
     baseDirectory: build

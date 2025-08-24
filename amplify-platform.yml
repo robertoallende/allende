@@ -1,0 +1,35 @@
+version: 1
+applications:
+  - appRoot: s3/frontend
+    # Force Amplify to treat as static site, not Next.js
+    platform: WEB
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            # Use Node 20 for Next.js 15 compatibility
+            - nvm use 20 || nvm install 20
+            # Enable Corepack and activate pnpm
+            - corepack enable
+            - corepack prepare pnpm@9.12.0 --activate
+            # Install dependencies with frozen lockfile for reproducible builds
+            - pnpm install --frozen-lockfile
+        build:
+          commands:
+            # Build Next.js application with content generation and static export
+            - pnpm run build
+      artifacts:
+        # Next.js static export outputs to 'out' directory
+        baseDirectory: out
+        files:
+          - '**/*'
+      cache:
+        paths:
+          - node_modules/**/*
+          - ~/.pnpm-store/**/*
+          - .next/cache/**/*
+      # Environment variables for production
+      env:
+        variables:
+          NODE_ENV: production
+          NEXT_TELEMETRY_DISABLED: 1
