@@ -34,3 +34,5 @@ applications:
         variables:
           NODE_ENV: production
           NEXT_TELEMETRY_DISABLED: 1
+          # Fix monorepo detection issue
+          AMPLIFY_MONOREPO_APP_ROOT: s3/frontend
