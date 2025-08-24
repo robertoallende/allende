@@ -16,13 +16,14 @@ applications:
           commands:
             # Build Next.js application with content generation and static export
             - pnpm run build
-            # Verify the static export was created
-            - echo "Verifying static export..."
-            - ls -la out/
-            - echo "Static files ready for deployment"
+            # Copy static files to build directory to avoid Next.js detection
+            - mkdir -p build
+            - cp -r out/* build/
+            - ls -la build/
+            - echo "Static site build completed - ready for deployment"
       artifacts:
-        # Next.js static export outputs to 'out' directory
-        baseDirectory: out
+        # Use generic build directory instead of Next.js-specific out
+        baseDirectory: build
         files:
           - '**/*'
       cache:
@@ -35,6 +36,3 @@ applications:
         variables:
           NODE_ENV: production
           NEXT_TELEMETRY_DISABLED: 1
-          # Tell Amplify this is a static site, not SSR
-          AMPLIFY_DIFF_DEPLOY: false
-          AMPLIFY_MONOREPO_APP_ROOT: s3/frontend

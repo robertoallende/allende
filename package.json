@@ -1,0 +1,20 @@
+{
+  "name": "allende-ai-portfolio",
+  "version": "1.0.0",
+  "description": "Personal portfolio website with chat interface",
+  "private": true,
+  "workspaces": [
+    "s3/frontend"
+  ],
+  "scripts": {
+    "build": "cd s3/frontend && npm run build",
+    "dev": "cd s3/frontend && npm run dev",
+    "start": "cd s3/frontend && npm run serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robertoallende/allende.ai"
+  },
+  "author": "Roberto Allende",
+  "license": "MIT"
+}
