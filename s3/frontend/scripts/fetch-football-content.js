@@ -32,26 +32,34 @@ function stripHtml(html) {
 }
 
 /**
- * Truncate text to specified length with ellipsis
+ * Truncate text to specified length with smart word boundary detection
  */
 function truncateText(text, maxLength = 200) {
   if (!text) return '';
   const cleaned = stripHtml(text);
   if (cleaned.length <= maxLength) return cleaned;
-  return cleaned.substring(0, maxLength).trim() + '...';
+  
+  // Reserve space for " [Read more →]" (about 15 characters)
+  const targetLength = maxLength - 15;
+  const truncated = cleaned.substring(0, targetLength);
+  
+  // Find the last complete word to avoid cutting mid-word
+  const lastSpace = truncated.lastIndexOf(' ');
+  const cutPoint = lastSpace > targetLength - 30 ? lastSpace : targetLength;
+  
+  return cleaned.substring(0, cutPoint) + '...';
 }
 
 /**
- * Format date for display
+ * Format date in compact DD/MM/YYYY format
  */
-function formatDate(dateString) {
+function formatCompactDate(dateString) {
   try {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
   } catch (error) {
     console.warn(`Warning: Could not parse date "${dateString}"`);
     return 'Unknown date';
@@ -69,37 +77,35 @@ function generateMarkdown(feedData) {
     .sort((a, b) => new Date(b.date_published) - new Date(a.date_published))
     .slice(0, 5);
 
-  let markdown = `# Football Blog
+  let markdown = `# Football Notes
 
-Recent insights from my football analysis and coaching experience:
+A collection of reflections and thoughts about my journey in amateur football, both as a master team player and captain, and as a junior coach.
 
 `;
 
   sortedItems.forEach((item, index) => {
     const title = stripHtml(item.title) || 'Untitled Post';
     const url = item.url || '#';
-    const summary = truncateText(item.summary, 200);
-    const date = formatDate(item.date_published);
+    
+    // Use summary field with minimal arrow link
+    const fullSummary = stripHtml(item.summary) || 'No description available.';
+    const compactDate = formatCompactDate(item.date_published);
 
-    markdown += `## [${title}](${url})
-*Published: ${date}*
+    // Format: [Title](URL) | DD/MM/YYYY
+    // Summary text with minimal arrow link
+    markdown += `[${title}](${url}) | ${compactDate}
+${fullSummary} [→](${url})`;
 
-${summary}
-
-[Read more →](${url})`;
-
-    // Add separator between posts (except for the last one)
+    // Add clean spacing between entries
     if (index < sortedItems.length - 1) {
-      markdown += '\n\n---\n\n';
+      markdown += '\n\n';
     }
   });
 
   // Add footer
   markdown += `
 
----
-
-*Want to discuss football tactics or share your thoughts? Feel free to reach out!*`;
+*Read all the articles at [Football Notes](https://en.allende.nz/football)*`;
 
   return markdown;
 }
@@ -170,4 +176,4 @@ if (require.main === module) {
   main();
 }
 
-module.exports = { main, generateMarkdown, stripHtml, truncateText, formatDate };
+module.exports = { main, generateMarkdown, stripHtml, truncateText, formatCompactDate };
