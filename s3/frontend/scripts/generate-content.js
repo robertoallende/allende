@@ -4,10 +4,10 @@ const path = require('path');
 // Import configuration (updated to match config.ts)
 const contentConfig = {
   software: {
-    title: "Software Blog",
+    title: "Software Engineering Notes",
     directory: "software_blog",
     icon: "BookOpenIcon",
-    description: "I write about software development, technology trends, and lessons learned from building applications."
+    description: "Reflections on building and leading in the cloud era, from AI-first experiments to hard-earned lessons in delivering scalable, resilient systems."
   },
   football: {
     title: "Football Blog",

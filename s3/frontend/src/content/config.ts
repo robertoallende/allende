@@ -7,10 +7,10 @@ export interface TopicConfig {
 
 export const contentConfig: Record<string, TopicConfig> = {
   software: {
-    title: "Software Blog",
+    title: "Software Engineering Notes",
     directory: "software_blog",
     icon: "BookOpenIcon",
-    description: "I write about software development, technology trends, and lessons learned from building applications."
+    description: ""
   },
   football: {
     title: "Football Blog",
