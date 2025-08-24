@@ -25,7 +25,7 @@ export interface AppConfig {
  */
 export const appConfig: AppConfig = {
   ui: {
-    showThemeSelector: true,   // Show theme selector so users can change themes
+    showThemeSelector: false,   // Show theme selector so users can change themes
   },
   theme: "claude",  // Set Claude as default theme
   defaultTopic: "software", // Set software blog as default topic
