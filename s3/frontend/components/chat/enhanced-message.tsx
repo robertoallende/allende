@@ -22,7 +22,7 @@ export function EnhancedAssistantMessage() {
             Text: () => (
               <MarkdownTextPrimitive 
                 smooth={true}
-                className="prose prose-sm max-w-none dark:prose-invert"
+                className="prose prose-sm max-w-none dark:prose-invert [&_blockquote]:border-l-4 [&_blockquote]:border-primary/30 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-muted-foreground [&_blockquote]:my-4 [&_blockquote]:bg-muted/20 [&_blockquote]:py-2 [&_blockquote]:rounded-r-md"
               />
             ),
           }}
@@ -34,27 +34,6 @@ export function EnhancedAssistantMessage() {
 }
 
 function FollowUpSuggestions() {
-  // This would get follow-ups from message metadata
-  // For now, we'll show some example suggestions
-  const suggestions = [
-    "Tell me more",
-    "What else?",
-    "Show me examples",
-  ];
-
-  return (
-    <div className="mt-3 pt-3">
-      <p className="text-xs text-muted-foreground mb-2">Suggestions:</p>
-      <div className="flex flex-wrap gap-2">
-        {suggestions.map((suggestion, index) => (
-          <button
-            key={index}
-            className="text-xs px-2 py-1 bg-muted hover:bg-muted/80 rounded-md transition-colors"
-          >
-            {suggestion}
-          </button>
-        ))}
-      </div>
-    </div>
-  );
+  // Disabled for cleaner content matching experience
+  return null;
 }

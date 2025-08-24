@@ -18,17 +18,19 @@ export function NewConversationThread() {
       {/* No NewConversationHeader - direct to content for clean interface */}
       <ThreadPrimitive.Root className="flex flex-col h-full">
         <ThreadPrimitive.Viewport className="flex-1 overflow-y-auto p-4">
-          {/* Empty state - no initial message */}
-          <div className="flex items-center justify-center h-full text-center">
-            <div className="max-w-md">
-              <h2 className="text-lg font-medium text-muted-foreground mb-2">
-                Ready for a new conversation?
-              </h2>
-              <p className="text-sm text-muted-foreground">
-                Ask me anything about my work, projects, or thoughts on technology.
-              </p>
+          {/* Empty state - only show when no messages */}
+          <ThreadPrimitive.Empty>
+            <div className="flex items-center justify-center h-full text-center">
+              <div className="max-w-md">
+                <h2 className="text-lg font-medium text-muted-foreground mb-2">
+                  Ready for a new conversation?
+                </h2>
+                <p className="text-sm text-muted-foreground">
+                  Ask me anything about my work, projects, or thoughts on technology.
+                </p>
+              </div>
             </div>
-          </div>
+          </ThreadPrimitive.Empty>
           
           <ThreadPrimitive.Messages
             components={{

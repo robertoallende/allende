@@ -11,7 +11,8 @@ MMDD is an open-source methodology for AI-assisted software development. It enab
 [Blog Post](https://builder.aws.com/content/2y6nQgj1FVuaJIn9rFLThIslwaJ/code-with-ai-micromanagement-is-all-you-need) | [GitHub Repository](https://github.com/robertoallende/micromanaged-driven-development)
 
 ## reply.ai | February 2025
-reply.ai is an email assistant that leverages Amazon Q Business' generative AI capabilities to help users manage their email workflow more efficiently. The application analyzes incoming emails, prioritizes them based on user-defined criteria, and generates contextually appropriate responses while tracking actions.
+Reply.ai is an email assistant that leverages Amazon Q Business' generative AI to help users manage their email workflow more efficiently. It analyzes incoming emails, prioritizes them based on user-defined criteria, and generates contextually appropriate responses while tracking actions. 
+Built with Amazon Q Apps in just two hours, Reply.ai went on to win the AWS & Ingram Micro GenAI Hackathon in Auckland 2025.
 
 [Blog Post](https://builder.aws.com/content/2tNhySTWG5V6pxxaZi5S7hJcmsy/free-up-your-time-from-email-with-amazon-q-apps-and-genai) | [YouTube Video](https://www.youtube.com/watch?v=CKDVpbILJNM) | [Github Repository](https://github.com/robertoallende/reply.ai)
 
