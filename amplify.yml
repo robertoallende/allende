@@ -5,8 +5,9 @@ applications:
       phases:
         preBuild:
           commands:
-            # Set monorepo app root explicitly
-            - export AMPLIFY_MONOREPO_APP_ROOT=s3/frontend
+            # Copy package.json to root to help Amplify detect Next.js version
+            - cp package.json ../../package.json
+            - echo "Copied package.json to root for Amplify detection"
             # Use Node 20 for Next.js 15 compatibility
             - nvm use 20 || nvm install 20
             # Enable Corepack and activate pnpm
@@ -16,12 +17,10 @@ applications:
             - pnpm install --frozen-lockfile
         build:
           commands:
-            # Set monorepo app root for build phase too
-            - export AMPLIFY_MONOREPO_APP_ROOT=s3/frontend
             # Run the actual build (content generation + Next.js build)
             - pnpm run actualBuild
             # The "build" script with "next export" tricks Amplify into SSG mode
-            - echo "Build completed - SSG mode with monorepo app root set"
+            - echo "Build completed - package.json copied to root, SSG mode should be detected"
       artifacts:
         # Next.js static export outputs to 'out' directory
         baseDirectory: out
@@ -37,5 +36,3 @@ applications:
         variables:
           NODE_ENV: production
           NEXT_TELEMETRY_DISABLED: 1
-          # Fix monorepo detection issue
-          AMPLIFY_MONOREPO_APP_ROOT: s3/frontend
