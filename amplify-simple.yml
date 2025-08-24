@@ -1,0 +1,33 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        # Use Node 20 for Next.js 15 compatibility
+        - nvm use 20 || nvm install 20
+        # Enable Corepack and activate pnpm
+        - corepack enable
+        - corepack prepare pnpm@9.12.0 --activate
+        # Navigate to frontend directory and install dependencies
+        - cd s3/frontend
+        - pnpm install --frozen-lockfile
+    build:
+      commands:
+        # Build from frontend directory
+        - cd s3/frontend
+        - pnpm run actualBuild
+        - echo "Build completed - SSG mode should be detected"
+  artifacts:
+    # Deploy from frontend out directory
+    baseDirectory: s3/frontend/out
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - s3/frontend/node_modules/**/*
+      - s3/frontend/.next/cache/**/*
+  # Environment variables for production
+  env:
+    variables:
+      NODE_ENV: production
+      NEXT_TELEMETRY_DISABLED: 1
