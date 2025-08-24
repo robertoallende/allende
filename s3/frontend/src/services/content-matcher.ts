@@ -74,8 +74,8 @@ class ContentMatcher {
         };
       }
       
-      // Load content from file
-      const response = await fetch(`/api/content/rules/${matchedRule.contentFile}`);
+      // Load from static files instead of API routes
+      const response = await fetch(`/content/responses/${matchedRule.contentFile}`);
       if (!response.ok) {
         throw new Error(`Failed to load content: ${response.statusText}`);
       }
@@ -122,7 +122,8 @@ let contentMatcherInstance: ContentMatcher | null = null;
 export async function getContentMatcher(): Promise<ContentMatcher> {
   if (!contentMatcherInstance) {
     try {
-      const response = await fetch('/api/content/rules');
+      // Load from static files instead of API routes
+      const response = await fetch('/content/content-rules.json');
       if (!response.ok) {
         throw new Error('Failed to load content rules');
       }

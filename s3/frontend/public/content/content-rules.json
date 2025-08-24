@@ -1,0 +1,18 @@
+{
+  "rules": [
+    {
+      "id": "poetry_truth",
+      "trigger": "truthislikepoetry",
+      "description": "Truth and poetry philosophical discussion",
+      "contentFile": "poetry.md",
+      "priority": 1
+    },
+    {
+      "id": "football_tactics",
+      "trigger": "footballtactics", 
+      "description": "Football tactical analysis",
+      "contentFile": "football-tactics.md",
+      "priority": 2
+    }
+  ]
+}
