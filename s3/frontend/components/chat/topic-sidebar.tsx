@@ -46,9 +46,9 @@ export function TopicSidebar({ activeTopicId, onTopicSelect, onNewConversation, 
   const config = getAppConfig();
 
   return (
-    <div className="flex flex-col h-screen bg-muted/30 border-r border-border">
+    <div className="flex flex-col h-screen bg-muted/30">
       {/* Header */}
-      <div className="p-4 border-b border-border flex-shrink-0">
+      <div className="p-4 flex-shrink-0">
         <h2 className="font-semibold text-lg">Roberto Allende</h2>
         <p className="text-sm text-muted-foreground">Enthusiastic and tireless maker</p>
       </div>
@@ -57,10 +57,10 @@ export function TopicSidebar({ activeTopicId, onTopicSelect, onNewConversation, 
       <div className="p-2 flex-shrink-0">
         <button 
           onClick={onNewConversation}
-          className={`flex items-center gap-3 w-full p-3 rounded-lg transition-colors text-left border ${
+          className={`flex items-center gap-3 w-full p-3 rounded-lg transition-colors text-left ${
             isNewConversationActive
-              ? "bg-primary/10 border-primary/20 text-foreground"
-              : "border-transparent hover:bg-muted"
+              ? "bg-primary/10 text-foreground"
+              : "hover:bg-muted"
           }`}
         >
           <PlusIcon className={`w-4 h-4 ${isNewConversationActive ? "text-primary" : "text-muted-foreground"}`} />
@@ -78,10 +78,10 @@ export function TopicSidebar({ activeTopicId, onTopicSelect, onNewConversation, 
             <button
               key={thread.id}
               onClick={() => onTopicSelect(thread.id)}
-              className={`flex items-start gap-3 w-full p-3 rounded-lg transition-colors text-left border ${
+              className={`flex items-start gap-3 w-full p-3 rounded-lg transition-colors text-left ${
                 isActive
-                  ? "bg-primary/10 border-primary/20 text-foreground"
-                  : "border-transparent hover:bg-muted"
+                  ? "bg-primary/10 text-foreground"
+                  : "hover:bg-muted"
               }`}
             >
               <div className="flex-shrink-0 mt-0.5">
@@ -106,7 +106,7 @@ export function TopicSidebar({ activeTopicId, onTopicSelect, onNewConversation, 
           <select
             value={theme}
             onChange={(e) => setTheme(e.target.value as "default" | "dark" | "claude")}
-            className="px-2 py-1 text-xs border border-border rounded bg-background text-foreground hover:bg-muted transition-colors"
+            className="px-2 py-1 text-xs rounded bg-background text-foreground hover:bg-muted transition-colors"
           >
             {themes.map((t) => (
               <option key={t.id} value={t.id}>

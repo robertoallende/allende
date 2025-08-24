@@ -67,7 +67,7 @@ export function TopicThread() {
         <div className="p-4 bg-background/95 backdrop-blur">
           <ComposerPrimitive.Root className="flex gap-2">
             <ComposerPrimitive.Input 
-              className="flex-1 px-4 py-3 rounded-lg bg-input text-foreground border border-border focus:border-ring focus:outline-none resize-none"
+              className="flex-1 px-4 py-3 rounded-lg bg-input text-foreground focus:outline-none resize-none"
               placeholder={`Ask me about ${activeTopic === "about" ? "my background" : activeTopic}...`}
               rows={1}
             />

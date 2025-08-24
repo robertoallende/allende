@@ -27,7 +27,23 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme') || 'claude';
+                  document.documentElement.className = theme + '-theme';
+                } catch (e) {
+                  document.documentElement.className = 'claude-theme';
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${jetbrainsMono.variable} antialiased`}
       >
