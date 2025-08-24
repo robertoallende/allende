@@ -4,10 +4,6 @@ import { UserIcon, BookOpenIcon, CodeIcon, PlusIcon, ZapIcon } from "lucide-reac
 import { useTheme } from "@/components/theme-provider";
 import { getAppConfig } from "@/app/config";
 import { contentConfig } from "@/content/config";
-import { loadAllContent } from "@/content/loader";
-
-// Load content to get last messages
-const contentData = loadAllContent();
 
 // Icon mapping
 const iconMap = {
@@ -31,7 +27,7 @@ const topicThreads: TopicThread[] = Object.entries(contentConfig).map(([id, conf
   title: config.title,
   description: config.description,
   icon: iconMap[config.icon as keyof typeof iconMap] || UserIcon,
-  lastMessage: contentData[id].initialMessage.split('\n')[0].replace(/^#\s*/, ''), // First line without markdown header
+  lastMessage: config.description, // Use description from config instead of first line from markdown
 }));
 
 interface TopicSidebarProps {

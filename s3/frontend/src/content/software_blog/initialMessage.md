@@ -1,6 +1,6 @@
 # Software Engineering Notes
 
-Reflections on building and leading teams in the cloud era, from AI-first experiments to hard-earned lessons in delivering scalable, resilient systems.
+Reflections on making software in the cloud, from AI-first experiments to hard-earned lessons in delivering scalable, resilient systems.
 
 [Code with AI: Micromanagement is all you need](https://community.aws/content/2y6nQgj1FVuaJIn9rFLThIslwaJ) | 25/06/2025
 Yes, it says micromanagement - and this time it makes sense. [→](https://community.aws/content/2y6nQgj1FVuaJIn9rFLThIslwaJ)

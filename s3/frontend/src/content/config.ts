@@ -10,13 +10,13 @@ export const contentConfig: Record<string, TopicConfig> = {
     title: "Software Engineering Notes",
     directory: "software_blog",
     icon: "BookOpenIcon",
-    description: ""
+    description: "Reflections on building and leading in the cloud era, from AI-first experiments to hard-earned lessons in delivering scalable, resilient systems."
   },
   football: {
-    title: "Football Blog",
+    title: "Football Notes",
     directory: "football_blog",
     icon: "Volleyball",
-    description: "My thoughts and analysis on football, tactics, and the beautiful game."
+    description: "Reflections and thoughts about my journey in amateur football, both as a master team player and captain, and as a junior coach."
   },
   projects: {
     title: "Projects", 
