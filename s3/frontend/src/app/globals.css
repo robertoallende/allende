@@ -81,10 +81,10 @@
   --destructive: 0 62.8% 30.6%;  /* Red for destructive actions */
   --destructive-foreground: 0 0% 98%; /* White text on red */
   
-  /* Borders and inputs */
+  /* Borders and inputs - Custom colors for Claude theme */
   --border: 220 13% 18%;         /* #374151 - Subtle borders */
-  --input: 220 13% 23%;          /* #4b5563 - Input backgrounds */
-  --ring: 25 95% 53%;            /* #d97706 - Focus rings (Claude orange) */
+  --input: 0 0% 19%;             /* #30302E - Input background */
+  --ring: 0 0% 36%;              /* #5B5A56 - Active border (focus ring) */
 }
 
 @theme {

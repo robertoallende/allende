@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, ReactNode, useEffect } from "react";
+import { getAppConfig } from "@/app/config";
 
 type Theme = "default" | "dark" | "claude";
 
@@ -17,7 +18,8 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("default");
+  const config = getAppConfig();
+  const [theme, setTheme] = useState<Theme>(config.theme);
 
   const themes = [
     {

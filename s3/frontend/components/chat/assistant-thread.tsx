@@ -54,7 +54,7 @@ function ThreadComponent() {
         <div className="border-t border-border p-4">
           <ComposerPrimitive.Root className="flex gap-2">
             <ComposerPrimitive.Input 
-              className="flex-1 px-3 py-2 border border-input rounded-lg bg-background text-foreground focus:ring-2 focus:ring-ring focus:border-transparent"
+              className="flex-1 px-3 py-2 border border-input rounded-lg bg-input text-foreground focus:border-ring focus:outline-none"
               placeholder="Ask me anything..."
             />
             <ComposerPrimitive.Send className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity">

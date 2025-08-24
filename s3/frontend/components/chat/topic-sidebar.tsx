@@ -2,6 +2,7 @@
 
 import { UserIcon, BookOpenIcon, CodeIcon, PlusIcon } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
+import { getAppConfig } from "@/app/config";
 
 interface TopicThread {
   id: string;
@@ -44,6 +45,7 @@ interface TopicSidebarProps {
 
 export function TopicSidebar({ activeTopicId, onTopicSelect, onNewConversation, isNewConversationActive = false }: TopicSidebarProps) {
   const { theme, setTheme, themes } = useTheme();
+  const config = getAppConfig();
 
   return (
     <div className="flex flex-col h-screen bg-muted/30 border-r border-border">
@@ -101,19 +103,21 @@ export function TopicSidebar({ activeTopicId, onTopicSelect, onNewConversation, 
       </div>
 
       {/* Theme Selector - Bottom Right */}
-      <div className="p-2 flex justify-end flex-shrink-0">
-        <select
-          value={theme}
-          onChange={(e) => setTheme(e.target.value as "default" | "dark" | "claude")}
-          className="px-2 py-1 text-xs border border-border rounded bg-background text-foreground hover:bg-muted transition-colors"
-        >
-          {themes.map((t) => (
-            <option key={t.id} value={t.id}>
-              {t.name}
-            </option>
-          ))}
-        </select>
-      </div>
+      {config.ui.showThemeSelector && (
+        <div className="p-2 flex justify-end flex-shrink-0">
+          <select
+            value={theme}
+            onChange={(e) => setTheme(e.target.value as "default" | "dark" | "claude")}
+            className="px-2 py-1 text-xs border border-border rounded bg-background text-foreground hover:bg-muted transition-colors"
+          >
+            {themes.map((t) => (
+              <option key={t.id} value={t.id}>
+                {t.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
     </div>
   );
 }

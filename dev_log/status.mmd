@@ -13,6 +13,7 @@ flowchart LR
     U002_007["002_frontend_007:<br/>Unified About Topic"]
     U002_008["002_frontend_008:<br/>Markdown Rendering"]
     U002_009["002_frontend_009:<br/>New Conversation Styling"]
+    U002_010["002_frontend_010:<br/>Claude Input & UI Config"]
     
     %% Theming Branch
     U03_001["03_theming_001:<br/>Claude Colors"]
@@ -43,7 +44,8 @@ flowchart LR
     U002_006 --> U002_007
     U002_007 --> U002_008
     U002_008 --> U002_009
-    U002_009 --> U03_001
+    U002_009 --> U002_010
+    U002_010 --> U03_001
     
     U01 --> U04
     U04 --> U05
@@ -65,5 +67,5 @@ flowchart LR
     classDef blocked fill:#FFB6C1,stroke:#D32F2F,stroke-width:2px,color:#000
 
     %% Apply Classifications - Updated Status
-    class U00,U01,U002_001,U002_002,U002_003,U002_004,U002_005,U002_006,U002_007,U002_008,U002_009,U03_001 completed
-    class U04,U05,U06,U07,U08,U09,U10,U11 planned
+    class U00,U01,U002_001,U002_002,U002_003,U002_004,U002_005,U002_006,U002_007,U002_008,U002_009,U002_010 completed
+    class U03_001,U04,U05,U06,U07,U08,U09,U10,U11 planned
