@@ -5,9 +5,6 @@ applications:
       phases:
         preBuild:
           commands:
-            # Copy package.json to root to help Amplify detect Next.js version
-            - cp package.json ../../package.json
-            - echo "Copied package.json to root for Amplify detection"
             # Use Node 20 for Next.js 15 compatibility
             - nvm use 20 || nvm install 20
             # Enable Corepack and activate pnpm
@@ -17,10 +14,8 @@ applications:
             - pnpm install --frozen-lockfile
         build:
           commands:
-            # Run the actual build (content generation + Next.js build)
-            - pnpm run actualBuild
-            # The "build" script with "next export" tricks Amplify into SSG mode
-            - echo "Build completed - package.json copied to root, SSG mode should be detected"
+            # Build Next.js application with content generation and static export
+            - pnpm run build
       artifacts:
         # Next.js static export outputs to 'out' directory
         baseDirectory: out

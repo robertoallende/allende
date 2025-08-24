@@ -4,9 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build && next export",
-    "actualBuild": "node scripts/fetch-football-content.js && node scripts/fetch-awsbuilder-content.js && node scripts/generate-content.js && node scripts/prepare-static-content.js && next build",
-    "build:production": "npm run actualBuild",
+    "build": "node scripts/fetch-football-content.js && node scripts/fetch-awsbuilder-content.js && node scripts/generate-content.js && node scripts/prepare-static-content.js && next build",
+    "build:production": "npm run build",
     "generate-content": "node scripts/fetch-football-content.js && node scripts/fetch-awsbuilder-content.js && node scripts/generate-content.js",
     "fetch-football": "node scripts/fetch-football-content.js",
     "fetch-awsbuilder": "node scripts/fetch-awsbuilder-content.js",
