@@ -1,8 +1,21 @@
 "use client";
 
-import { UserIcon, BookOpenIcon, CodeIcon, PlusIcon } from "lucide-react";
+import { UserIcon, BookOpenIcon, CodeIcon, PlusIcon, ZapIcon } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 import { getAppConfig } from "@/app/config";
+import { contentConfig } from "@/content/config";
+import { loadAllContent } from "@/content/loader";
+
+// Load content to get last messages
+const contentData = loadAllContent();
+
+// Icon mapping
+const iconMap = {
+  BookOpenIcon,
+  CodeIcon,
+  UserIcon,
+  ZapIcon,
+};
 
 interface TopicThread {
   id: string;
@@ -12,29 +25,14 @@ interface TopicThread {
   lastMessage: string;
 }
 
-const topicThreads: TopicThread[] = [
-  {
-    id: "blog",
-    title: "Blog Posts",
-    description: "Technical insights & thoughts",
-    icon: BookOpenIcon,
-    lastMessage: "I write about software development, technology trends...",
-  },
-  {
-    id: "projects",
-    title: "Projects",
-    description: "Portfolio & showcases",
-    icon: CodeIcon,
-    lastMessage: "Here are some of the projects I've built...",
-  },
-  {
-    id: "about",
-    title: "About",
-    description: "Background, contact & social",
-    icon: UserIcon,
-    lastMessage: "Hello! I'm Roberto, a passionate software engineer with a love for building innovative solutions...",
-  },
-];
+// Generate topics from configuration
+const topicThreads: TopicThread[] = Object.entries(contentConfig).map(([id, config]) => ({
+  id,
+  title: config.title,
+  description: config.description,
+  icon: iconMap[config.icon as keyof typeof iconMap] || UserIcon,
+  lastMessage: contentData[id].initialMessage.split('\n')[0].replace(/^#\s*/, ''), // First line without markdown header
+}));
 
 interface TopicSidebarProps {
   activeTopicId?: string;

@@ -12,6 +12,8 @@ export interface AppConfig {
   };
   /** Default theme for the website */
   theme: "default" | "dark" | "claude";
+  /** Default topic to show on first load */
+  defaultTopic: string;
 }
 
 /**
@@ -26,6 +28,7 @@ export const appConfig: AppConfig = {
     showThemeSelector: true,   // Show theme selector so users can change themes
   },
   theme: "claude",  // Set Claude as default theme
+  defaultTopic: "software", // Set software blog as default topic
 };
 
 /**

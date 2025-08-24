@@ -34,6 +34,11 @@ class MarkdownTextAnimator {
     const deltaTime = currentTime - this.lastUpdateTime;
     let timeToConsume = deltaTime;
 
+    // Safety check for undefined targetText
+    if (!this.targetText) {
+      this.targetText = "";
+    }
+
     const remainingChars = this.targetText.length - this.currentText.length;
     const baseTimePerChar = Math.min(5, 250 / remainingChars);
 
@@ -110,7 +115,7 @@ export function SimpleMarkdown({ children, className, smooth = true }: SimpleMar
     }
 
     const animator = animatorRef.current;
-    animator.targetText = children;
+    animator.targetText = children || ""; // Safety check for undefined children
     animator.currentText = "";
     setDisplayedText("");
     animator.start();

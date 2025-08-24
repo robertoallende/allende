@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "build": "node scripts/generate-content.js && next build --turbopack",
+    "generate-content": "node scripts/generate-content.js",
     "start": "next start",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
