@@ -17,8 +17,8 @@ function TopicInitialMessage({ activeTopic }: { activeTopic: string }) {
   const message = contentData[activeTopic]?.initialMessage || `# ${activeTopic}\n\nContent not found for this topic.`;
   
   return (
-    <div className="mb-4 flex justify-start">
-      <div className="bg-background p-4 max-w-2xl">
+    <div className="mb-4 flex justify-center">
+      <div className="bg-background p-4 max-w-4xl w-full">
         <SimpleMarkdown 
           key={activeTopic} // Reset animation when topic changes
           smooth={true}
