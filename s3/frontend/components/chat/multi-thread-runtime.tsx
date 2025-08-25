@@ -7,6 +7,7 @@ import { loadAllContent } from "@/content/loader";
 import { contentConfig } from "@/content/config";
 import { getAppConfig } from "@/app/config";
 import { getContentMatcher } from "@/services/content-matcher";
+import { ChatInputProvider } from "@/contexts/chat-input-context";
 
 // Topic context for managing active topic
 const TopicContext = createContext<{
@@ -63,7 +64,51 @@ export function MultiThreadRuntimeProvider({ children }: MultiThreadRuntimeProvi
           const matchResult = await contentMatcher.loadMatchedContent(userMessage);
           
           if (matchResult) {
-            // Stream matched content as natural chatbot response (no search formatting)
+            // Handle email conversations
+            if ('isEmail' in matchResult) {
+              const emailResult = matchResult;
+              
+              // Stream email response
+              const words = emailResult.response.split(' ');
+              let currentContent = '';
+              
+              for (let i = 0; i < words.length; i++) {
+                currentContent += (i > 0 ? ' ' : '') + words[i];
+                
+                yield {
+                  content: [
+                    {
+                      type: "text" as const,
+                      text: currentContent,
+                    },
+                  ],
+                  metadata: {
+                    custom: {
+                      topic: activeTopic,
+                      isEmailConversation: true,
+                      emailAction: emailResult.action,
+                    },
+                  },
+                };
+                
+                await new Promise(resolve => setTimeout(resolve, 50));
+              }
+              
+              // If this was a successful email send, we could trigger actual email sending here
+              if (emailResult.action === 'SEND_EMAIL') {
+                const emailState = (await import('@/services/email-conversation-handler')).getEmailConversationState();
+                console.log('Email would be sent here:', {
+                  message: emailState.userMessage,
+                  replyTo: emailState.userEmail,
+                  originalTrigger: emailResult.originalMessage
+                });
+                // TODO: Implement actual email sending in future unit
+              }
+              
+              return;
+            }
+            
+            // Handle regular content matches
             const fullContent = matchResult.content;
             
             // Simulate streaming by yielding chunks
@@ -179,10 +224,12 @@ export function MultiThreadRuntimeProvider({ children }: MultiThreadRuntimeProvi
   const runtime = useLocalRuntime(multiTopicChatAdapter);
 
   return (
-    <TopicContext.Provider value={{ activeTopic, setActiveTopic }}>
-      <AssistantRuntimeProvider runtime={runtime}>
-        {children}
-      </AssistantRuntimeProvider>
-    </TopicContext.Provider>
+    <ChatInputProvider>
+      <TopicContext.Provider value={{ activeTopic, setActiveTopic }}>
+        <AssistantRuntimeProvider runtime={runtime}>
+          {children}
+        </AssistantRuntimeProvider>
+      </TopicContext.Provider>
+    </ChatInputProvider>
   );
 }

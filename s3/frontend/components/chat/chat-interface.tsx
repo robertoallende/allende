@@ -1,22 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { TopicSidebar } from "./topic-sidebar";
 import { MultiThreadRuntimeProvider, useTopicContext } from "./multi-thread-runtime";
 import { TopicThread } from "./topic-thread";
 import { NewConversationThread } from "./new-conversation-thread";
+import { useChatInputContext } from "@/contexts/chat-input-context";
 
 function ChatInterfaceContent() {
   const { activeTopic, setActiveTopic } = useTopicContext();
+  const { enableInput } = useChatInputContext();
   const [conversationMode, setConversationMode] = useState<'topic' | 'new'>('topic');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  // Initialize chat input as enabled for new conversations
+  useEffect(() => {
+    if (conversationMode === 'new') {
+      enableInput();
+    }
+  }, [conversationMode, enableInput]);
 
   const handleTopicSelect = (topicId: string) => {
     setActiveTopic(topicId);
     setConversationMode('topic');
     // Close sidebar on mobile after selection
     setIsSidebarOpen(false);
+    // No need to disable input - composer won't render in topic sections
   };
 
   const handleNewConversation = () => {
@@ -24,6 +34,8 @@ function ChatInterfaceContent() {
     setActiveTopic(''); // Clear active topic
     // Close sidebar on mobile after selection
     setIsSidebarOpen(false);
+    // Enable chat input for new conversations
+    enableInput();
   };
 
   const toggleSidebar = () => {
