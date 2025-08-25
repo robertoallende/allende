@@ -2,6 +2,11 @@
 
 Reflections on making software in the cloud, from AI-first experiments to hard-earned lessons in delivering scalable, resilient systems.
 
+[Not a portfolio. Not a blog. A conversation](https://community.aws/content/2yxKHol9N5tba3Uju1eRcHUymSm) | 26/08/2025
+A few days ago, I came across the AWS Builder Challenge—and I couldn’t resist. 
+
+I love these sprints: the adrenaline of a deadline, the chance to challenge assumptions, and the opportunity to try and learn something new. [→](https://community.aws/content/2yxKHol9N5tba3Uju1eRcHUymSm)
+
 [Code with AI: Micromanagement is all you need](https://community.aws/content/2y6nQgj1FVuaJIn9rFLThIslwaJ) | 25/06/2025
 Yes, it says micromanagement - and this time it makes sense. [→](https://community.aws/content/2y6nQgj1FVuaJIn9rFLThIslwaJ)
 
@@ -13,8 +18,5 @@ I’ve been practicing an AI First mindset for a few months now. It wasn’t som
 
 [AI First Imperative: Preventing Your Digital Kodak Moment](https://community.aws/content/2tO2WMlns6zODmiSlZeLCaoKeYb) | 18/03/2025
 Imagine standing in a photo lab, holding a freshly printed picture, unaware that the very act of developing film is about to vanish. Disruption rarely announces itself with sirens—it creeps in, reshaping industries before most notice. AI isn’t just another innovation; it’s a tidal... [→](https://community.aws/content/2tO2WMlns6zODmiSlZeLCaoKeYb)
-
-[Free Up Your Time from Email with Amazon Q Apps & GenAI](https://community.aws/content/2tNhySTWG5V6pxxaZi5S7hJcmsy) | 22/02/2025
-Built with Amazon Q Apps in just two hours at the AWS & Ingram Micro GenAI Hackathon in Auckland 2025, Reply.ai is an intelligent email assistant that helps you take control of your inbox. [→](https://community.aws/content/2tNhySTWG5V6pxxaZi5S7hJcmsy)
 
 *Read all the articles at [AWS Builder Center](https://builder.aws.com/community/@robertoallende)*
