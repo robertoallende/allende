@@ -7,6 +7,7 @@ import { loadAllContent } from "@/content/loader";
 import { contentConfig } from "@/content/config";
 import { getAppConfig } from "@/app/config";
 import { getContentMatcher } from "@/services/content-matcher";
+import { ChatInputProvider } from "@/contexts/chat-input-context";
 
 // Topic context for managing active topic
 const TopicContext = createContext<{
@@ -179,10 +180,12 @@ export function MultiThreadRuntimeProvider({ children }: MultiThreadRuntimeProvi
   const runtime = useLocalRuntime(multiTopicChatAdapter);
 
   return (
-    <TopicContext.Provider value={{ activeTopic, setActiveTopic }}>
-      <AssistantRuntimeProvider runtime={runtime}>
-        {children}
-      </AssistantRuntimeProvider>
-    </TopicContext.Provider>
+    <ChatInputProvider>
+      <TopicContext.Provider value={{ activeTopic, setActiveTopic }}>
+        <AssistantRuntimeProvider runtime={runtime}>
+          {children}
+        </AssistantRuntimeProvider>
+      </TopicContext.Provider>
+    </ChatInputProvider>
   );
 }

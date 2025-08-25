@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect } from "react";
-import { ThreadPrimitive, ComposerPrimitive, useAssistantRuntime } from "@assistant-ui/react";
-import { ArrowUp } from "lucide-react";
+import { ThreadPrimitive, useAssistantRuntime } from "@assistant-ui/react";
 import { EnhancedUserMessage, EnhancedAssistantMessage } from "./enhanced-message";
+import { ClaudeCenteredComposer } from "./claude-centered-composer";
+import { ControlledComposer } from "./controlled-composer";
 
 export function NewConversationThread() {
   const runtime = useAssistantRuntime();
@@ -15,43 +16,28 @@ export function NewConversationThread() {
 
   return (
     <div className="flex flex-col h-full">
-      {/* No NewConversationHeader - direct to content for clean interface */}
       <ThreadPrimitive.Root className="flex flex-col h-full">
-        <ThreadPrimitive.Viewport className="flex-1 overflow-y-auto p-4">
-          {/* Empty state - only show when no messages */}
+        <ThreadPrimitive.Viewport className="flex-1 overflow-y-auto">
+          {/* Empty state with centered input (Claude-style) */}
           <ThreadPrimitive.Empty>
-            <div className="flex items-center justify-center h-full text-center">
-              <div className="max-w-md">
-                <h2 className="text-lg font-medium text-muted-foreground mb-2">
-                  Ready for a new conversation?
-                </h2>
-                <p className="text-sm text-muted-foreground">
-                  Ask me anything about my work, projects, or thoughts on technology.
-                </p>
-              </div>
-            </div>
+            <ClaudeCenteredComposer />
           </ThreadPrimitive.Empty>
           
-          <ThreadPrimitive.Messages
-            components={{
-              UserMessage: EnhancedUserMessage,
-              AssistantMessage: EnhancedAssistantMessage,
-            }}
-          />
+          {/* Messages view with proper top padding when conversation exists */}
+          <div className="p-4 pt-6">
+            <ThreadPrimitive.Messages
+              components={{
+                UserMessage: EnhancedUserMessage,
+                AssistantMessage: EnhancedAssistantMessage,
+              }}
+            />
+          </div>
         </ThreadPrimitive.Viewport>
         
-        <div className="p-4 bg-background/95 backdrop-blur">
-          <ComposerPrimitive.Root className="flex gap-2">
-            <ComposerPrimitive.Input 
-              className="flex-1 px-4 py-3 rounded-lg bg-input text-foreground border border-border focus:border-ring focus:outline-none resize-none"
-              placeholder="Write Truth Is Like Poetry..."
-              rows={1}
-            />
-            <ComposerPrimitive.Send className="px-3 py-3 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity font-medium flex items-center justify-center">
-              <ArrowUp className="w-4 h-4" />
-            </ComposerPrimitive.Send>
-          </ComposerPrimitive.Root>
-        </div>
+        {/* Bottom composer - only shows when there are messages */}
+        <ThreadPrimitive.If empty={false}>
+          <ControlledComposer />
+        </ThreadPrimitive.If>
       </ThreadPrimitive.Root>
     </div>
   );

@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { ThreadPrimitive, ComposerPrimitive, useAssistantRuntime } from "@assistant-ui/react";
-import { ArrowUp } from "lucide-react";
+import { ThreadPrimitive, useAssistantRuntime } from "@assistant-ui/react";
 import { useTopicContext } from "./multi-thread-runtime";
 import { EnhancedUserMessage, EnhancedAssistantMessage } from "./enhanced-message";
 import { SimpleMarkdown } from "./simple-markdown";
@@ -64,18 +63,7 @@ export function TopicThread() {
           />
         </ThreadPrimitive.Viewport>
         
-        <div className="p-4 bg-background/95 backdrop-blur">
-          <ComposerPrimitive.Root className="flex gap-2">
-            <ComposerPrimitive.Input 
-              className="flex-1 px-4 py-3 rounded-lg bg-input text-foreground focus:outline-none resize-none"
-              placeholder={`Ask me about ${activeTopic === "about" ? "my background" : activeTopic}...`}
-              rows={1}
-            />
-            <ComposerPrimitive.Send className="px-3 py-3 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity font-medium flex items-center justify-center">
-              <ArrowUp className="w-4 h-4" />
-            </ComposerPrimitive.Send>
-          </ComposerPrimitive.Root>
-        </div>
+        {/* NO COMPOSER - Topic sections are read-only */}
       </ThreadPrimitive.Root>
     </div>
   );
