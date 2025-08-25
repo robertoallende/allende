@@ -98,8 +98,11 @@ export function MultiThreadRuntimeProvider({ children }: MultiThreadRuntimeProvi
               if (emailResult.action === 'SEND_EMAIL') {
                 const emailState = (await import('@/services/email-conversation-handler')).getEmailConversationState();
                 console.log('Email would be sent here:', {
+                  name: emailState.userName,
+                  email: emailState.userEmail,
                   message: emailState.userMessage,
-                  replyTo: emailState.userEmail,
+                  verificationPassed: true,
+                  timestamp: new Date().toISOString(),
                   originalTrigger: emailResult.originalMessage
                 });
                 // TODO: Implement actual email sending in future unit
