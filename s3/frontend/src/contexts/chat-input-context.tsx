@@ -32,7 +32,7 @@ export function ChatInputProvider({ children }: ChatInputProviderProps) {
   const enableInput = useCallback(() => {
     setChatInputState({
       enabled: true,
-      placeholder: "Ask me anything about my background, projects, or interests...",
+      placeholder: "Ask me anything about my background, projects, or interests — or try 'Send an Email to Roberto' ",
       reason: 'new-conversation'
     });
   }, []);

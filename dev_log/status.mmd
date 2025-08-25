@@ -34,6 +34,7 @@ flowchart LR
     %% Chat Flow Branch
     U07_001["007_chat_001:<br/>Chat Input Control System"]
     U07_002["07_chat_002:<br/>Claude-Style Centered Input Interface"]
+    U07_003["07_chat_003:<br/>Conversational Email Flow & UX Enhancements"]
     
     %% Theming Branch
     U03_001["03_theming_001:<br/>Claude Colors"]
@@ -75,7 +76,8 @@ flowchart LR
     U05_001 --> U06_001
     U06_001 --> U07_001
     U07_001 --> U07_002
-    U07_002 --> U03_001
+    U07_002 --> U07_003
+    U07_003 --> U03_001
     U03_001 --> U002_011
     
     U01 --> U04
@@ -98,5 +100,5 @@ flowchart LR
     classDef blocked fill:#FFB6C1,stroke:#D32F2F,stroke-width:2px,color:#000
 
     %% Apply Classifications - Updated Status
-    class U00,U01,U002_001,U002_002,U002_003,U002_004,U002_005,U002_006,U002_007,U002_008,U002_009,U002_010,U002_012,U04_001,U04_002,U04_003,U04_004,U04_005,U05_006,U05_001,U06_001,U07_001,U07_002,U03_001,U002_011 completed
+    class U00,U01,U002_001,U002_002,U002_003,U002_004,U002_005,U002_006,U002_007,U002_008,U002_009,U002_010,U002_012,U04_001,U04_002,U04_003,U04_004,U04_005,U05_006,U05_001,U06_001,U07_001,U07_002,U07_003,U03_001,U002_011 completed
     class U04,U05,U06,U07,U08,U09,U10,U11 planned

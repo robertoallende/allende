@@ -15,9 +15,9 @@ export function NewConversationThread() {
   }, [runtime]);
 
   return (
-    <div className="flex flex-col h-full">
-      <ThreadPrimitive.Root className="flex flex-col h-full">
-        <ThreadPrimitive.Viewport className="flex-1 overflow-y-auto">
+    <div className="flex flex-col h-full min-h-0">
+      <ThreadPrimitive.Root className="flex flex-col h-full min-h-0">
+        <ThreadPrimitive.Viewport className="flex-1 overflow-y-auto min-h-0">
           {/* Empty state with centered input (Claude-style) */}
           <ThreadPrimitive.Empty>
             <ClaudeCenteredComposer />
@@ -36,7 +36,9 @@ export function NewConversationThread() {
         
         {/* Bottom composer - only shows when there are messages */}
         <ThreadPrimitive.If empty={false}>
-          <ControlledComposer />
+          <div className="flex-shrink-0">
+            <ControlledComposer />
+          </div>
         </ThreadPrimitive.If>
       </ThreadPrimitive.Root>
     </div>

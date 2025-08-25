@@ -3,14 +3,32 @@
 import { ComposerPrimitive } from "@assistant-ui/react";
 import { ArrowUp } from "lucide-react";
 import { useChatInputContext } from "@/contexts/chat-input-context";
+import { useEffect, useRef } from "react";
 
 export function ControlledComposer() {
   const { isInputEnabled, inputPlaceholder } = useChatInputContext();
+  const inputRef = useRef<HTMLTextAreaElement>(null);
+
+  // Auto-focus when the composer becomes enabled
+  useEffect(() => {
+    if (isInputEnabled && inputRef.current) {
+      // Small delay to ensure the component is fully rendered
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 100);
+    }
+  }, [isInputEnabled]);
 
   return (
-    <div className="p-4 bg-background/95 backdrop-blur">
+    <div 
+      className="p-4 bg-background/95 backdrop-blur"
+      style={{ 
+        paddingBottom: 'max(1rem, env(safe-area-inset-bottom))' 
+      }}
+    >
       <ComposerPrimitive.Root className="flex gap-2">
         <ComposerPrimitive.Input 
+          ref={inputRef}
           className={`flex-1 px-4 py-3 rounded-lg border transition-all duration-200 resize-none ${
             isInputEnabled 
               ? "bg-input text-foreground border-border focus:border-ring focus:outline-none cursor-text" 

@@ -1,3 +1,11 @@
+import { 
+  isEmailTrigger, 
+  startEmailConversation, 
+  handleEmailMessage, 
+  isInEmailConversation,
+  resetEmailConversation 
+} from './email-conversation-handler';
+
 interface ContentRule {
   id: string;
   trigger: string;
@@ -15,6 +23,15 @@ interface MatchResult {
   content: string;
   originalMessage: string;
 }
+
+interface EmailResult {
+  isEmail: true;
+  response: string;
+  action?: 'SEND_EMAIL';
+  originalMessage: string;
+}
+
+type ContentMatchResult = MatchResult | EmailResult;
 
 class ContentMatcher {
   private rules: ContentRule[] = [];
@@ -57,7 +74,29 @@ class ContentMatcher {
   /**
    * Load content for a matched rule
    */
-  async loadMatchedContent(userInput: string): Promise<MatchResult | null> {
+  async loadMatchedContent(userInput: string): Promise<ContentMatchResult | null> {
+    // Check if this is an email trigger
+    if (isEmailTrigger(userInput)) {
+      const response = startEmailConversation();
+      return {
+        isEmail: true,
+        response,
+        originalMessage: userInput
+      };
+    }
+    
+    // Check if we're in an email conversation
+    if (isInEmailConversation()) {
+      const result = handleEmailMessage(userInput);
+      return {
+        isEmail: true,
+        response: result.response,
+        action: result.action,
+        originalMessage: userInput
+      };
+    }
+    
+    // Regular content matching
     const matchedRule = this.findMatch(userInput);
     
     if (!matchedRule) {
@@ -99,6 +138,13 @@ class ContentMatcher {
         originalMessage: userInput
       };
     }
+  }
+  
+  /**
+   * Reset email conversation state
+   */
+  resetEmailConversation(): void {
+    resetEmailConversation();
   }
   
   /**

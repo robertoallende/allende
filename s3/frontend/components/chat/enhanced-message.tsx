@@ -5,9 +5,11 @@ import { MarkdownTextPrimitive } from "@assistant-ui/react-markdown";
 
 export function EnhancedUserMessage() {
   return (
-    <MessagePrimitive.Root className="mb-4 flex justify-end">
-      <div className="bg-primary text-primary-foreground p-3 rounded-lg max-w-lg">
-        <MessagePrimitive.Content />
+    <MessagePrimitive.Root className="mb-1 flex justify-center">
+      <div className="max-w-4xl w-full p-4">
+        <div className="bg-black text-white p-3 rounded-lg inline-block">
+          <MessagePrimitive.Content />
+        </div>
       </div>
     </MessagePrimitive.Root>
   );
@@ -15,7 +17,7 @@ export function EnhancedUserMessage() {
 
 export function EnhancedAssistantMessage() {
   return (
-    <MessagePrimitive.Root className="mb-4 flex justify-center">
+    <MessagePrimitive.Root className="mb-1 flex justify-center">
       <div className="bg-background p-4 max-w-4xl w-full">
         <MessagePrimitive.Content 
           components={{

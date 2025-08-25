@@ -3,15 +3,29 @@
 import { ComposerPrimitive } from "@assistant-ui/react";
 import { ArrowUp } from "lucide-react";
 import { useChatInputContext } from "@/contexts/chat-input-context";
+import { useEffect, useRef } from "react";
+import { RandomDisclaimer } from "@/components/ui/random-disclaimer";
 
 export function ClaudeCenteredComposer() {
   const { isInputEnabled, inputPlaceholder } = useChatInputContext();
+  const inputRef = useRef<HTMLTextAreaElement>(null);
+
+  // Auto-focus when the component mounts and input is enabled
+  useEffect(() => {
+    if (isInputEnabled && inputRef.current) {
+      // Small delay to ensure the component is fully rendered
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 100);
+    }
+  }, [isInputEnabled]);
 
   return (
     <div className="flex items-center justify-center h-full p-4">
       <div className="w-full max-w-3xl -mt-16">
         <ComposerPrimitive.Root className="relative">
           <ComposerPrimitive.Input 
+            ref={inputRef}
             className={`w-full px-6 py-4 rounded-2xl border transition-all duration-200 resize-none text-base leading-relaxed min-h-[120px] ${
               isInputEnabled 
                 ? "bg-background text-foreground border-border focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/20 cursor-text shadow-sm hover:shadow-md" 
@@ -40,12 +54,10 @@ export function ClaudeCenteredComposer() {
           </ComposerPrimitive.Send>
         </ComposerPrimitive.Root>
         
-        {/* Optional: Add Claude-style suggestions or hints */}
+        {/* Random disclaimer instead of static hint text */}
         {isInputEnabled && (
           <div className="mt-4 text-center">
-            <p className="text-sm text-muted-foreground">
-              Ask me anything about my background, projects, or interests
-            </p>
+            <RandomDisclaimer />
           </div>
         )}
       </div>
