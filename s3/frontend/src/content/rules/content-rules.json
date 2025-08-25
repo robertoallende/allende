@@ -1,11 +1,60 @@
 {
   "rules": [
     {
+      "id": "messi",
+      "trigger": "messi",
+      "description": "messi",
+      "contentFile": "messi.md",
+      "priority": 1
+    },
+    {
       "id": "poetry_truth",
       "trigger": "truthislikepoetry",
       "description": "Truth and poetry philosophical discussion",
       "contentFile": "poetry.md",
       "priority": 1
+    },
+    {
+      "id": "hello",
+      "trigger": "hello",
+      "description": "hello",
+      "contentFile": "hello.md",
+      "priority": 2
+    },
+    {
+      "id": "hi",
+      "trigger": "hi!",
+      "description": "hi",
+      "contentFile": "hi.md",
+      "priority": 2
+    },
+    {
+      "id": "what",
+      "trigger": "what",
+      "description": "what",
+      "contentFile": "what.md",
+      "priority": 2
+    },
+    {
+      "id": "when",
+      "trigger": "when",
+      "description": "when",
+      "contentFile": "when.md",
+      "priority": 2
+    },
+    {
+      "id": "why",
+      "trigger": "why",
+      "description": "why",
+      "contentFile": "why.md",
+      "priority": 2
+    },
+    {
+      "id": "bye",
+      "trigger": "bye",
+      "description": "bye",
+      "contentFile": "bye.md",
+      "priority": 2
     }
   ]
 }

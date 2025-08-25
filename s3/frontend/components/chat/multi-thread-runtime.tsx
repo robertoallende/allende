@@ -67,8 +67,7 @@ export function MultiThreadRuntimeProvider({ children }: MultiThreadRuntimeProvi
             // Handle email conversations
             if ('isEmail' in matchResult) {
               const emailResult = matchResult;
-              
-              // Stream email response
+              // Stream email response with animated dots for loading
               const words = emailResult.response.split(' ');
               let currentContent = '';
               
@@ -94,15 +93,69 @@ export function MultiThreadRuntimeProvider({ children }: MultiThreadRuntimeProvi
                 await new Promise(resolve => setTimeout(resolve, 50));
               }
               
-              // If this was a successful email send, we could trigger actual email sending here
-              if (emailResult.action === 'SEND_EMAIL') {
-                const emailState = (await import('@/services/email-conversation-handler')).getEmailConversationState();
-                console.log('Email would be sent here:', {
-                  message: emailState.userMessage,
-                  replyTo: emailState.userEmail,
-                  originalTrigger: emailResult.originalMessage
-                });
-                // TODO: Implement actual email sending in future unit
+              // Handle email sending actions with animated loading
+              if (emailResult.action === 'SEND_EMAIL' || emailResult.action === 'RETRY_EMAIL') {
+                try {
+                  // Import and process email sending
+                  const { processEmailSending } = await import('@/services/email-conversation-handler');
+                  const emailResponse = await processEmailSending();
+                  
+                  // Stream the final response
+                  const responseWords = emailResponse.split(' ');
+                  let responseContent = '';
+                  
+                  for (let i = 0; i < responseWords.length; i++) {
+                    responseContent += (i > 0 ? ' ' : '') + responseWords[i];
+                    
+                    yield {
+                      content: [
+                        {
+                          type: "text" as const,
+                          text: responseContent,
+                        },
+                      ],
+                      metadata: {
+                        custom: {
+                          topic: activeTopic,
+                          isEmailConversation: true,
+                          emailSent: emailResponse.includes('sent'),
+                        },
+                      },
+                    };
+                    
+                    await new Promise(resolve => setTimeout(resolve, 30));
+                  }
+                  
+                } catch (error) {
+                  console.error('Email sending error:', error);
+                  
+                  // Stream error message
+                  const errorMessage = "Sorry, there was an unexpected error sending your email. Please try again later.";
+                  const errorWords = errorMessage.split(' ');
+                  let errorContent = '';
+                  
+                  for (let i = 0; i < errorWords.length; i++) {
+                    errorContent += (i > 0 ? ' ' : '') + errorWords[i];
+                    
+                    yield {
+                      content: [
+                        {
+                          type: "text" as const,
+                          text: errorContent,
+                        },
+                      ],
+                      metadata: {
+                        custom: {
+                          topic: activeTopic,
+                          isEmailConversation: true,
+                          emailError: true,
+                        },
+                      },
+                    };
+                    
+                    await new Promise(resolve => setTimeout(resolve, 30));
+                  }
+                }
               }
               
               return;
