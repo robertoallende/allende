@@ -44,11 +44,13 @@ const responseIndex: Record<string, number> = {};
 
 interface MultiThreadRuntimeProviderProps {
   children: ReactNode;
+  initialTopic?: string;
 }
 
-export function MultiThreadRuntimeProvider({ children }: MultiThreadRuntimeProviderProps) {
+export function MultiThreadRuntimeProvider({ children, initialTopic }: MultiThreadRuntimeProviderProps) {
   const config = getAppConfig();
-  const [activeTopic, setActiveTopic] = useState(config.defaultTopic);
+  // Use initialTopic if provided, otherwise use default
+  const [activeTopic, setActiveTopic] = useState(initialTopic || config.defaultTopic);
 
   // Enhanced chat model adapter with topic routing and content matching
   const multiTopicChatAdapter: ChatModelAdapter = {

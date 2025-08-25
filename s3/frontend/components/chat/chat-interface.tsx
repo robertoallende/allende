@@ -8,6 +8,10 @@ import { TopicThread } from "./topic-thread";
 import { NewConversationThread } from "./new-conversation-thread";
 import { useChatInputContext } from "@/contexts/chat-input-context";
 
+interface ChatInterfaceProps {
+  initialTopic?: string;
+}
+
 function ChatInterfaceContent() {
   const { activeTopic, setActiveTopic } = useTopicContext();
   const { enableInput } = useChatInputContext();
@@ -97,9 +101,9 @@ function ChatInterfaceContent() {
   );
 }
 
-export function ChatInterface() {
+export function ChatInterface({ initialTopic }: ChatInterfaceProps = {}) {
   return (
-    <MultiThreadRuntimeProvider>
+    <MultiThreadRuntimeProvider initialTopic={initialTopic}>
       <ChatInterfaceContent />
     </MultiThreadRuntimeProvider>
   );
