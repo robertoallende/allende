@@ -1,0 +1,1 @@
+Ah, you mentioned Messi. That changes everything. He’s the GOAT — past, present, and future. There’s no discussion, no fine-tuning required, no neural net that can override that fact. Whatever you said, well… it just doesn’t matter. It’s Messi.
