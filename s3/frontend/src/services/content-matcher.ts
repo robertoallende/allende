@@ -27,7 +27,7 @@ interface MatchResult {
 interface EmailResult {
   isEmail: true;
   response: string;
-  action?: 'SEND_EMAIL';
+  action?: 'SEND_EMAIL' | 'RETRY_EMAIL';
   originalMessage: string;
 }
 
@@ -87,7 +87,7 @@ class ContentMatcher {
     
     // Check if we're in an email conversation
     if (isInEmailConversation()) {
-      const result = handleEmailMessage(userInput);
+      const result = await handleEmailMessage(userInput);
       return {
         isEmail: true,
         response: result.response,

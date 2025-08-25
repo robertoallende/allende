@@ -1,12 +1,14 @@
 import { VerificationQuestion, getRandomQuestion, validateAnswer } from '@/data/verification-questions';
+import { EmailApiClient, EmailApiError, EmailSubmissionRequest } from './email-api-client';
 
 export type EmailConversationStep = 
   | 'collecting_name'      // Step 1: "What's your name?"
   | 'collecting_email'     // Step 2: "What's your email?"
   | 'collecting_message'   // Step 3: "What would you like to tell him?"
   | 'verifying_human'      // Step 4: Random verification question
-  | 'sending' 
+  | 'sending'              // Step 5: Sending email via API
   | 'complete' 
+  | 'error'                // Error state for retry
   | null;
 
 export interface EmailConversationState {
@@ -16,6 +18,8 @@ export interface EmailConversationState {
   userMessage?: string;     // Collected third
   currentQuestion?: VerificationQuestion;
   usedQuestionIds: string[];
+  lastError?: string;       // For retry scenarios
+  retryCount?: number;      // Track retry attempts
 }
 
 // Global state for email conversation (simple approach for now)
@@ -23,6 +27,9 @@ let emailConversationState: EmailConversationState = {
   step: null,
   usedQuestionIds: []
 };
+
+// Initialize API client
+const apiClient = new EmailApiClient();
 
 export function isEmailTrigger(message: string): boolean {
   const emailTriggers = [
@@ -39,7 +46,8 @@ export function isEmailTrigger(message: string): boolean {
 export function startEmailConversation(): string {
   emailConversationState = {
     step: 'collecting_name',  // Start with name collection
-    usedQuestionIds: []
+    usedQuestionIds: [],
+    retryCount: 0
   };
   
   return "I'd be happy to help you send Roberto an email! What's your name so Roberto knows who's reaching out?";
@@ -62,8 +70,78 @@ function isValidEmail(email: string): boolean {
   return emailRegex.test(email.trim());
 }
 
-export function handleEmailMessage(message: string): { response: string; action?: 'SEND_EMAIL' } {
+/**
+ * Send email via API
+ */
+async function sendEmailToRoberto(state: EmailConversationState): Promise<{ success: boolean; message: string }> {
+  if (!state.userName || !state.userEmail || !state.userMessage) {
+    return {
+      success: false,
+      message: "Missing required information. Please start over."
+    };
+  }
+
+  const emailSubmission: EmailSubmissionRequest = {
+    name: state.userName,
+    email: state.userEmail,
+    message: state.userMessage,
+    verificationPassed: true,
+    timestamp: new Date().toISOString()
+  };
+
+  try {
+    await apiClient.submitEmail(emailSubmission);
+    
+    return {
+      success: true,
+      message: `Your message has been sent to Roberto! He typically responds within 24-48 hours to ${state.userEmail}.
+
+Thank you for reaching out!`
+    };
+  } catch (error) {
+    const apiError = error as EmailApiError;
+    const userMessage = EmailApiClient.getUserFriendlyErrorMessage(apiError);
+    
+    return {
+      success: false,
+      message: userMessage
+    };
+  }
+}
+
+export async function handleEmailMessage(message: string): Promise<{ response: string; action?: 'SEND_EMAIL' | 'RETRY_EMAIL' }> {
   const state = emailConversationState;
+  
+  // Handle retry scenarios
+  if (state.step === 'error') {
+    const retryTriggers = /^(yes|y|retry|try again|send)$/i;
+    const cancelTriggers = /^(no|n|cancel|stop)$/i;
+    
+    if (retryTriggers.test(message.trim())) {
+      // User wants to retry
+      emailConversationState = {
+        ...state,
+        step: 'sending',
+        retryCount: (state.retryCount || 0) + 1
+      };
+      
+      return {
+        response: "Retrying to send your message to Roberto...",
+        action: 'RETRY_EMAIL'
+      };
+    } else if (cancelTriggers.test(message.trim())) {
+      // User wants to cancel
+      resetEmailConversation();
+      return {
+        response: "No problem! Feel free to ask me anything else or try sending an email later."
+      };
+    } else {
+      // Invalid response
+      return {
+        response: "Would you like me to try sending your message again? Just say 'yes' to retry or 'no' to cancel."
+      };
+    }
+  }
   
   switch (state.step) {
     case 'collecting_name':
@@ -103,7 +181,7 @@ export function handleEmailMessage(message: string): { response: string; action?
       };
       
       return {
-        response: "Perfect! Just need to verify you're human first. What would you like to tell him?"
+        response: "Perfect! What would you like to tell Roberto?"
       };
     
     case 'collecting_message':
@@ -118,7 +196,7 @@ export function handleEmailMessage(message: string): { response: string; action?
       };
       
       return {
-        response: `Great message! ${question.question}`
+        response: `Great message! Just need to verify you're human first. ${question.question}`
       };
     
     case 'verifying_human':
@@ -130,14 +208,14 @@ export function handleEmailMessage(message: string): { response: string; action?
       const isCorrect = validateAnswer(state.currentQuestion, message);
       
       if (isCorrect) {
-        // Correct answer - send email and complete
+        // Correct answer - show loading message first, then send email
         emailConversationState = {
           ...state,
-          step: 'complete'
+          step: 'sending'
         };
         
         return {
-          response: "You're absolutely right! Your message has been sent to Roberto. He typically responds within 24-48 hours.",
+          response: "You're absolutely right! Sending your message to Roberto...",
           action: 'SEND_EMAIL'
         };
       } else {
@@ -159,6 +237,46 @@ export function handleEmailMessage(message: string): { response: string; action?
   }
 }
 
+/**
+ * Process email sending and return result
+ */
+export async function processEmailSending(): Promise<string> {
+  const state = emailConversationState;
+  
+  if (state.step !== 'sending') {
+    return "Email sending process called at wrong time.";
+  }
+
+  const result = await sendEmailToRoberto(state);
+  
+  if (result.success) {
+    // Success - mark as complete
+    emailConversationState = {
+      ...state,
+      step: 'complete'
+    };
+    return result.message;
+  } else {
+    // Error - offer retry
+    emailConversationState = {
+      ...state,
+      step: 'error',
+      lastError: result.message
+    };
+    
+    const retryCount = state.retryCount || 0;
+    if (retryCount < 2) {
+      return `${result.message}
+
+Would you like me to try sending your message again?`;
+    } else {
+      return `${result.message}
+
+I've tried several times but couldn't send your message. You can try again later or reach out to Roberto directly at his website.`;
+    }
+  }
+}
+
 export function getEmailConversationState(): EmailConversationState {
   return emailConversationState;
 }
@@ -171,5 +289,6 @@ export function resetEmailConversation(): void {
 }
 
 export function isInEmailConversation(): boolean {
-  return emailConversationState.step !== null && emailConversationState.step !== 'complete';
+  return emailConversationState.step !== null && 
+         emailConversationState.step !== 'complete';
 }
