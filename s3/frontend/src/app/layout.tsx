@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Geist } from "next/font/google"
 import localFont from "next/font/local"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Analytics } from "@/components/analytics/analytics"
 import "./globals.css"
 
 const geistSans = Geist({
@@ -50,6 +51,7 @@ export default function RootLayout({
         <ThemeProvider>
           {children}
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )

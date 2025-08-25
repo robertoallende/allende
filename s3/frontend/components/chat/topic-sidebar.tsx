@@ -37,9 +37,35 @@ interface TopicSidebarProps {
   isNewConversationActive?: boolean;
 }
 
+import { trackChatInteraction } from '@/lib/analytics';
+
 export function TopicSidebar({ activeTopicId, onTopicSelect, onNewConversation, isNewConversationActive = false }: TopicSidebarProps) {
   const { theme, setTheme, themes } = useTheme();
   const config = getAppConfig();
+
+  // Enhanced topic selection with analytics
+  const handleTopicSelect = (topicId: string) => {
+    // Track topic selection
+    trackChatInteraction('topic_select', topicId, {
+      previous_topic: activeTopicId || 'none',
+      selection_method: 'sidebar_click'
+    });
+    
+    // Call the original handler
+    onTopicSelect(topicId);
+  };
+
+  // Enhanced new conversation with analytics
+  const handleNewConversation = () => {
+    // Track new conversation start
+    trackChatInteraction('topic_select', 'new_conversation', {
+      previous_topic: activeTopicId || 'none',
+      selection_method: 'new_conversation_button'
+    });
+    
+    // Call the original handler
+    onNewConversation();
+  };
 
   return (
     <div className="flex flex-col h-screen bg-background lg:bg-muted/30 border-r border-border lg:border-r-0">
@@ -52,7 +78,7 @@ export function TopicSidebar({ activeTopicId, onTopicSelect, onNewConversation, 
       {/* New Conversation Button */}
       <div className="p-2 flex-shrink-0">
         <button 
-          onClick={onNewConversation}
+          onClick={handleNewConversation}
           className={`flex items-center gap-3 w-full p-3 rounded-lg transition-colors text-left ${
             isNewConversationActive
               ? "bg-primary/10 text-foreground"
@@ -73,7 +99,7 @@ export function TopicSidebar({ activeTopicId, onTopicSelect, onNewConversation, 
           return (
             <button
               key={thread.id}
-              onClick={() => onTopicSelect(thread.id)}
+              onClick={() => handleTopicSelect(thread.id)}
               className={`flex items-start gap-3 w-full p-3 rounded-lg transition-colors text-left ${
                 isActive
                   ? "bg-primary/10 text-foreground"
