@@ -212,10 +212,12 @@ export function MultiThreadRuntimeProvider({ children }: MultiThreadRuntimeProvi
       
       // Safety check for conversation existence
       if (!conversation || !conversation.responses) {
-        const errorMessage = `I don't have specific responses configured for the "${topic}" topic yet. Feel free to ask me anything!`;
+        // Use random fallback response instead of generic message
+        const { getFallbackResponse } = await import('@/services/fallback-response-manager');
+        const randomMessage = getFallbackResponse();
         
-        // Stream the error message too
-        const words = errorMessage.split(' ');
+        // Stream the random fallback message
+        const words = randomMessage.split(' ');
         let currentContent = '';
         
         for (let i = 0; i < words.length; i++) {
@@ -232,6 +234,7 @@ export function MultiThreadRuntimeProvider({ children }: MultiThreadRuntimeProvi
               custom: {
                 topic,
                 followUps: [],
+                isFallbackResponse: true
               },
             },
           };

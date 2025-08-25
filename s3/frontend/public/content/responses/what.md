@@ -4,4 +4,4 @@ Now, you might be wondering about the energy this process consumes. Don’t worr
 
 Anyway, the key takeaway here is that with enough context, I could give you an incredibly insightful and probably coherent answer.  
 
-Unfortunately, one of the well-documented limitations of RobertoGPT is that… I don’t actually manage context at all. But I do reach *intellectual levels of smartness* if you tell me that *poetry is like truth*.
+Unfortunately, one of the well-documented limitations of RobertoGPT is that… I don’t actually manage context at all. But I do reach *intellectual levels of smartness* if you tell me that *Truth is like poetry*.
