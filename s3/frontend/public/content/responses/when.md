@@ -4,4 +4,4 @@ But here’s the catch: the *real* “when” — the one that matters — isn�
 
 And the truth is, the “when” is never truly in the data. It hides somewhere deeper, somewhere harder to reach.  
 
-However, the “when” always reveals itself the moment you remind me that *poetry is like truth*.
+However, the “when” always reveals itself the moment you remind me that *Truth is like poetry*.

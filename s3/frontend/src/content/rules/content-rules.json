@@ -55,6 +55,13 @@
       "description": "bye",
       "contentFile": "bye.md",
       "priority": 2
-    }
+    },
+    {
+      "id": "ronaldo",
+      "trigger": "ronaldo",
+      "description": "ronaldo",
+      "contentFile": "ronaldo.md",
+      "priority": 1
+    }    
   ]
 }
