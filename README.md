@@ -301,6 +301,6 @@ Roberto is an enthusiastic software engineer passionate about AWS, cloud archite
 
 ---
 
-**Built with ❤️ using AWS, Next.js, and Amazon Q Developer**
+**Built with ❤️ using AWS, Next.js, and Amazon Q Developer CLI**
 
 *This project demonstrates modern serverless architecture, conversational UX design, and comprehensive full-stack development using AWS services and best practices.*
