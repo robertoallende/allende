@@ -2,6 +2,9 @@
 
 Reflections on making software in the cloud, from AI-first experiments to hard-earned lessons in delivering scalable, resilient systems.
 
+[Build and ship an entire app using Amazon Q](https://builder.aws.com/content/32oVtOpyI0e0YSI9H4kLvb5Mlvw/build-and-ship-an-entire-app-using-amazon-q)
+How the AWS Lambda Hackathon let me stress test an idea that ended up transforming how I work with Q CLI to develop software. This post is based on a presentation at AWS Community Day 2025, New Zealand, Aotearoa. [→](https://builder.aws.com/content/32oVtOpyI0e0YSI9H4kLvb5Mlvw/build-and-ship-an-entire-app-using-amazon-q)
+
 [Not a portfolio. Not a blog. A conversation](https://community.aws/content/2yxKHol9N5tba3Uju1eRcHUymSm) | 26/08/2025
 A few days ago, I came across the AWS Builder Challenge—and I couldn’t resist. 
 
