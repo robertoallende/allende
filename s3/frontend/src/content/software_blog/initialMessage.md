@@ -2,9 +2,10 @@
 
 Reflections on making software in the cloud, from AI-first experiments to hard-earned lessons in delivering scalable, resilient systems.
 
-[Build and ship an entire app using Amazon Q](https://builder.aws.com/content/32oVtOpyI0e0YSI9H4kLvb5Mlvw/build-and-ship-an-entire-app-using-amazon-q) | 18/09/2025
+[Build and ship an entire app using Amazon Q](https://community.aws/content/32oVtOpyI0e0YSI9H4kLvb5Mlvw) | 18/09/2025
+How the AWS Lambda Hackathon let me stress test an idea that ended up transforming how I work with Q CLI to develop software.
 
-How the AWS Lambda Hackathon let me stress test an idea that ended up transforming how I work with Q CLI to develop software. This post is based on a presentation at AWS Community Day 2025, New Zealand, Aotearoa. [→](https://builder.aws.com/content/32oVtOpyI0e0YSI9H4kLvb5Mlvw/build-and-ship-an-entire-app-using-amazon-q)
+This post is based on a presentation at AWS Community Day 2025, New Zealand, Aotearoa. [→](https://community.aws/content/32oVtOpyI0e0YSI9H4kLvb5Mlvw)
 
 [Not a portfolio. Not a blog. A conversation](https://community.aws/content/2yxKHol9N5tba3Uju1eRcHUymSm) | 26/08/2025
 A few days ago, I came across the AWS Builder Challenge—and I couldn’t resist. 
@@ -19,8 +20,5 @@ June 4-5, 2025 saw AWS bring together thousands of developers, builders, and bus
 
 [AI First Imperative: What Does It Mean to Be AI First](https://community.aws/content/2uTxBHfOqBru2fkVYGFg1023pXp) | 02/06/2025
 I’ve been practicing an AI First mindset for a few months now. It wasn’t something I defined from the start—it just emerged naturally from how I worked. Whether I was tackling a complex project, debugging a technical issue, or drafting a message, AI became a central part of my thinking loop. [→](https://community.aws/content/2uTxBHfOqBru2fkVYGFg1023pXp)
-
-[AI First Imperative: Preventing Your Digital Kodak Moment](https://community.aws/content/2tO2WMlns6zODmiSlZeLCaoKeYb) | 18/03/2025
-Imagine standing in a photo lab, holding a freshly printed picture, unaware that the very act of developing film is about to vanish. Disruption rarely announces itself with sirens—it creeps in, reshaping industries before most notice. AI isn’t just another innovation; it’s a tidal... [→](https://community.aws/content/2tO2WMlns6zODmiSlZeLCaoKeYb)
 
 *Read all the articles at [AWS Builder Center](https://builder.aws.com/community/@robertoallende)*
