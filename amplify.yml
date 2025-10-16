@@ -17,8 +17,8 @@ applications:
             # Build Next.js application with content generation and static export
             - pnpm run build
       artifacts:
-        # Use .next directory instead of out to avoid server files error
-        baseDirectory: .next
+        # Use out directory for Next.js static export
+        baseDirectory: out
         files:
           - '**/*'
       cache:
