@@ -12,5 +12,4 @@ export const socialLinks = {
   github: "https://github.com/robertoallende",
   instagram: "https://www.instagram.com/",
   linkedin: "https://www.linkedin.com/in/robertoallende/",
-  email: "mailto:roberto@allende.nz",
 };
