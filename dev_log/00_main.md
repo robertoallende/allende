@@ -78,7 +78,7 @@ Build process generates static HTML/CSS/JS for deployment to GitHub Pages or Ver
 
 ## Project Status
 ### Overall Completion
-46% - Units 1-6 complete (Foundation + Content phases complete)
+85% - Units 1-11 complete (Foundation, Content, and Advanced Features phases complete)
 
 ### Units Completed
 * **01**: Astro Setup & Astrofolio Integration ✅
