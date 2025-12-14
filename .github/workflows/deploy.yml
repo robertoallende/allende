@@ -1,0 +1,126 @@
+name: Deploy Allende.nz Astro Website
+
+# Manual deployment trigger - accessible via "Run workflow" button in GitHub UI
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'production'
+        type: choice
+        options:
+        - production
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22.x'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm install
+      
+    - name: Build Astro website
+      run: npm run build
+      
+    - name: Validate Astro build output
+      run: |
+        echo "Validating Astro build output..."
+        
+        # Check if dist directory exists
+        if [ ! -d "dist" ]; then
+          echo "❌ Error: dist/ directory not found"
+          exit 1
+        fi
+        
+        # Check if index.html exists
+        if [ ! -f "dist/index.html" ]; then
+          echo "❌ Error: dist/index.html not found"
+          exit 1
+        fi
+        
+        # Check if HTML contains portfolio content
+        if ! grep -q "Roberto Allende" dist/index.html; then
+          echo "❌ Error: Portfolio content not found in built HTML"
+          exit 1
+        fi
+        
+        # Check if Astro CSS assets exist
+        if ! ls dist/_astro/*.css 1> /dev/null 2>&1; then
+          echo "❌ Error: Astro CSS assets not found in dist/_astro/"
+          exit 1
+        fi
+        
+        # Check if Astro JS assets exist  
+        if ! ls dist/_astro/*.js 1> /dev/null 2>&1; then
+          echo "❌ Error: Astro JavaScript assets not found in dist/_astro/"
+          exit 1
+        fi
+        
+        # Check if RSS feed exists
+        if [ ! -f "dist/rss.xml" ]; then
+          echo "❌ Error: RSS feed not found at dist/rss.xml"
+          exit 1
+        fi
+        
+        # Check if sitemap exists
+        if [ ! -f "dist/sitemap-index.xml" ]; then
+          echo "❌ Error: Sitemap not found at dist/sitemap-index.xml"
+          exit 1
+        fi
+        
+        # Check if favicon exists
+        if [ ! -f "dist/favicon.ico" ]; then
+          echo "❌ Error: Favicon not found at dist/favicon.ico"
+          exit 1
+        fi
+        
+        # Check if hidden /x/ routes exist
+        if [ ! -d "dist/x" ]; then
+          echo "❌ Error: Hidden /x/ routes not found"
+          exit 1
+        fi
+        
+        # Check if analytics is integrated
+        if ! grep -q "G-TXYD29HN0T" dist/index.html; then
+          echo "❌ Error: Google Analytics not found in built HTML"
+          exit 1
+        fi
+        
+        echo "✅ Astro build validation passed"
+        echo "📁 Built files:"
+        ls -la dist/
+        echo "🎯 Astro asset files:"
+        ls -la dist/_astro/ 2>/dev/null || echo "No _astro directory found"
+        echo "🔍 Hidden routes:"
+        ls -la dist/x/ 2>/dev/null || echo "No /x/ directory found"
+        
+    - name: Add CNAME file for custom domain
+      run: |
+        echo "allende.nz" > dist/CNAME
+        echo "✅ CNAME file created with allende.nz"
+        
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
+        cname: allende.nz
+        
+    - name: Deployment summary
+      run: |
+        echo "🚀 Astro deployment completed successfully!"
+        echo "📍 Site will be available at: https://allende.nz"
+        echo "⏰ DNS propagation may take a few minutes"
+        echo "🔧 Built with Astro $(npm list astro --depth=0 2>/dev/null | grep astro || echo 'version unknown')"
+        echo "📊 Analytics: G-TXYD29HN0T"
+        echo "🎯 Portfolio + /x/ routes deployed"
