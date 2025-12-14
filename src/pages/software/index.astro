@@ -3,9 +3,9 @@ import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 import { fetchAwsBuilderContent } from '../../utils/aws-builder-fetcher.js';
 
-// Get portfolio content
-const portfolioContent = await getCollection('portfolio');
-const softwareContent = portfolioContent.find(entry => entry.data.section === 'software');
+// Get software content
+const softwareEntries = await getCollection('software');
+const softwareContent = softwareEntries[0]; // Just take the first one
 
 if (!softwareContent) {
   throw new Error('Software content not found');

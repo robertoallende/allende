@@ -2,9 +2,9 @@
 import Base from "../../layouts/Base.astro";
 import { getCollection } from 'astro:content';
 
-// Get all portfolio content and find projects
-const portfolioContent = await getCollection('portfolio');
-const projectsContent = portfolioContent.find(entry => entry.data.section === 'projects');
+// Get projects content
+const projectsEntries = await getCollection('projects');
+const projectsContent = projectsEntries[0]; // Just take the first one
 
 if (!projectsContent) {
   throw new Error('Projects content not found');
@@ -12,12 +12,13 @@ if (!projectsContent) {
 
 const { Content } = await projectsContent.render();
 
-const title = "Projects";
-const description = "Software development projects, methodologies, and creative work";
 ---
 
-<Base title={title} description={description}>
-  <section class="prose prose-neutral dark:prose-invert max-w-none">
+<Base title={projectsContent.data.title} description={projectsContent.data.description}>
+  <main class="mx-auto max-w-4xl px-6 py-12">
+    <!-- Page Title -->
+    <h1 class="text-4xl font-bold mb-8">{projectsContent.data.title}</h1>
+    
     <Content />
-  </section>
+  </main>
 </Base>

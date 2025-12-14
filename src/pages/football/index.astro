@@ -3,9 +3,9 @@ import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 import { fetchRSSFeed, RSS_FEEDS } from '../../utils/rss-fetcher.js';
 
-// Get portfolio content
-const portfolioContent = await getCollection('portfolio');
-const footballContent = portfolioContent.find(entry => entry.data.section === 'football');
+// Get football content
+const footballEntries = await getCollection('football');
+const footballContent = footballEntries[0]; // Just take the first one
 
 if (!footballContent) {
   throw new Error('Football content not found');

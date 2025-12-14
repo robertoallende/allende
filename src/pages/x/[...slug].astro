@@ -3,9 +3,9 @@ import Base from '../../layouts/Base.astro';
 import { getCollection, getEntry } from 'astro:content';
 
 export async function getStaticPaths() {
-  const hiddenContent = await getCollection('hidden');
+  const xContent = await getCollection('x');
   
-  return hiddenContent.map((entry) => ({
+  return xContent.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
   }));
