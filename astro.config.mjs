@@ -12,7 +12,7 @@ import opengraphImages, { presets } from "astro-opengraph-images";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://astrofolio.pages.dev",
+  site: "https://allende.nz",
   vite: {
     plugins: [tailwindcss()],
   },
@@ -45,7 +45,9 @@ export default defineConfig({
       ],
       gfm: true,
     }),
-    sitemap(),
+    sitemap({
+      filter: (page) => !page.includes('/x/')
+    }),
     react({
       experimentalReactChildren: true,
     }),
@@ -56,7 +58,6 @@ export default defineConfig({
         "fa6-brands": ["x-twitter", "github", "instagram", "linkedin-in"],
       },
     }),
-    sitemap(),
     opengraphImages({
       render: presets.waveSvg,
       options: {

@@ -1,16 +1,16 @@
 export const metaData = {
-  baseUrl: "https://astrofolio-astro.vercel.app/",
-  title: "Astrofolio",
-  name: "Vikas",
+  baseUrl: "https://allende.nz/",
+  title: "Roberto Allende",
+  name: "Roberto Allende",
   ogImage: "/opengraph-image.png",
   description:
-    "A clean, fast, and lightweight portfolio template built with Next.js, Vercel, and Tailwind CSS for optimal performance.",
+    "Software engineer, football analyst, and creative technologist based in New Zealand. Portfolio and insights on technology, football, and creative projects.",
 };
 
 export const socialLinks = {
-  twitter: "https://x.com/vikas5914",
-  github: "https://github.com/vikas5914/Astrofolio",
+  twitter: "https://x.com/robertoallende",
+  github: "https://github.com/robertoallende",
   instagram: "https://www.instagram.com/",
-  linkedin: "https://www.linkedin.com/",
-  email: "mailto:example@gmail.com",
+  linkedin: "https://www.linkedin.com/in/robertoallende/",
+  email: "mailto:roberto@allende.nz",
 };
