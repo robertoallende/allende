@@ -25,10 +25,8 @@ section: "kiwisaver"
 | **DIV** | Dividend Equity ETF | New Zealand | **5%** | NZ dividend stocks |
 | **VHP** | Healthcare REIT | New Zealand | **5%** | NZ property exposure |
 
----
 
 ## Portfolio Summary
-
 | Metric | Value |
 |--------|-------|
 | **Total Equity** | 85% |
@@ -48,16 +46,12 @@ section: "kiwisaver"
 - 🟪 **AU/NZ:** 10%
 - 🔴 **Bonds:** 15%
 
----
-
 ## Core Investment Thesis
 
 - **AI Growth:** Artificial intelligence adoption will accelerate across industries
 - **Emerging Markets:** Asia and emerging markets offer superior long-term growth potential
 - **Diversification:** Balance across geographies and asset classes reduces concentration risk
 - **Risk Management:** 15% bonds provides downside protection and rebalancing opportunities
-
----
 
 ## Behavioral Guidelines
 
@@ -76,8 +70,6 @@ section: "kiwisaver"
 - **Trust the process** - 15 years is enough time
 - **Rebalancing creates alpha** - ~0.5-1% annually
 
----
-
 ## For My Future Panicked Self
 
 **When reading this during a crash:**
@@ -90,7 +82,6 @@ You have 15 years. This crash is noise. Trust your past calm self who built this
 
 **Stick to the plan. Future you will thank you.**
 
----
 
 ## Annual Review Checklist
 
@@ -101,8 +92,6 @@ You have 15 years. This crash is noise. Trust your past calm self who built this
 5. Confirm no position exceeds 5%
 6. Review thesis validity
 7. Document lessons learned
-
----
 
 ## Guiding Principle
 
