@@ -19,6 +19,9 @@ jobs:
       contents: read
       pages: write
       id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     
     steps:
     - name: Checkout repository
@@ -108,17 +111,17 @@ jobs:
         echo "🔍 Hidden routes:"
         ls -la dist/x/ 2>/dev/null || echo "No /x/ directory found"
         
-    - name: Add CNAME file for custom domain
-      run: |
-        echo "allende.nz" > dist/CNAME
-        echo "✅ CNAME file created with allende.nz"
+    - name: Setup Pages
+      uses: actions/configure-pages@v3
+      
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v2
+      with:
+        path: ./dist
         
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
-        cname: allende.nz
+      id: deployment
+      uses: actions/deploy-pages@v2
         
     - name: Deployment summary
       run: |
