@@ -19,6 +19,9 @@ const { Content } = await projectsContent.render();
     <!-- Page Title -->
     <h1 class="text-4xl font-bold mb-8">{projectsContent.data.title}</h1>
     
-    <Content />
+    <!-- Content with prose styling -->
+    <div class="prose dark:prose-invert max-w-none">
+      <Content />
+    </div>
   </main>
 </Base>

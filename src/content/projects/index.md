@@ -1,123 +1,27 @@
 ---
 title: "Projects"
-description: "Software development projects, methodologies, and creative work"
+description: "Projects I have been involved with recently."
 section: "projects"
 ---
 
-# Projects
+## Code Ripple | July 2025
+Built using Micromanaged Driven Development for the AWS Lambda Hackathon 2025, CodeRipple validates the methodology's effectiveness for complex AI-assisted development. Every architectural decision, service integration, and technical challenge was systematically documented and AI-orchestrated through the MMDD methodology.
 
-## Open Source & Methodologies
+[CodeRipple Website](http://coderipple-showroom.s3-website-us-east-1.amazonaws.com/) | [Video](https://www.youtube.com/watch?v=v90v7DCC_yk) | [GitHub Repository](https://github.com/robertoallende/coderipple)
 
-**MMDD (Micromanaged Driven Development)**
-- *Open-source methodology for AI-assisted software development*
-- Systematic approach to maintainable AI-powered coding
-- Documentation-driven development with granular control
-- Built with Astro, deployed on GitHub Pages
-- **Tech Stack:** Astro, TypeScript, Tailwind CSS, GitHub Actions
-- **Live:** [mmdd.dev](https://mmdd.dev)
-- **Status:** Active development and community building
+## Micromanaged Driven Development (MMDD) | June 2025 - Present
+MMDD is an open-source methodology for AI-assisted software development. It enables you to use AI for every line of code while staying in charge of every decision. By breaking work into small, reviewable steps and documenting each one, MMDD turns AI into a reliable partner — producing maintainable, understandable, and predictable results.
 
-## Web Development
+[Blog Post](https://builder.aws.com/content/2y6nQgj1FVuaJIn9rFLThIslwaJ/code-with-ai-micromanagement-is-all-you-need) | [GitHub Repository](https://github.com/robertoallende/micromanaged-driven-development)
 
-**Personal Portfolio (This Site)**
-- *Modern Astro portfolio with dual content architecture*
-- Professional facade with hidden conversational content
-- SEO-optimized with complete route isolation for sensitive content
-- Custom theme implementation and responsive design
-- **Tech Stack:** Astro, Astrofolio theme, TypeScript, Tailwind CSS
-- **Features:** Content collections, sitemap exclusions, robots.txt control
-- **Status:** Active (current project)
+## reply.ai | February 2025
+Reply.ai is an email assistant that leverages Amazon Q Business' generative AI to help users manage their email workflow more efficiently. It analyzes incoming emails, prioritizes them based on user-defined criteria, and generates contextually appropriate responses while tracking actions. 
+Built with Amazon Q Apps in just two hours, Reply.ai went on to win the AWS & Ingram Micro GenAI Hackathon in Auckland 2025.
 
-**AWS Builder Challenge Website**
-- *Conversational personal website with serverless backend*
-- Chat-style interface for exploring content and sending emails
-- Real-time email system with anti-spam protection
-- Multi-theme support (Claude-inspired, dark, light)
-- **Tech Stack:** Next.js, AWS Lambda, API Gateway, SNS, SES
-- **Features:** Conversational UI, human verification, mobile-first design
-- **Status:** Completed (previous iteration)
+[Blog Post](https://builder.aws.com/content/2tNhySTWG5V6pxxaZi5S7hJcmsy/free-up-your-time-from-email-with-amazon-q-apps-and-genai) | [YouTube Video](https://www.youtube.com/watch?v=CKDVpbILJNM) | [Github Repository](https://github.com/robertoallende/reply.ai)
 
-## Development Tools & Automation
+## Astuten | July 2022 - Present
+Astuten is a Subs Assistant App for football coach. Make football / soccer team player substitution plans in seconds. Manage and follow lineups in real-time during matches.
+Astuten supports multiple formations for five, six, seven, nine and eleven a side football.
 
-**MMDD Astro Template**
-- *Reusable template for systematic AI-assisted development*
-- Extracted methodology and components from successful projects
-- Comprehensive documentation and implementation guides
-- Component library for rapid development
-- **Tech Stack:** Astro, Starlight, TypeScript
-- **Purpose:** Enable systematic AI-assisted development workflows
-- **Status:** Template ready for reuse
-
-**Content Migration Tools**
-- *Automated content transformation and migration utilities*
-- Chat interface to portfolio format conversion
-- Content collection generation and organization
-- SEO optimization and metadata enhancement
-- **Tech Stack:** Python, Node.js, file system automation
-- **Purpose:** Streamline content transformation workflows
-- **Status:** Project-specific implementations
-
-## Creative & Experimental
-
-**Conversational Content Architecture**
-- *Dual-audience content system with hidden routes*
-- Professional portfolio facade with conversational content preservation
-- Complete SEO isolation for sensitive or personal content
-- Dynamic routing with content collection integration
-- **Concept:** Serve different audiences with same content base
-- **Implementation:** /x/ namespace with robots.txt exclusions
-- **Status:** Implemented and refined
-
-**Football Analysis Platform** *(Planned)*
-- *Tactical analysis and match commentary platform*
-- Real-time match analysis with tactical breakdowns
-- New Zealand football focus with global perspective
-- Data visualization and tactical diagram integration
-- **Tech Stack:** TBD (likely Astro + data visualization libraries)
-- **Purpose:** Share football analysis and tactical insights
-- **Status:** Concept and planning phase
-
-## Technical Experiments
-
-**AI-Assisted Development Workflows**
-- *Systematic approaches to AI-powered coding*
-- Prompt engineering and context management
-- Documentation-driven development practices
-- Quality control and review processes
-- **Focus:** Maintainable AI-assisted development
-- **Methodology:** MMDD principles and unit-based development
-- **Status:** Ongoing refinement and documentation
-
-**Static Site Generation Optimization**
-- *Performance and SEO optimization techniques*
-- Build process optimization and automation
-- Content collection architecture patterns
-- Deployment pipeline refinement
-- **Tech Stack:** Astro, GitHub Actions, various hosting platforms
-- **Purpose:** Maximize static site performance and maintainability
-- **Status:** Continuous improvement across projects
-
----
-
-## Project Philosophy
-
-**Systematic Development**
-- MMDD methodology for controlled AI assistance
-- Documentation-driven development with clear decision tracking
-- Small, reviewable steps with comprehensive testing
-
-**Modern Web Standards**
-- Performance-first development with Core Web Vitals focus
-- Accessibility compliance and semantic HTML
-- Mobile-first responsive design principles
-- SEO optimization and structured data implementation
-
-**Open Source Contribution**
-- Methodology sharing and community building
-- Reusable templates and component libraries
-- Documentation and educational content creation
-- Collaborative development and knowledge sharing
-
----
-
-*Building modern web applications and development methodologies that combine AI assistance with systematic, maintainable practices.*
+[Official Website](https://www.astuten.com/) | [Blog Post](https://en.allende.nz/football/introducing-astuten/) | [YouTube Video](https://www.youtube.com/watch?v=z_hQ6TVI84Y)
