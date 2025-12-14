@@ -8,7 +8,7 @@ import rehypeKatex from "rehype-katex";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import icon from "astro-icon";
-import opengraphImages, { presets } from "astro-opengraph-images";
+
 
 // https://astro.build/config
 export default defineConfig({
@@ -56,23 +56,6 @@ export default defineConfig({
         "fa6-solid": ["rss", "circle-half-stroke"],
         tabler: ["mail-filled"],
         "fa6-brands": ["x-twitter", "github", "instagram", "linkedin-in"],
-      },
-    }),
-    opengraphImages({
-      render: presets.waveSvg,
-      options: {
-        fonts: [
-          {
-            name: "Roboto",
-            name: "Roboto",
-            name: "Roboto",
-            weight: 400,
-            style: "normal",
-            data: fs.readFileSync(
-              "node_modules/@fontsource/roboto/files/roboto-latin-400-normal.woff"
-            ),
-          },
-        ],
       },
     }),
   ],
