@@ -104,9 +104,9 @@ function parseJSONFeed(jsonText, maxItems) {
       const item = feedItems[i];
       
       items.push({
-        title: item.title || 'Untitled',
+        title: cleanHtml(item.title || 'Untitled'),
         link: item.url || item.link || '#',
-        description: item.summary || item.content_text || item.content_html || '',
+        description: cleanHtml(item.summary || item.content_text || item.content_html || ''),
         pubDate: parseDate(item.date_published || item.date_modified)
       });
     }
