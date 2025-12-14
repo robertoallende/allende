@@ -14,4 +14,27 @@ const blog = defineCollection({
 	}),
 });
 
-export const collections = { blog };
+const portfolio = defineCollection({
+	type: 'content',
+	schema: z.object({
+		title: z.string(),
+		description: z.string(),
+		section: z.enum(['about', 'software', 'football', 'contact']),
+		publishedAt: z.coerce.date().optional(),
+		updatedDate: z.coerce.date().optional(),
+		featured: z.boolean().optional(),
+	}),
+});
+
+const hidden = defineCollection({
+	type: 'content',
+	schema: z.object({
+		title: z.string(),
+		description: z.string().optional(),
+		section: z.string(), // piro, poetry, about, software, football, etc.
+		conversational: z.boolean().default(true),
+		publishedAt: z.coerce.date().optional(),
+	}),
+});
+
+export const collections = { blog, portfolio, hidden };
