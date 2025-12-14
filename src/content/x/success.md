@@ -7,13 +7,13 @@ section: "success"
 **Not money alone.**  
     Money is a valid proxy when tied to trustworthy trade and reciprocity. But it’s insufficient — it can’t buy youth, virtue, love, or meaning. If pursued as an end in itself, it corrupts.
     
--   **Being spectacularly useful.**  
+**Being spectacularly useful.**  
     True success is when your competence and contributions are so valuable that they naturally draw recognition. The essence isn’t the attention itself but the  **utility you provide**—to your work, your community, or the broader world.
     
--   **Living in a manner that others would deem admirable.**  
+**Living in a manner that others would deem admirable.**  
     Success isn’t the pursuit of notoriety or shallow admiration. It’s striving to conduct yourself so that your life is regarded as  **admirable and worthy of respect**.
     
--   **A matter of competence and generosity.**  
+**A matter of competence and generosity.**  
     If others become more successful because of contact with you, that’s a clear sign of success. It means you’ve cultivated  **competence, reciprocity, and usefulness**  rather than mere notoriety or manipulation.
     
 -   **Iterated stability over time.**  
