@@ -86,8 +86,8 @@ function parseDate(dateString) {
   }
 }
 
-// RSS feed URLs (update these with actual feed URLs)
+// RSS feed URLs (working test feeds - update with your actual feeds)
 export const RSS_FEEDS = {
-  software: 'https://aws.amazon.com/blogs/aws/feed/', // AWS Blog general feed for testing
-  football: 'https://feeds.bbci.co.uk/sport/football/rss.xml' // BBC Football feed for testing
+  software: 'https://aws.amazon.com/blogs/aws/feed/', // AWS Blog feed (working)
+  football: 'https://feeds.bbci.co.uk/sport/football/rss.xml' // BBC Football feed (working)
 };
