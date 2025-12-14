@@ -40,11 +40,11 @@ html {
 }
 
 .prose a {
-  @apply transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em] font-normal text-[#333333] dark:text-[#D4D4D4];
+  @apply text-blue-600 dark:text-blue-400 hover:underline transition-colors;
 }
 
 .prose a:hover {
-  @apply dark:decoration-neutral-400 decoration-neutral-600;
+  @apply underline;
 }
 
 .prose .anchor:after {
