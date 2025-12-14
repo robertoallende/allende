@@ -1,0 +1,6 @@
+
+User-agent: *
+Allow: /
+Disallow: /x/
+
+Sitemap: https://allende.nz/sitemap-index.xml
