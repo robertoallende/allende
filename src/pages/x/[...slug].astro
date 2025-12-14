@@ -20,11 +20,9 @@ const { Content } = await entry.render();
     <!-- Page Title with typewriter effect -->
     <h1 class="text-4xl font-bold mb-8" data-typewriter data-speed="80" data-delay="300">{entry.data.title}</h1>
     
-    <!-- Content with chat reveal animation -->
+    <!-- Content with prose styling -->
     <div class="prose dark:prose-invert max-w-none">
-      <div class="chat-reveal">
-        <Content />
-      </div>
+      <Content />
     </div>
   </main>
 </Base>

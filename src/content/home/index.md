@@ -1,20 +1,12 @@
 ---
-title: "Roberto Allende"
-description: "Software engineer, football analyst, and creative thinker based in New Zealand"
+title: "Hello!"
+description: ""
 ---
 
-Software engineer, football analyst, and creative thinker based in New Zealand.
+I’m Roberto. 
 
-I build scalable systems in the cloud, analyze football tactics, and explore the intersection of technology and creativity. Currently working on AI-assisted development methodologies and contributing to the AWS community.
+I believe we’re living in an extraordinary moment of change.
+I choose to treat it as an opportunity—to learn, grow, and build with curiosity.
+AI-first when it helps—rooted in human care and purpose.
 
-## What I Do
-
-**Software Engineering** - Building resilient cloud systems and exploring AI-first development approaches. I share insights about AWS, system architecture, and development practices.
-
-**Football Analysis** - Tactical analysis and commentary on the beautiful game, with a focus on coaching methodologies and player development.
-
-**Creative Projects** - Exploring the intersection of technology, methodology, and human creativity through various experimental projects.
-
----
-
-*Explore my work through the sections above, or discover hidden conversations and thoughts in the [experimental space](/x/).*
+Here are some notes from my adventures. If anything sparks your interest, feel free to say hi.
