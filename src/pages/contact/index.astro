@@ -1,8 +1,15 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 
-const contactContent = await getEntry('portfolio', 'contact');
+// Get all portfolio content and find contact
+const portfolioContent = await getCollection('portfolio');
+const contactContent = portfolioContent.find(entry => entry.data.section === 'contact');
+
+if (!contactContent) {
+  throw new Error('Contact content not found');
+}
+
 const { Content } = await contactContent.render();
 ---
 

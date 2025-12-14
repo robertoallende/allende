@@ -1,8 +1,15 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 
-const softwareContent = await getEntry('portfolio', 'software');
+// Get all portfolio content and find software
+const portfolioContent = await getCollection('portfolio');
+const softwareContent = portfolioContent.find(entry => entry.data.section === 'software');
+
+if (!softwareContent) {
+  throw new Error('Software content not found');
+}
+
 const { Content } = await softwareContent.render();
 ---
 

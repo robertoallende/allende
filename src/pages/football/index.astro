@@ -1,8 +1,15 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 
-const footballContent = await getEntry('portfolio', 'football');
+// Get all portfolio content and find football
+const portfolioContent = await getCollection('portfolio');
+const footballContent = portfolioContent.find(entry => entry.data.section === 'football');
+
+if (!footballContent) {
+  throw new Error('Football content not found');
+}
+
 const { Content } = await footballContent.render();
 ---
 

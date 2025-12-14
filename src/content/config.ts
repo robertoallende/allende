@@ -19,7 +19,7 @@ const portfolio = defineCollection({
 	schema: z.object({
 		title: z.string(),
 		description: z.string(),
-		section: z.enum(['about', 'software', 'football', 'contact']),
+		section: z.enum(['software', 'football', 'contact', 'projects']),
 		publishedAt: z.coerce.date().optional(),
 		updatedDate: z.coerce.date().optional(),
 		featured: z.boolean().optional(),
