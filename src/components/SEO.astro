@@ -97,3 +97,12 @@ const websiteSchema = {
 <!-- Structured Data -->
 <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
 <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2QVVJSV702"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2QVVJSV702');
+</script>
