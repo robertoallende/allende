@@ -1,0 +1,96 @@
+---
+// Analytics event tracking component for allende.nz
+---
+
+<script>
+  // Wait for gtag to be available
+  function waitForGtag(callback) {
+    if (typeof gtag !== 'undefined') {
+      callback();
+    } else {
+      setTimeout(() => waitForGtag(callback), 100);
+    }
+  }
+
+  // Track external link clicks
+  function trackExternalLinks() {
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a');
+      if (!link) return;
+      
+      const href = link.href;
+      const linkText = link.textContent?.trim() || '';
+      
+      // Track external links (not allende.nz)
+      if (href.startsWith('http') && !href.includes('allende.nz')) {
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'external_link_click', {
+            'event_category': 'outbound',
+            'link_url': href,
+            'link_text': linkText
+          });
+        }
+      }
+      
+      // Track RSS feed clicks
+      if (href.includes('rss.xml') || href.includes('atom.xml')) {
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'rss_feed_click', {
+            'event_category': 'engagement'
+          });
+        }
+      }
+    });
+  }
+
+  // Track theme switch
+  function trackThemeSwitch() {
+    document.addEventListener('click', (e) => {
+      if (e.target.matches('#theme-toggle') || e.target.closest('#theme-toggle')) {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'theme_switch', {
+            'event_category': 'engagement',
+            'theme': newTheme
+          });
+        }
+      }
+    });
+  }
+
+  // Track navigation clicks
+  function trackNavigation() {
+    document.addEventListener('click', (e) => {
+      const navLink = e.target.closest('nav a');
+      if (navLink && navLink.href.includes('allende.nz')) {
+        const section = navLink.textContent?.trim() || navLink.href.split('/').pop();
+        
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'navigation_click', {
+            'event_category': 'navigation',
+            'section': section
+          });
+        }
+      }
+    });
+  }
+
+  // Initialize analytics when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      waitForGtag(() => {
+        trackExternalLinks();
+        trackThemeSwitch();
+        trackNavigation();
+      });
+    });
+  } else {
+    waitForGtag(() => {
+      trackExternalLinks();
+      trackThemeSwitch();
+      trackNavigation();
+    });
+  }
+</script>

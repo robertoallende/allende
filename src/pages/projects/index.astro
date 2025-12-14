@@ -1,0 +1,27 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection } from 'astro:content';
+
+// Get projects content
+const projectsEntries = await getCollection('projects');
+const projectsContent = projectsEntries[0]; // Just take the first one
+
+if (!projectsContent) {
+  throw new Error('Projects content not found');
+}
+
+const { Content } = await projectsContent.render();
+
+---
+
+<Base title={projectsContent.data.title} description={projectsContent.data.description}>
+  <main class="mx-auto max-w-4xl px-6 py-12">
+    <!-- Page Title -->
+    <h1 class="text-4xl font-bold mb-8">{projectsContent.data.title}</h1>
+    
+    <!-- Content with prose styling -->
+    <div class="prose dark:prose-invert max-w-none">
+      <Content />
+    </div>
+  </main>
+</Base>

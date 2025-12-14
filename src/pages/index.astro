@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import { getEntry } from 'astro:content';
+
+// Get home content
+const homeContent = await getEntry('home', 'index');
+
+if (!homeContent) {
+  throw new Error('Home content not found');
+}
+
+const { Content } = await homeContent.render();
+---
+
+<Base title={homeContent.data.title} description={homeContent.data.description}>
+  <main class="mx-auto max-w-4xl px-6 py-12">
+    <!-- All content with typewriter effect -->
+    <div class="prose dark:prose-invert max-w-none" data-typewriter data-speed="15" data-delay="300">
+      <h1 class="text-4xl font-bold mb-8">{homeContent.data.title}</h1>
+      <Content />
+    </div>
+  </main>
+</Base>

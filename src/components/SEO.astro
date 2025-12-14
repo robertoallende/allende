@@ -1,0 +1,108 @@
+---
+import { SEO } from "astro-seo";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  openGraph?: {
+    basic: {
+      title: string;
+      type: string;
+      image: string;
+    };
+  };
+}
+
+const { title, description, canonical, openGraph } = Astro.props;
+
+const defaultTitle = "Roberto Allende";
+const defaultDescription = "Software engineer, football analyst, and creative thinker based in New Zealand. Building scalable cloud systems, analyzing football tactics, and exploring AI-assisted development methodologies.";
+const siteUrl = "https://allende.nz";
+
+// Structured data for Roberto Allende (Person)
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Roberto Allende",
+  "url": siteUrl,
+  "description": defaultDescription,
+  "jobTitle": "Software Engineer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "AWS"
+  },
+  "knowsAbout": [
+    "Software Engineering",
+    "Cloud Computing",
+    "AWS",
+    "Football Analysis",
+    "AI Development",
+    "System Architecture"
+  ],
+  "sameAs": [
+    "https://github.com/robertoallende",
+    "https://www.linkedin.com/in/robertoallende/",
+    "https://x.com/robertoallende",
+    "https://builder.aws.com/community/@robertoallende"
+  ]
+};
+
+// Website schema
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": defaultTitle,
+  "url": siteUrl,
+  "description": defaultDescription,
+  "author": {
+    "@type": "Person",
+    "name": "Roberto Allende"
+  }
+};
+---
+
+<SEO
+  title={title || defaultTitle}
+  description={description || defaultDescription}
+  canonical={canonical || siteUrl + Astro.url.pathname}
+  openGraph={{
+    basic: {
+      title: title || defaultTitle,
+      type: "website",
+      image: `${siteUrl}/opengraph-image.png`,
+    },
+    ...openGraph
+  }}
+  twitter={{
+    creator: "@robertoallende",
+    card: "summary_large_image",
+  }}
+  extend={{
+    link: [
+      { rel: "icon", href: "/favicon.ico" },
+      { rel: "sitemap", href: "/sitemap-index.xml" },
+      { rel: "alternate", type: "application/rss+xml", title: "Roberto Allende RSS", href: "/rss.xml" },
+    ],
+    meta: [
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "generator", content: Astro.generator },
+      { name: "robots", content: "index, follow" },
+      { name: "author", content: "Roberto Allende" },
+      { name: "keywords", content: "Roberto Allende, Software Engineer, Football Analysis, AWS, Cloud Computing, New Zealand" },
+    ],
+  }}
+/>
+
+<!-- Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TXYD29HN0T"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TXYD29HN0T');
+</script>

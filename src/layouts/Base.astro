@@ -1,0 +1,207 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+import Themes from "astro-themes";
+// import { ViewTransitions } from "astro:transitions";
+
+import BaseHead from "../components/BaseHead.astro";
+import SEO from "../components/SEO.astro";
+import Navbar from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import Analytics from "../components/Analytics.astro";
+
+import "@fontsource/geist-sans/400.css";
+import "@fontsource/geist-sans/600.css";
+import "@fontsource/geist-mono/400.css";
+import "@fontsource/geist-mono/600.css";
+import "@styles/global.css";
+import "../assets/styles/typewriter.css";
+
+const { title, description, image } = Astro.props;
+---
+
+<html lang="en" class="scrollbar-hide lenis lenis-smooth">
+  <head>
+    <!-- <ViewTransitions /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="googlebot"
+      content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"
+    />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <Themes />
+    <SEO title={title} description={description} image={image} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Your Site's Title"
+      href={new URL("rss.xml", Astro.site)}
+    />
+    <script>
+      import "@scripts/lenisSmoothScroll.js";
+    </script>
+  </head>
+  <body
+    class="antialiased flex flex-col items-center justify-center mx-auto mt-2 lg:mt-8 mb-20 lg:mb-40
+    scrollbar-hide">
+    <main
+      class="flex-auto min-w-0 mt-2 md:mt-6 flex flex-col px-6 sm:px-4 md:px-0 max-w-[640px] w-full">
+      <Navbar />
+      <slot />
+      <Footer />
+    </main>
+    
+    <script>
+      // Typewriter Animation Controller
+      class TypewriterEffect {
+        constructor(element, options = {}) {
+          this.element = element;
+          this.speed = options.speed || 50;
+          this.delay = options.delay || 0;
+          this.cursor = options.cursor !== false;
+          
+          // Get all text content and wrap each character
+          this.wrapCharacters();
+          this.element.classList.add('typewriter');
+          
+          if (this.delay > 0) {
+            setTimeout(() => this.start(), this.delay);
+          } else {
+            this.start();
+          }
+        }
+        
+        wrapCharacters() {
+          const walker = document.createTreeWalker(
+            this.element,
+            NodeFilter.SHOW_TEXT,
+            null,
+            false
+          );
+          
+          const textNodes = [];
+          let node;
+          while (node = walker.nextNode()) {
+            if (node.textContent.trim()) {
+              textNodes.push(node);
+            }
+          }
+          
+          // Wrap each character in a span with invisible color
+          textNodes.forEach(textNode => {
+            const text = textNode.textContent;
+            const parent = textNode.parentNode;
+            const fragment = document.createDocumentFragment();
+            
+            for (let i = 0; i < text.length; i++) {
+              const char = text[i];
+              const span = document.createElement('span');
+              span.textContent = char;
+              span.style.color = 'transparent';
+              span.classList.add('typewriter-char');
+              fragment.appendChild(span);
+            }
+            
+            parent.replaceChild(fragment, textNode);
+          });
+        }
+        
+        start() {
+          const chars = this.element.querySelectorAll('.typewriter-char');
+          let currentIndex = 0;
+          let currentLineChars = 0;
+          let lineSpeed = this.getRandomLineSpeed();
+          
+          const type = () => {
+            if (currentIndex < chars.length) {
+              // Reveal character by removing transparent color
+              chars[currentIndex].style.color = '';
+              currentIndex++;
+              currentLineChars++;
+              
+              // Check if we hit a line break or reached line character limit
+              const char = chars[currentIndex - 1];
+              const isLineBreak = char && (char.textContent === '\n' || 
+                                         char.offsetTop !== (chars[currentIndex - 2] && chars[currentIndex - 2].offsetTop));
+              
+              // Change speed every 200-500 characters or at line breaks
+              if (isLineBreak || currentLineChars >= lineSpeed) {
+                lineSpeed = this.getRandomLineSpeed();
+                currentLineChars = 0;
+              }
+              
+              // Calculate delay based on target characters per line
+              const delay = Math.random() * 3 + 2; // 2-5ms per character
+              
+              setTimeout(type, delay);
+            } else {
+              // Animation complete
+              this.element.classList.add('complete');
+              this.element.classList.remove('typing');
+              if (!this.cursor) {
+                this.element.classList.remove('typewriter');
+              }
+            }
+          };
+          
+          this.element.classList.add('typing');
+          type();
+        }
+        
+        getRandomLineSpeed() {
+          // Random line length between 200-500 characters
+          return Math.floor(Math.random() * 301) + 200; // 200-500
+        }
+      }
+
+      // Auto-initialize on page load and navigation
+      function initTypewriter() {
+        // Initialize typewriter effects
+        document.querySelectorAll('[data-typewriter]').forEach((element, index) => {
+          // Skip if already processed
+          if (element.classList.contains('typewriter-processed')) return;
+          
+          const speed = parseInt(element.dataset.speed) || 50;
+          const delay = parseInt(element.dataset.delay) || index * 1000;
+          const cursor = element.dataset.cursor !== 'false';
+          
+          element.classList.add('typewriter-processed');
+          new TypewriterEffect(element, { speed, delay, cursor });
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', initTypewriter);
+      
+      // Also run on page navigation (for SPA-like behavior)
+      document.addEventListener('astro:page-load', initTypewriter);
+
+      // Respect user motion preferences
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.addEventListener('DOMContentLoaded', () => {
+          // Skip animations for users who prefer reduced motion
+          document.querySelectorAll('[data-typewriter]').forEach(element => {
+            element.classList.remove('typewriter');
+          });
+        });
+      }
+    </script>
+    
+    <style>
+      /* CSS rules for the page scrollbar */
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+    
+    <Analytics />
+  </body>
+</html>
