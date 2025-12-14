@@ -1,16 +1,11 @@
-import rss from "@astrojs/rss";
-import { getCollection } from "astro:content";
-import { metaData } from "./../config";
+// RSS generation disabled - using external feeds only
+// This endpoint returns a 404 to prevent RSS generation
 
-export async function GET(context) {
-  const posts = await getCollection("blog");
-  return rss({
-    title: metaData.title,
-    description: metaData.description,
-    site: context.site,
-    items: posts.map((post) => ({
-      ...post.data,
-      link: `/blog/${post.slug}/`,
-    })),
+export async function GET() {
+  return new Response('RSS generation disabled', { 
+    status: 404,
+    headers: {
+      'Content-Type': 'text/plain'
+    }
   });
 }
