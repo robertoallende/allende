@@ -14,12 +14,14 @@ const { Content } = await homeContent.render();
 
 <Base title={homeContent.data.title} description={homeContent.data.description}>
   <main class="mx-auto max-w-4xl px-6 py-12">
-    <!-- Page Title -->
-    <h1 class="text-4xl font-bold mb-8">{homeContent.data.title}</h1>
+    <!-- Page Title with typewriter effect -->
+    <h1 class="text-4xl font-bold mb-8" data-typewriter data-speed="100" data-delay="500">{homeContent.data.title}</h1>
     
-    <!-- Content with prose styling -->
+    <!-- Content with chat reveal animation -->
     <div class="prose dark:prose-invert max-w-none">
-      <Content />
+      <div class="chat-reveal">
+        <Content />
+      </div>
     </div>
   </main>
 </Base>
