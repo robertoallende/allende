@@ -80,6 +80,7 @@ function cleanHtml(text) {
     .replace(/&amp;/g, '&')
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'")
+    .replace(/&#x27;/g, "'")
     .trim();
 }
 
