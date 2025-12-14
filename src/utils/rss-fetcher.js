@@ -10,10 +10,17 @@ export async function fetchRSSFeed(url, maxItems = 5) {
       throw new Error(`Failed to fetch RSS feed: ${response.status} ${response.statusText}`);
     }
     
-    const xmlText = await response.text();
+    const contentType = response.headers.get('content-type') || '';
+    const text = await response.text();
     
-    // Parse RSS XML
-    const items = parseRSSItems(xmlText, maxItems);
+    let items;
+    if (url.endsWith('.json') || contentType.includes('application/json')) {
+      // Parse JSON feed
+      items = parseJSONFeed(text, maxItems);
+    } else {
+      // Parse RSS XML
+      items = parseRSSItems(text, maxItems);
+    }
     
     console.log(`Successfully fetched ${items.length} items from ${url}`);
     return items;
@@ -86,8 +93,32 @@ function parseDate(dateString) {
   }
 }
 
-// RSS feed URLs (working test feeds - update with your actual feeds)
+function parseJSONFeed(jsonText, maxItems) {
+  try {
+    const feed = JSON.parse(jsonText);
+    const items = [];
+    
+    const feedItems = feed.items || [];
+    
+    for (let i = 0; i < Math.min(feedItems.length, maxItems); i++) {
+      const item = feedItems[i];
+      
+      items.push({
+        title: item.title || 'Untitled',
+        link: item.url || item.link || '#',
+        description: item.summary || item.content_text || item.content_html || '',
+        pubDate: parseDate(item.date_published || item.date_modified)
+      });
+    }
+    
+    return items;
+  } catch (error) {
+    throw new Error(`Failed to parse JSON feed: ${error.message}`);
+  }
+}
+
+// RSS feed URLs
 export const RSS_FEEDS = {
   software: 'https://aws.amazon.com/blogs/aws/feed/', // AWS Blog feed (working)
-  football: 'https://feeds.bbci.co.uk/sport/football/rss.xml' // BBC Football feed (working)
+  football: 'https://en.allende.nz/football/feed.json' // Allende.nz football feed
 };
