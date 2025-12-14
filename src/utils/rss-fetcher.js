@@ -81,6 +81,7 @@ function cleanHtml(text) {
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'")
     .replace(/&#x27;/g, "'")
+    .replace(/&hellip;/g, '...')
     .trim();
 }
 
