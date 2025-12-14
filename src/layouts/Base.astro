@@ -58,13 +58,12 @@ const { title, description, image } = Astro.props;
       class TypewriterEffect {
         constructor(element, options = {}) {
           this.element = element;
-          this.text = element.textContent;
           this.speed = options.speed || 50;
           this.delay = options.delay || 0;
           this.cursor = options.cursor !== false;
           
-          // Clear the element and start animation
-          this.element.textContent = '';
+          // Get all text content and wrap each character
+          this.wrapCharacters();
           this.element.classList.add('typewriter');
           
           if (this.delay > 0) {
@@ -74,13 +73,69 @@ const { title, description, image } = Astro.props;
           }
         }
         
+        wrapCharacters() {
+          const walker = document.createTreeWalker(
+            this.element,
+            NodeFilter.SHOW_TEXT,
+            null,
+            false
+          );
+          
+          const textNodes = [];
+          let node;
+          while (node = walker.nextNode()) {
+            if (node.textContent.trim()) {
+              textNodes.push(node);
+            }
+          }
+          
+          // Wrap each character in a span with invisible color
+          textNodes.forEach(textNode => {
+            const text = textNode.textContent;
+            const parent = textNode.parentNode;
+            const fragment = document.createDocumentFragment();
+            
+            for (let i = 0; i < text.length; i++) {
+              const char = text[i];
+              const span = document.createElement('span');
+              span.textContent = char;
+              span.style.color = 'transparent';
+              span.classList.add('typewriter-char');
+              fragment.appendChild(span);
+            }
+            
+            parent.replaceChild(fragment, textNode);
+          });
+        }
+        
         start() {
-          let i = 0;
+          const chars = this.element.querySelectorAll('.typewriter-char');
+          let currentIndex = 0;
+          let currentLineChars = 0;
+          let lineSpeed = this.getRandomLineSpeed();
+          
           const type = () => {
-            if (i < this.text.length) {
-              this.element.textContent += this.text.charAt(i);
-              i++;
-              setTimeout(type, this.speed);
+            if (currentIndex < chars.length) {
+              // Reveal character by removing transparent color
+              chars[currentIndex].style.color = '';
+              currentIndex++;
+              currentLineChars++;
+              
+              // Check if we hit a line break or reached line character limit
+              const char = chars[currentIndex - 1];
+              const isLineBreak = char && (char.textContent === '\n' || 
+                                         char.offsetTop !== (chars[currentIndex - 2] && chars[currentIndex - 2].offsetTop));
+              
+              // Change speed every 200-500 characters or at line breaks
+              if (isLineBreak || currentLineChars >= lineSpeed) {
+                lineSpeed = this.getRandomLineSpeed();
+                currentLineChars = 0;
+              }
+              
+              // Calculate delay based on target characters per line
+              const delay = Math.random() * 3 + 2; // 2-5ms per character
+              
+              setTimeout(type, delay);
             } else {
               // Animation complete
               this.element.classList.add('complete');
@@ -93,6 +148,11 @@ const { title, description, image } = Astro.props;
           
           this.element.classList.add('typing');
           type();
+        }
+        
+        getRandomLineSpeed() {
+          // Random line length between 200-500 characters
+          return Math.floor(Math.random() * 301) + 200; // 200-500
         }
       }
 

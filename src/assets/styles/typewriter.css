@@ -1,11 +1,35 @@
 /* Typewriter Animation Styles */
 
 .typewriter {
-  overflow: hidden;
   border-right: 2px solid currentColor;
-  white-space: nowrap;
-  margin: 0 auto;
   animation: blink-caret 0.75s step-end infinite;
+}
+
+/* Hide all list styling during typewriter animation */
+.typewriter.typing ul,
+.typewriter.typing ol {
+  list-style: none;
+}
+
+.typewriter.typing li::marker {
+  content: '';
+}
+
+.typewriter.typing li::before {
+  display: none;
+}
+
+.typewriter.complete ul,
+.typewriter.complete ol {
+  list-style: revert;
+}
+
+.typewriter.complete li::marker {
+  content: revert;
+}
+
+.typewriter.complete li::before {
+  display: revert;
 }
 
 .typewriter.typing {

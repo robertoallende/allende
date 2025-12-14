@@ -50,9 +50,17 @@ const navItems = {
     setTheme(newTheme);
   }
 
-  document.addEventListener("astro:page-load", () => {
-    document
-      .getElementById("theme-toggle")
-      .addEventListener("click", toggleTheme);
-  });
+  // Initialize theme toggle
+  function initThemeToggle() {
+    const themeToggle = document.getElementById("theme-toggle");
+    if (themeToggle) {
+      themeToggle.addEventListener("click", toggleTheme);
+    }
+  }
+
+  // Initialize on page load
+  document.addEventListener("DOMContentLoaded", initThemeToggle);
+  
+  // Also initialize on astro page load (if ViewTransitions are enabled)
+  document.addEventListener("astro:page-load", initThemeToggle);
 </script>

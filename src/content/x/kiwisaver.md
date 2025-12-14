@@ -37,14 +37,14 @@ section: "kiwisaver"
 | **Time Horizon** | 15 years |
 
 ### Asset Allocation
-- 🔵 **Equities:** 85%
-- 🟣 **Bonds:** 15%
+- **Equities:** 85%
+- **Bonds:** 15%
 
 ### Geographic Distribution
-- 🔵 **USA:** 60%
-- 🟣 **Asia/EM:** 15%
-- 🟪 **AU/NZ:** 10%
-- 🔴 **Bonds:** 15%
+- **USA:** 60%
+- **Asia/EM:** 15%
+- **AU/NZ:** 10%
+- **Bonds:** 15%
 
 ## Core Investment Thesis
 
