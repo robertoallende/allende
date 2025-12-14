@@ -40,7 +40,7 @@ html {
 }
 
 .prose a {
-  @apply text-blue-600 dark:text-blue-400 hover:underline transition-colors;
+  @apply text-blue-600 dark:text-blue-400 hover:underline transition-colors no-underline;
 }
 
 .prose a:hover {
