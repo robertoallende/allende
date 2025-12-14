@@ -6,7 +6,7 @@ interface Props {
 }
 
 import Themes from "astro-themes";
-import { ViewTransitions } from "astro:transitions";
+// import { ViewTransitions } from "astro:transitions";
 
 import BaseHead from "../components/BaseHead.astro";
 import Navbar from "../components/Nav.astro";
@@ -24,7 +24,7 @@ const { title, description, image } = Astro.props;
 
 <html lang="en" class="scrollbar-hide lenis lenis-smooth">
   <head>
-    <ViewTransitions />
+    <!-- <ViewTransitions /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="googlebot"
@@ -53,7 +53,72 @@ const { title, description, image } = Astro.props;
       <Footer />
     </main>
     
-    <script src="../assets/scripts/typewriter.js"></script>
+    <script>
+      // Typewriter Animation Controller
+      class TypewriterEffect {
+        constructor(element, options = {}) {
+          this.element = element;
+          this.text = element.textContent;
+          this.speed = options.speed || 50;
+          this.delay = options.delay || 0;
+          this.cursor = options.cursor !== false;
+          
+          // Clear the element and start animation
+          this.element.textContent = '';
+          this.element.classList.add('typewriter');
+          
+          if (this.delay > 0) {
+            setTimeout(() => this.start(), this.delay);
+          } else {
+            this.start();
+          }
+        }
+        
+        start() {
+          let i = 0;
+          const type = () => {
+            if (i < this.text.length) {
+              this.element.textContent += this.text.charAt(i);
+              i++;
+              setTimeout(type, this.speed);
+            } else {
+              // Animation complete
+              this.element.classList.add('complete');
+              this.element.classList.remove('typing');
+              if (!this.cursor) {
+                this.element.classList.remove('typewriter');
+              }
+            }
+          };
+          
+          this.element.classList.add('typing');
+          type();
+        }
+      }
+
+      // Auto-initialize on page load
+      document.addEventListener('DOMContentLoaded', () => {
+        // Initialize typewriter effects
+        document.querySelectorAll('[data-typewriter]').forEach((element, index) => {
+          const speed = parseInt(element.dataset.speed) || 50;
+          const delay = parseInt(element.dataset.delay) || index * 1000;
+          const cursor = element.dataset.cursor !== 'false';
+          
+          new TypewriterEffect(element, { speed, delay, cursor });
+        });
+      });
+
+      // Respect user motion preferences
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.addEventListener('DOMContentLoaded', () => {
+          // Skip animations for users who prefer reduced motion
+          document.querySelectorAll('[data-typewriter]').forEach(element => {
+            element.classList.remove('typewriter');
+          });
+        });
+      }
+    </script>
+    
     <style>
       /* CSS rules for the page scrollbar */
       .scrollbar-hide::-webkit-scrollbar {
