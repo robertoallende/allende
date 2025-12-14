@@ -4,7 +4,7 @@ description: ""
 section: "success"
 ---
 
--   **Not money alone.**  
+**Not money alone.**  
     Money is a valid proxy when tied to trustworthy trade and reciprocity. But it’s insufficient — it can’t buy youth, virtue, love, or meaning. If pursued as an end in itself, it corrupts.
     
 -   **Being spectacularly useful.**  
