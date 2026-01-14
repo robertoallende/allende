@@ -1,5 +1,5 @@
 ---
-title: "Pragmatic GenAI"
+title: "Pragmatic Use of GenAI"
 description: "How to use GenAI deliberately, with control, iteration, and responsibility"
 section: "genai"
 ---
