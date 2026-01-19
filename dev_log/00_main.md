@@ -86,6 +86,7 @@ Build process generates static HTML/CSS/JS for deployment to GitHub Pages or Ver
 * **03**: Navigation & Routing ✅
 * **04**: Home Page & Portfolio Foundation ✅
 * **05**: Content Migration ✅
+  * **Subunit**: Notes Section Implementation ✅
 * **06**: External RSS Feed Integration ✅
 * **07**: Navigation Structure Simplification ✅
 * **08**: Content Formatting and Styling Improvements ✅

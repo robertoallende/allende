@@ -1,7 +1,8 @@
 ---
 title: "Pragmatic Use of GenAI"
 description: "Control, iteration, and human judgment in AI-assisted work"
-section: "genai"
+section: "notes"
+publishedAt: 2026-01-19
 ---
 
 There is a gap between what GenAI can do and what it can be trusted to do. These systems produce fluent, authoritative-sounding output regardless of whether that output is accurate, coherent, or fit for purpose. Treating them as answer machines leads to frustration. Treating them as thinking tools—where the human remains responsible for judgment and verification—creates real leverage.

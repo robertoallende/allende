@@ -38,6 +38,16 @@ const projects = defineCollection({
 	}),
 });
 
+const notes = defineCollection({
+	type: 'content',
+	schema: z.object({
+		title: z.string(),
+		description: z.string(),
+		section: z.string(),
+		publishedAt: z.coerce.date().optional(),
+	}),
+});
+
 const x = defineCollection({
 	type: 'content',
 	schema: z.object({
@@ -49,4 +59,4 @@ const x = defineCollection({
 	}),
 });
 
-export const collections = { home, football, software, projects, x };
+export const collections = { home, football, software, projects, notes, x };

@@ -4,6 +4,19 @@ description: "Projects I have been involved with recently."
 section: "projects"
 ---
 
+## AWSBuilderFeed Twitter Bot | January 2026 - Present
+
+BuilderFeed is a small automation project I’m using to learn about pipelines and modernization by building a simple, end-to-end system. It fetches AWS Builder articles and publishes them on a schedule, serving as a low-risk environment to explore orchestration, state, and evolution over time.
+
+[AWS Builder Feed on X](https://x.com/uAWSBuilderFeed)  | [Source Code](https://github.com/robertoallende/awsbuilderfeed)
+
+## ClearTake | December 2025 - Present
+ClearTake is an ongoing research project where I explore how value moves through the AI economy. Instead of treating AI as a single sector, I look at it as a value chain — from compute, to platforms, to applications — and observe how attention, capital, and risk shift over time.
+
+The goal is not prediction or recommendations, but clarity. The indexes I publish are observational tools meant to support thinking rather than replace it, and they evolve in public as understanding improves.
+
+[Website](https://cleartake.ai)
+
 ## Code Ripple | July 2025
 Built using Micromanaged Driven Development for the AWS Lambda Hackathon 2025, CodeRipple validates the methodology's effectiveness for complex AI-assisted development. Every architectural decision, service integration, and technical challenge was systematically documented and AI-orchestrated through the MMDD methodology.
 

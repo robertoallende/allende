@@ -1,0 +1,58 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+// Get notes index content
+const notesEntries = await getCollection('notes');
+const indexContent = notesEntries.find(entry => entry.id === 'index.md');
+
+if (!indexContent) {
+  throw new Error('Notes index content not found');
+}
+
+// Get all note articles (exclude index.md) and sort by date (newest first)
+const noteArticles = notesEntries
+  .filter(entry => entry.id !== 'index.md')
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
+
+const { Content } = await indexContent.render();
+---
+
+<Base title={indexContent.data.title} description={indexContent.data.description}>
+  <main class="mx-auto max-w-4xl px-6 py-12">
+    <h1 class="text-4xl font-bold mb-8">{indexContent.data.title}</h1>
+    
+    <div class="prose dark:prose-invert max-w-none">
+      <Content />
+    </div>
+    
+    <section class="mt-12 border-t border-gray-200 dark:border-gray-700 pt-8">
+      <div class="space-y-6">
+        {noteArticles.map((article) => (
+          <article class="pb-6">
+            <h3 class="text-lg font-medium mb-2 flex items-baseline justify-between">
+              <a 
+                href={`/notes/${article.slug}`}
+                class="text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                {article.data.title}
+              </a>
+              <time class="text-sm text-gray-400 dark:text-gray-500 ml-4 flex-shrink-0">
+                {article.data.publishedAt.toLocaleDateString('en-US', { 
+                  year: 'numeric', 
+                  month: 'short', 
+                  day: 'numeric' 
+                })}
+              </time>
+            </h3>
+            {article.data.description && (
+              <p class="text-gray-600 dark:text-gray-300 mb-2 leading-relaxed">
+                {article.data.description}
+              </p>
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+</Base>
