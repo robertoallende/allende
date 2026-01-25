@@ -59,4 +59,4 @@ const x = defineCollection({
 	}),
 });
 
-export const collections = { home, football, software, projects, notes, x };
+export const collections = { home, software, projects, notes, x };

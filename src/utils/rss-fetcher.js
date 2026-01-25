@@ -122,5 +122,4 @@ function parseJSONFeed(jsonText, maxItems) {
 // RSS feed URLs
 export const RSS_FEEDS = {
   software: 'https://aws.amazon.com/about-aws/whats-new/recent/feed/', // AWS What's New feed
-  football: 'https://en.allende.nz/football/feed.json' // Allende.nz football feed
 };
