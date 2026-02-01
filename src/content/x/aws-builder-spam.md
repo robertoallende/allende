@@ -1,6 +1,6 @@
 ---
 title: AWS Builder Feed - Spam Report
-description: 
+description: Report about spam found in builder.aws.com
 section: "aws"
 ---
 
