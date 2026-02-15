@@ -1,6 +1,6 @@
 ---
 title: "The Case for Change: Why AI Adoption Is a Human Problem"
-description: "Knowing your organisation needs to adopt AI and actually making it happen are two very different problems. The technology is almost never the hard part. People are."
+description: "Knowing your organisation needs to adopt AI and actually making it happen are two very different problems. The technology is almost never the hard part. Habits are."
 section: "notes"
 publishedAt: 2026-02-12
 ---
