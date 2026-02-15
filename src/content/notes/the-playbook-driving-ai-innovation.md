@@ -1,6 +1,6 @@
 ---
 title: "The Playbook: Driving AI Innovation from Within"
-description: "This is the companion to The Case for Change, which covers the *why* — the urgency of the exponential economy, the psychology of resistance, and the principles behind successful adoption. This article is the *how*."
+description: "This is the companion to The Case for Change, which covers the why — the urgency of the exponential economy, the psychology of resistance, and the principles behind successful adoption. This article is the how."
 section: "notes"
 publishedAt: 2026-02-15
 ---
