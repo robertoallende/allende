@@ -5,7 +5,7 @@ section: "notes"
 publishedAt: 2026-02-12
 ---
 
-Knowing your organisation needs to adopt AI and actually making it happen are two very different problems. The technology is almost never the hard part. People are.
+Knowing your organisation needs to adopt AI and actually making it happen are two very different problems. The technology is almost never the hard part. Habits are.
 
 But if we step back and think about AI adoption as what it really is — innovation — we gain access to decades of hard-won lessons about how new ideas actually take root inside established organisations. Researchers at SRI International, venture capitalists in Silicon Valley, and change leaders across industries have been studying this problem long before large language models existed. What drives people to embrace change? What makes them resist? Why do some initiatives land while others quietly die?
 
