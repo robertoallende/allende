@@ -2,7 +2,7 @@
 title: "Hackathons as Practice"
 description: "AI has lowered the barrier to execution. It’s easier than ever to prototype, automate, and ship. In many cases, you can get surprisingly far just by prompting well. That’s powerful. But I’ve been thinking about something else."
 section: "notes"
-publishedAt: 2026-01-24
+publishedAt: 2026-02-24
 ---
 
 AI has lowered the barrier to execution.
