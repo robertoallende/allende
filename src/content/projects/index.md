@@ -4,6 +4,12 @@ description: "Projects I have been involved with recently."
 section: "projects"
 ---
 
+## Hackathon Community of Practice | February 2026 - Present
+
+A community for professionals who use hackathons as deliberate practice in the AI era.
+
+[Website](https://hackathoncop.org)
+
 ## AWSBuilderFeed Twitter Bot | January 2026 - Present
 
 BuilderFeed is a small automation project I’m using to learn about pipelines and modernization by building a simple, end-to-end system. It fetches AWS Builder articles and publishes them on a schedule, serving as a low-risk environment to explore orchestration, state, and evolution over time.
