@@ -4,6 +4,12 @@ description: "Projects I have been involved with recently."
 section: "projects"
 ---
 
+## Lucid Thread | Dec 2025 - Present 
+
+AI assistants today collaborate on their terms. Lucid Thread gives you twenty specialized AI personas — or build your own. Visible memory. Real-time document tools. All operating within boundaries you design, not boundaries designed for you.
+
+[Website](https://lucidthread.ai) | [AWS Builder Center Article](https://builder.aws.com/content/3AkCEuFLQPqr26sFGakBhmzc6JL/aideas-lucid-thread)
+
 ## Hackathon Community of Practice | February 2026 - Present
 
 A community for professionals who use hackathons as deliberate practice in the AI era.
