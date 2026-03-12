@@ -7,7 +7,7 @@ section: "lucid-thread"
 
 ### I made it to the semi-finals of the AWS Global 10,000 AIdeas Competition with Lucid Thread
 
-The*AWS Global 10,000 AIdeas Competition is a global developer challenge to build innovative AI applications using AWS tools.
+The AWS Global 10,000 AIdeas Competition is a global developer challenge to build innovative AI applications using AWS tools.
 
 I’m currently in the semi-final stage (top 1,000 projects) with an application called Lucid Thread. The next step in the competition is community voting, where the top 300 projects advance to the next round.
 
