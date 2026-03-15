@@ -34,7 +34,7 @@ Instead of a single generic assistant, you can decide which perspectives partici
 
 ## Demo
 Click on [ ] to view the video in full screen.
-<iframe width="560" height="315" src="https://www.youtube.com/embed/3o3G-Eo0usQ" title="Lucid Thread Demo" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/K6W6Uf7J0WQ" title="Lucid Thread Demo" frameborder="0" allowfullscreen></iframe>
 
 ## FAQ
 
