@@ -1,23 +1,72 @@
 ---
 import Base from '../layouts/Base.astro';
-import { getEntry } from 'astro:content';
+import { getEntry, getCollection } from 'astro:content';
+import { fetchAwsBuilderContent } from '../utils/aws-builder-fetcher.js';
 
-// Get home content
+// Get home content (intro)
 const homeContent = await getEntry('home', 'index');
-
 if (!homeContent) {
   throw new Error('Home content not found');
 }
-
 const { Content } = await homeContent.render();
+
+// Get notes articles (exclude index.md)
+const notesEntries = await getCollection('notes');
+const noteArticles = notesEntries
+  .filter(entry => entry.id !== 'index.md')
+  .map(entry => ({
+    title: entry.data.title,
+    link: `/notes/${entry.slug}`,
+    description: entry.data.description,
+    pubDate: entry.data.publishedAt,
+  }));
+
+// Get AWS Builder articles
+const awsArticles = await fetchAwsBuilderContent();
+
+// Merge and sort chronologically (newest first)
+const allItems = [...noteArticles, ...awsArticles]
+  .filter(item => item.pubDate)
+  .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
 ---
 
 <Base title={homeContent.data.title} description={homeContent.data.description}>
   <main class="mx-auto max-w-4xl px-6 py-12">
-    <!-- All content with typewriter effect -->
-    <div class="prose dark:prose-invert max-w-none" data-typewriter data-speed="15" data-delay="300">
-      <h1 class="text-4xl font-bold mb-8">{homeContent.data.title}</h1>
+    <!-- Intro -->
+    <div class="prose dark:prose-invert max-w-none">
       <Content />
     </div>
+
+    <!-- Merged chronological feed -->
+    <section class="mt-12 border-t border-gray-200 dark:border-gray-700 pt-8">
+      <div class="space-y-6">
+        {allItems.map((item) => (
+          <article class="pb-6">
+            <h3 class="text-lg font-medium mb-2 flex items-baseline justify-between">
+              <a
+                href={item.link}
+                target={item.link.startsWith('/') ? undefined : '_blank'}
+                rel={item.link.startsWith('/') ? undefined : 'noopener noreferrer'}
+                class="text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                {item.title}
+              </a>
+              <time class="text-sm text-gray-400 dark:text-gray-500 ml-4 flex-shrink-0">
+                {new Date(item.pubDate).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric'
+                })}
+              </time>
+            </h3>
+            {item.description && (
+              <p class="text-gray-600 dark:text-gray-300 mb-2 leading-relaxed">
+                {item.description}
+              </p>
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
   </main>
 </Base>

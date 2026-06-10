@@ -8,16 +8,6 @@ const home = defineCollection({
 	}),
 });
 
-const football = defineCollection({
-	type: 'content',
-	schema: z.object({
-		title: z.string(),
-		description: z.string(),
-		publishedAt: z.coerce.date().optional(),
-		updatedDate: z.coerce.date().optional(),
-	}),
-});
-
 const software = defineCollection({
 	type: 'content',
 	schema: z.object({

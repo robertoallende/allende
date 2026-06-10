@@ -17,7 +17,7 @@ interface Props {
 const { title, description, canonical, openGraph } = Astro.props;
 
 const defaultTitle = "Roberto Allende";
-const defaultDescription = "Software engineer, football analyst, and creative thinker based in New Zealand. Building scalable cloud systems, analyzing football tactics, and exploring AI-assisted development methodologies.";
+const defaultDescription = "AI-first engineering leader and builder based in New Zealand. Notes on technology, leadership, learning, and the work in between.";
 const siteUrl = "https://allende.nz";
 
 // Structured data for Roberto Allende (Person)
@@ -36,7 +36,6 @@ const personSchema = {
     "Software Engineering",
     "Cloud Computing",
     "AWS",
-    "Football Coaching",
     "AI Development",
     "System Architecture"
   ],
@@ -89,7 +88,7 @@ const websiteSchema = {
       { name: "generator", content: Astro.generator },
       { name: "robots", content: "index, follow" },
       { name: "author", content: "Roberto Allende" },
-      { name: "keywords", content: "Roberto Allende, Software Engineer, Football Analysis, AWS, Cloud Computing, New Zealand" },
+      { name: "keywords", content: "Roberto Allende, Software Engineer, AI, AWS, Cloud Computing, New Zealand" },
     ],
   }}
 />

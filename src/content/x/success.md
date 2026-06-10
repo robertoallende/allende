@@ -21,7 +21,7 @@ It’s not hedonic spikes of pleasure (like drugs or impulsive wins) but sustain
     
 **Harmonious integration.**  
 Success is  **multi-dimensional harmony**—health, relationships, family, community, and contribution working together. It’s being in the right place, at the right time, doing the right thing.
-
+    
 **Integrated harmony, like music.**  
 Life aspires to the condition of music: patterned, rhythmic, collaborative harmony. Success is when you can align yourself with that order and play your part gracefully.
     

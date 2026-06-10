@@ -30,6 +30,7 @@ class TypewriterEffect {
         // Animation complete
         this.element.classList.add('complete');
         this.element.classList.remove('typing');
+        document.dispatchEvent(new CustomEvent('typewriter:done'));
         if (!this.cursor) {
           this.element.classList.remove('typewriter');
         }

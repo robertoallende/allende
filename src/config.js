@@ -4,7 +4,7 @@ export const metaData = {
   name: "Roberto Allende",
   ogImage: "/opengraph-image.png",
   description:
-    "AI-first engineering leader, builder, and football coach based in New Zealand. Notes on technology, leadership, learning, and the work in between.",
+    "AI-first engineering leader and builder based in New Zealand. Notes on technology, leadership, learning, and the work in between.",
 };
 
 export const socialLinks = {
