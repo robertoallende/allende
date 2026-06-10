@@ -1,12 +1,6 @@
 ---
-title: "Hello!"
-description: ""
+title: "Roberto Allende"
+description: "Software Builder. AI-first. Human always."
 ---
 
-I’m Roberto. 
-
-I believe we’re living in an extraordinary moment of change.
-I choose to treat it as an opportunity—to learn, grow, and build with curiosity.
-AI-first when it helps—rooted in human care and purpose always.
-
-Here are some notes from my adventures. If anything sparks your interest, feel free to say hi.
+I build deliberate systems — technical and human — for moments of rapid change. Twenty years across startups, enterprise, and government.
