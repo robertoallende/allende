@@ -4,6 +4,25 @@ description: "Projects I have been involved with recently."
 section: "projects"
 ---
 
+## Fancy Kanban | July 2026 - Present
+
+Fancy Kanban is an Obsidian community plugin that stores kanban boards as plain markdown tables in fenced code blocks. It's free and open-source.
+
+[Fancy Kanban Obsidian's Community Entry](https://community.obsidian.md/plugins/fancy-kanban) | [Source Code](https://github.com/robertoallende/fancy-kanban)
+
+## Piano Teacher  | July 2026
+
+Piano Teacher is an always-on agent, built for AWS's Weekend Agent Challenge, that turns scanned sheet music into a sequenced, lesson-by-lesson practice plan. It's triggered not by a chat prompt or button but purely by moving a card to "Doing" on a kanban board — the board file change itself wakes the agent, making the board the control plane. Once triggered, it reads the score, breaks it into learnable chunks (hands separately, phrase by phrase, tempo ramps, tricky bars flagged), and generates one lesson file and card per chunk, each with embedded playable notation.
+
+[AWS Builder Article](https://builder.aws.com/content/3Gdrdl3OJ7GlS9nUu0oWbPlnbJJ/weekend-agent-challenge-piano-teacher) | [Source Code](https://github.com/robertoallende/piano-teacher)
+
+## Chur List | July 2026
+
+Chur List is an Alexa skill, built for AWS's Weekend Productivity Challenge, that lets users talk to their markdown to-do lists instead of reading them — asking things like "what's still pending?" and getting a natural, conversational answer. It runs on Lambda, S3, and Amazon Bedrock, using an LLM for reading comprehension instead of regex or fixed parsing, so it works with any markdown checklist regardless of structure.  
+
+[AWS Builder Article](https://builder.aws.com/content/3AklPxfA1oTyy68VrNYB5bRZiyh/weekend-productivity-challenge-chur-list) | [Source Code](https://github.com/robertoallende/churlist)
+
+
 ## Lucid Thread | Dec 2025 - May 2026 
 
 AI assistants today collaborate on their terms. Lucid Thread gives you twenty specialized AI personas — or build your own. Visible memory. Real-time document tools. All operating within boundaries you design, not boundaries designed for you.
@@ -11,12 +30,6 @@ AI assistants today collaborate on their terms. Lucid Thread gives you twenty sp
 Lucid Thread was submitted to the AWS 10,000 AIdeas Challenge and reached the semi-finals — top 300 globally.
 
 [AWS Builder Center Article](https://builder.aws.com/content/3AkCEuFLQPqr26sFGakBhmzc6JL/aideas-lucid-thread)
-
-## Hackathon Community of Practice | February 2026 - Present
-
-A community for professionals who use hackathons as deliberate practice in the AI era.
-
-[Website](https://hackathoncop.org)
 
 ## AWSBuilderFeed Twitter Bot | January 2026 - Present
 
