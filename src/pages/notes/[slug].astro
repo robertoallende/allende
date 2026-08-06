@@ -14,9 +14,51 @@ export async function getStaticPaths() {
 
 const { note } = Astro.props;
 const { Content } = await note.render();
+
+const siteUrl = "https://allende.nz";
+const pageUrl = `${siteUrl}/notes/${note.slug}/`;
+
+// Article JSON-LD schema
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": note.data.title,
+  "description": note.data.description || "",
+  "url": pageUrl,
+  "datePublished": note.data.publishedAt ? new Date(note.data.publishedAt).toISOString() : undefined,
+  "dateModified": note.data.publishedAt ? new Date(note.data.publishedAt).toISOString() : undefined,
+  "author": {
+    "@type": "Person",
+    "name": "Roberto Allende",
+    "url": siteUrl,
+    "jobTitle": "AI-first Engineering Leader",
+    "sameAs": [
+      "https://github.com/robertoallende",
+      "https://www.linkedin.com/in/robertoallende/",
+      "https://x.com/robertoallende",
+      "https://builder.aws.com/community/@robertoallende"
+    ]
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Roberto Allende",
+    "url": siteUrl
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": pageUrl
+  },
+  "inLanguage": "en"
+};
+
+// Remove undefined values
+Object.keys(articleSchema).forEach(key => {
+  if (articleSchema[key] === undefined) delete articleSchema[key];
+});
 ---
 
 <Base title={note.data.title} description={note.data.description}>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <main class="mx-auto max-w-4xl px-6 py-12">
     <h1 class="text-4xl font-bold mb-8">{note.data.title}</h1>
     

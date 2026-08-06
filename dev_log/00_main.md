@@ -78,7 +78,7 @@ Build process generates static HTML/CSS/JS for deployment to GitHub Pages or Ver
 
 ## Project Status
 ### Overall Completion
-95% - Units 1-14 complete (Foundation, Content, Advanced Features, and Home Merge phases complete)
+96% - Units 1-14 complete, Unit 15 in progress (SEO improvements - code complete, manual actions pending)
 
 ### Units Completed
 * **01**: Astro Setup & Astrofolio Integration ✅
@@ -95,6 +95,8 @@ Build process generates static HTML/CSS/JS for deployment to GitHub Pages or Ver
 * **11**: SEO & Performance Optimization ✅
 * **12**: Analytics Integration ✅
 * **14**: Home Page Merge & Navigation Simplification ✅
+* **15**: SEO Improvements 🔄
+  * **Subunit**: Article/Person JSON-LD Schema ✅
 
 ### Planned Features
 - Modern Astro-based portfolio architecture
