@@ -4,6 +4,12 @@ description: "Projects I have been involved with recently."
 section: "projects"
 ---
 
+## Fancy Charts| August 2026 - Present
+
+Fancy Charts is an Obsidian community plugin that renders charts from plain markdown tables in fenced code blocks. It's free and open-source.
+
+[Fancy Charts Obsidian's Community Entry](https://community.obsidian.md/plugins/fancy-charts) | [Source Code](https://github.com/robertoallende/fancy-charts)
+
 ## Fancy Kanban | July 2026 - Present
 
 Fancy Kanban is an Obsidian community plugin that stores kanban boards as plain markdown tables in fenced code blocks. It's free and open-source.
