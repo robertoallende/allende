@@ -13,7 +13,7 @@ Why keep a bespoke process when the industry has been converging on workflows li
 
 ## The rule, briefly
 
-Before any code gets written, you and the agent agree on a plan: a high-level description of the project and a list of units to be implemented. Each **unit** is the smallest possible next change. That unit is a file, and it's also the prompt: you hand it to the agent as the instruction for what to build. Once it's done, it becomes a commit, so every piece of code traces back to the file that told the agent to write it. A main file tracks every unit's status — planned, in progress, done — so the project state is legible at a glance. The full ruleset and templates are on GitHub if you want the real thing instead of my description of it.
+Before any code gets written, you and the agent agree on a plan: a high-level description of the project and a list of units to be implemented. Each **unit** is the smallest possible next change. That unit is a file, and it's also the prompt: you hand it to the agent as the instruction for what to build. Once it's done, it becomes a commit, so every piece of code traces back to the file that told the agent to write it. A main file tracks every unit's status — planned, in progress, done — so the project state is legible at a glance. The full ruleset and templates are available on their [website](https://mmdd.dev) if you want to check out the original source.
 
 ## What the range actually proves
 
