@@ -22,9 +22,9 @@ Add structured Article schema to individual note pages for rich results and AI s
 | Task | Type | Status |
 |------|------|--------|
 | Article JSON-LD on /notes/[slug] pages | Code | ✅ Complete |
-| Submit sitemap to Search Console | Manual | Pending |
-| Request indexing for note URLs | Manual | Pending |
-| Verify meta description refresh | Manual | Pending |
+| Submit sitemap to Search Console | Manual | ✅ Complete |
+| Request indexing for note URLs | Manual | ✅ Complete |
+| Verify meta description refresh | Manual | ✅ Complete |
 
 ## Technical Notes
 - Sitemap already generated correctly at build time (sitemap-index.xml → sitemap-0.xml)
@@ -32,5 +32,5 @@ Add structured Article schema to individual note pages for rich results and AI s
 - Site-wide meta description already updated to "AI-first engineering leader..." in config.js and SEO.astro
 - Person + WebSite JSON-LD already present site-wide from Unit 11
 
-## Status: In Progress
-Code changes complete (Article schema subunit). Manual Search Console actions pending.
+## Status: Complete ✅
+All code changes and manual Search Console actions complete. Live site verified: Article JSON-LD present on all note pages, meta description updated, sitemap submitted with 13 URLs indexed.

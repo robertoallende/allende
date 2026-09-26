@@ -1,7 +1,7 @@
 // AWS Builder content fetcher for Roberto Allende's articles
 // Based on original allende.ai implementation
 
-export async function fetchAwsBuilderContent(maxItems = 5) {
+export async function fetchAwsBuilderContent(maxItems = 50) {
   try {
     console.log('Fetching AWS Builder content...');
     
